@@ -26,7 +26,7 @@ const RightSidebar = () => {
                                         <Image className="rounded-circle avatar-50" src={user1} alt="" loading="lazy"/>
                                     </div>
                                     <div className="ms-3">
-                                        <h6 className="mb-0">Anna Sthesia</h6>
+                                        <h6 className="mb-0">Anna Sthesia*</h6>
                                         <p className="mb-0">Just Now</p>
                                     </div>
                                 </div>

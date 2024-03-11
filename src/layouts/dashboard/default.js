@@ -25,15 +25,15 @@ import { Outlet } from 'react-router-dom'
 const Default = () => {
     return (
         <>
-                <Sidebar />
-                <Header />
-                <div className="main-content">
-                    {/* <div id="content-page" className="content-page"> */}
-                    {/* <DefaultRouter/> */}
-                    <Outlet/>
-                    {/* </div> */}
-                </div>
-                <RightSidebar />
+            <Sidebar />
+            <Header />
+            <div className="main-content">
+                {/* <div id="content-page" className="content-page"> */}
+                {/* <DefaultRouter/> */}
+                <Outlet/>
+                {/* </div> */}
+            </div>
+            <RightSidebar />
             <Footer />
             <SettingOffCanvas/>
         </>
