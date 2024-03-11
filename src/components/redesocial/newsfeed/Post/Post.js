@@ -25,7 +25,7 @@ function PostComponent({ userName, userPhoto, postTime, postContent, postPhoto, 
             <div className="user-post-data">
                 <div className="d-flex justify-content-between">
                     <div className="me-3">
-                        <img className="rounded-circle img-fluid" src={userPhoto} alt=""/>
+                        <img className="rounded-circle img-fluid avatar-50" src={userPhoto} alt="" style={{ objectFit: 'unset' }} />
                     </div>
                     <div className="w-100">
                         <div className="d-flex justify-content-between">

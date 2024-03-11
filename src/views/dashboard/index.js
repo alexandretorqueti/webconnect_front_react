@@ -31,27 +31,53 @@ const Index = () => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const [posts, setPosts] = useState([]);
+    const [context, setContext] = useState([]);
+    const [vezes, setVezes] = useState(0);
+    const [postsCarregados, setPostsCarregados] = useState(false);
 
     useEffect(() => {
-        const fetchPosts = async () => {
-            try {
-                const response = await fetch('https://webconnect.com.br/redesocial/posts/1/***todos***', {
-                    method: 'GET',
-                    credentials: 'include',
-                });
-                if (!response.ok) {
-                    throw new Error('Algo deu errado');
-                }
-                const data = await response.json();
-                setPosts(data);
-            } catch (error) {
-                console.log(error);
-            }
-        };
+        console.log('Passei aqui ' + vezes + ' vezes');
+        setVezes(vezes + 1);
+        const fazlogin = async () => {
+            const fetchPosts = async () => {
+                try {
+                    const response0 = await fetch('https://webconnect.com.br/pessoas/ajax_login', {
+                        method: 'POST',
+                        credentials: 'include',
+                        headers: {
+                        'Content-Type': 'application/json',
+                        // Outros headers necessários, como tokens CSRF se seu servidor Django os requerer
+                        },
+                        body: JSON.stringify({
+                        username: 'alexandre',
+                        password: 'Safira2023*!',
+                        }),
+                    });
+                    const response = await fetch('https://webconnect.com.br/redesocial/posts_json/1/***todos***', {
+                        method: 'GET',
+                        credentials: 'include',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            // Outros headers necessários, como tokens CSRF se seu servidor Django os requerer
+                        },
+                    });
+                    if (!response.ok) {
+                        throw new Error('Algo deu errado');
+                    }
+                    const data = await response.json();
+                    setContext(data);
 
-        fetchPosts();
+                    setPostsCarregados(true);
+                } catch (error) {
+                    console.log(error);
+                }
+            };
+            fetchPosts();
+        }
+        fazlogin();
     }, []);
+
+
 
     return (
         <>
@@ -122,7 +148,17 @@ const Index = () => {
                             <span className="mb-0 ps-1 d-inline-block">Add New Post</span>
                         </Post>
                         <Post userName="Carlos" userPhoto={user2} postTime="AGORA" postContent="bla bla bla" postPhoto={p2}></Post>
-
+                        {(postsCarregados && context.posts.map((postJsonString, index) => {
+                            const post = JSON.parse(postJsonString);                            
+                            return <Post 
+                            key={index} 
+                            userName={post.fields.pessoa_fisica.nome}
+                            userPhoto={post.fields.pessoa_fisica.foto}
+                            postTime={post.fields.data_criacao}
+                            postContent={post.fields.content}
+                            postPhoto={post.fields.foto}></Post>
+                            })
+                        )}
                     </Col>
 
                     <Col lg={4}>
