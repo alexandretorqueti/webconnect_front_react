@@ -1,5 +1,5 @@
-import React from 'react'
-import {Row, Col, Container, Form, Button, Image} from 'react-bootstrap'
+import React, {useState} from 'react'
+import {Row, Col, Container, Form, Button, Image, Alert} from 'react-bootstrap'
 import {Link, useNavigate} from 'react-router-dom'
 
 
@@ -21,6 +21,44 @@ import login3 from '../../../assets/images/login/3.png'
 SwiperCore.use([Navigation, Autoplay]);
 
 const SignIn = () => {
+   let navigate = useNavigate();
+   // Estado para armazenar o email e senha
+   const [email, setEmail] = useState('');
+   const [password, setPassword] = useState('');
+   const [erro, setErro] = useState('');
+   const [mensagem, setMensagem] = useState('');
+
+   // Função para lidar com o envio do formulário
+   const handleSignIn = async (e) => {
+       e.preventDefault(); // Evita o recarregamento da página
+       setErro('');
+       setMensagem('');
+       try {
+           const response = await fetch('http://localhost:8000/api-token-auth/', {
+               method: 'POST',
+               headers: {
+                   'Content-Type': 'application/json',
+               },
+               body: JSON.stringify({
+                   username : email,
+                   password,
+               }),
+           });
+
+           if (!response.ok) {
+               throw new Error('Não foi possível autenticar com os dados fornecidos');
+           }
+           setMensagem('Logado com sucesso');
+           const data = await response.json();
+
+           // Aqui você pode armazenar o token recebido, se necessário, e redirecionar o usuário
+           console.log(data); // Exibe os dados de resposta
+           // navigate('/'); // Redireciona para a página inicial após o login
+       } catch (error) {
+         setErro(error.message)
+         console.error(error);
+       }
+   };
    let history =useNavigate()
    return (
       <>
@@ -70,22 +108,37 @@ const SignIn = () => {
                      <div className="sign-in-from">
                         <h1 className="mb-0">Sign in</h1>
                         <p>Enter your email address and password to access admin panel.</p>
-                        <Form className="mt-4">
+                        {erro && <Alert variant="danger">{erro}</Alert>}
+                        {mensagem && <Alert variant="success">{mensagem}</Alert>}
+                        <Form className="mt-4" onSubmit={handleSignIn}>
                            <Form.Group className="form-group">
                               <Form.Label>Email address</Form.Label>
-                              <Form.Control type="email" className="mb-0" id="exampleInputEmail1" placeholder="Enter email"/>
+                              <Form.Control
+                                 type="text"
+                                 className="mb-0"
+                                 id="inputEmail"
+                                 onChange={(e) => setEmail(e.target.value)}
+                                 value={email}
+                                 placeholder="Enter email"/>
                            </Form.Group>
                            <Form.Group className="form-group">
                               <Form.Label>Password</Form.Label>
                               <Link to="#" className="float-end">Forgot password?</Link>
-                              <Form.Control type="password" className="mb-0" id="exampleInputPassword1" placeholder="Password"/>
+                              <Form.Control
+                                 type="password"
+                                 className="mb-0"
+                                 id="inputPassword"
+                                 onChange={(e) => setPassword(e.target.value)}
+                                 value={password}
+                                 placeholder="Password"/>
                            </Form.Group>
                            <div className="d-inline-block w-100">
                               <Form.Check className="d-inline-block mt-2 pt-1">
                                  <Form.Check.Input type="checkbox" className="me-2" id="customCheck11"/>
                                  <Form.Check.Label>Remember Me</Form.Check.Label>{' '}
                               </Form.Check>
-                              <Button variant="primary" type="button"  className="float-end" onClick={() => history.push('/')}>Sign in</Button>
+                              <Button variant="primary" type="submit"  className="float-end">Sign in</Button>
+                              <span>{erro}</span>
                            </div>
                            <div className="sign-info">
                               <span className="dark-color d-inline-block line-height-2">Don't have an account? <Link to="/auth/sign-up">Sign up</Link></span>

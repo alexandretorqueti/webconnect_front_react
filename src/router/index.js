@@ -1,15 +1,23 @@
+// src/router/index.js
+
 import React from "react";
+import ProtectedRoute from "../components/ProtectedRouter";
 
-//layoutpages
+// Outras importações...
 import Default from "../layouts/dashboard/default";
-
 import { DefaultRouter } from "./default-router";
 import { Layout1Router } from "./layout1-router";
 
 export const IndexRouters = [
   {
     path: "/",
-    element: <Default />,
-    children: [...DefaultRouter, ...Layout1Router],
+    element: <ProtectedRoute />, // Utilize o ProtectedRoute aqui
+    children: [
+      {
+        path: "/",
+        element: <Default />,
+        children: [...DefaultRouter, ...Layout1Router],
+      },
+    ],
   },
 ];

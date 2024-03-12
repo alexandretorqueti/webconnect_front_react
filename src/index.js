@@ -1,3 +1,6 @@
+// Veja os arquivos abaixo e reanalise a questão do roteamento
+// src/index.js
+
 import React, { StrictMode} from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
@@ -17,7 +20,6 @@ import { SimpleRouter } from './router/simple-router';
 import { ChatRouter } from './router/chat-router';
 
 const router = createBrowserRouter([
-
   ...IndexRouters,
   ...SimpleRouter,
   ...ChatRouter
@@ -47,3 +49,4 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 // reportWebVitals();
+

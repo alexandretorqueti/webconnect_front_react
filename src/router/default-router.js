@@ -1,3 +1,5 @@
+// src/router/default-router.js
+
 import React from "react";
 import Index from "../views/dashboard/index";
 
