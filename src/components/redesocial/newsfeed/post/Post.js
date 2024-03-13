@@ -91,7 +91,7 @@ function PostComponent({ userName, userPhoto, postTime, postContent, postPhoto, 
                     <p>{postContent}</p>
                 </div>
                 <div className="user-post">
-                    <Link to="#"><img src={postPhoto} alt="post1" className="img-fluid rounded w-100"/></Link>
+                    <Link to="#"><img src={postPhoto} alt="" className="img-fluid rounded w-100"/></Link>
                 </div>
                 <div className="comment-area mt-3">
                     <div className="d-flex justify-content-between align-items-center flex-wrap">

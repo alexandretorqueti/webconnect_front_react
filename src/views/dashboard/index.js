@@ -1,4 +1,4 @@
-import React, {useEffect, useState}  from 'react'
+import React, {useEffect, useState, useRef}  from 'react'
 import { Row, Col, Container, Dropdown} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import Card from '../../components/Card'
@@ -21,53 +21,74 @@ const Index = () => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const [context, setContext] = useState([]);
+    const [posts, setPosts] = useState([]);
     const [vezes, setVezes] = useState(0);
     const [postsCarregados, setPostsCarregados] = useState(false);
+    const [isVisible, setIsVisible] = useState(false);
+    const elementoRef = useRef(null);
+    const [pagina, setPagina] = useState(1);
+    const [continuar, setContinuar] = useState(true);
+
 
     useEffect(() => {
-        console.log('Passei aqui ' + vezes + ' vezes');
-        setVezes(vezes + 1);
-        const fazlogin = async () => {
-            const fetchPosts = async () => {
-                try {
-                    const response0 = await fetch('https://webconnect.com.br/pessoas/ajax_login', {
-                        method: 'POST',
-                        credentials: 'include',
-                        headers: {
+        const observer = new IntersectionObserver(
+        ([entry]) => {
+            // Atualiza o estado quando a visibilidade do elemento muda
+            setIsVisible(entry.isIntersecting);
+        },
+        {
+            rootMargin: '0px',
+            threshold: 0.1 // Ajuste o threshold conforme necessário
+        }
+        );
+
+        if (elementoRef.current) {
+        observer.observe(elementoRef.current);
+        }
+
+        return () => {
+        if(elementoRef.current) {
+            observer.unobserve(elementoRef.current);
+        }
+        };
+    }, [elementoRef]);
+
+    const carrega = async (paginaAtual) => {
+        const fetchPosts = async () => {
+            try {
+                const response = await fetch('http://localhost:8000/redesocial/api/posts/' + paginaAtual + '/***todos***', {
+                    method: 'GET',
+                    credentials: 'include',
+                    headers: {
                         'Content-Type': 'application/json',
                         // Outros headers necessários, como tokens CSRF se seu servidor Django os requerer
-                        },
-                        body: JSON.stringify({
-                        username: 'alexandre',
-                        password: 'Safira2023*!',
-                        }),
-                    });
-                    const response = await fetch('https://webconnect.com.br/redesocial/posts_json/1/***todos***', {
-                        method: 'GET',
-                        credentials: 'include',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            // Outros headers necessários, como tokens CSRF se seu servidor Django os requerer
-                        },
-                    });
-                    if (!response.ok) {
-                        throw new Error('Algo deu errado');
-                    }
-                    const data = await response.json();
-                    setContext(data);
-
-                    setPostsCarregados(true);
-                } catch (error) {
-                    console.log(error);
+                    },
+                });
+                if (!response.ok) {
+                    throw new Error('Algo deu errado');
                 }
-            };
-            fetchPosts();
-        }
-        fazlogin();
+                const data = await response.json();
+                setPosts(posts.concat(data.posts));
+                setContinuar(data.continuar);
+
+                setPostsCarregados(true);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        fetchPosts();
+    }
+
+    useEffect(() => {
+        carrega(1);
     }, []);
 
-
+    useEffect(() => {
+        if (isVisible) {
+            setPagina(pagina + 1);
+            carrega(pagina);
+        }
+    }, [isVisible]);
 
     return (
         <>
@@ -134,15 +155,14 @@ const Index = () => {
                                 <FormNewPost show={show} handleClose={handleClose}/>
                             </Card>
                         </Col>
-                        {(postsCarregados && context.posts.map((postJsonString, index) => {
-                            const post = JSON.parse(postJsonString);                            
+                        {(postsCarregados && posts.map((post, index) => {
                             return <Post 
                             key={index} 
-                            userName={post.fields.pessoa_fisica.nome}
-                            userPhoto={post.fields.pessoa_fisica.foto}
-                            postTime={post.fields.data_criacao}
-                            postContent={post.fields.content}
-                            postPhoto={post.fields.foto}></Post>
+                            userName={post.pessoa_fisica.nome}
+                            userPhoto={post.pessoa_fisica.foto_url}
+                            postTime={post.data_criacao}
+                            postContent={post.content}
+                            postPhoto={post.primeira_foto}></Post>
                             })
                         )}
                     </Col>
@@ -153,7 +173,8 @@ const Index = () => {
                         <SuggestedPage></SuggestedPage>
                     </Col>
                     <div className="col-sm-12 text-center">
-                        <img src={loader} alt="loader" style={{height: "100px"}}/>
+                        {continuar ? <img ref={elementoRef} src={loader} alt="loader" style={{height: "100px"}}/> : 
+                        <p>Não há mais dados</p>}
                     </div>
                 </Row>
             </Container>                

@@ -50,10 +50,9 @@ const SignIn = () => {
            }
            setMensagem('Logado com sucesso');
            const data = await response.json();
-
-           // Aqui você pode armazenar o token recebido, se necessário, e redirecionar o usuário
-           console.log(data); // Exibe os dados de resposta
-           // navigate('/'); // Redireciona para a página inicial após o login
+           localStorage.setItem('token', data.token);
+           
+           navigate('/');
        } catch (error) {
          setErro(error.message)
          console.error(error);
