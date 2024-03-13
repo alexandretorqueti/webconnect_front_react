@@ -60,8 +60,7 @@ const Index = () => {
                     method: 'GET',
                     credentials: 'include',
                     headers: {
-                        'Content-Type': 'application/json',
-                        // Outros headers necessários, como tokens CSRF se seu servidor Django os requerer
+                        'Content-Type': 'application/json'
                     },
                 });
                 if (!response.ok) {
