@@ -47,7 +47,7 @@ const RightSidebar = () => {
                             <div className="media-height p-3" data-scrollbar="init">
                                 {
                                 pessoas.map((pessoa, index) => 
-                                    <PessoaLogada key={index} nome={pessoa.nome} foto={pessoa.foto_url} horaLogado="Agora" />
+                                    <PessoaLogada key={index} nome={pessoa.nome} foto={pessoa.foto_url} horaLogado={pessoa.hora_ultimo_login_humanizada} />
                                 )}
                             </div>
                             <div className="right-sidebar-toggle bg-primary text-white mt-3 d-flex" onClick={minirightsidebar}>
