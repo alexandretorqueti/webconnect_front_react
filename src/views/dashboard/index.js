@@ -28,6 +28,7 @@ const Index = () => {
     const elementoRef = useRef(null);
     const [pagina, setPagina] = useState(1);
     const [continuar, setContinuar] = useState(true);
+    const [icones, setIcones] = useState([]);
 
 
     useEffect(() => {
@@ -75,7 +76,26 @@ const Index = () => {
                 console.log(error);
             }
         };
+        const fetchIcones = async () => {
+            try {
+                const response = await fetch('http://localhost:8000/redesocial/api/icones', {
+                    method: 'GET',
+                    credentials: 'include',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                });
+                if (!response.ok) {
+                    throw new Error('Algo deu errado');
+                }
+                const data = await response.json();
+                setIcones(data);
+            } catch (error) {
+                console.log(error);
+            }
+        };
         fetchPosts();
+        fetchIcones();
     }
 
     useEffect(() => {
@@ -157,11 +177,9 @@ const Index = () => {
                         {(postsCarregados && posts.map((post, index) => {
                             return <Post 
                             key={index} 
-                            userName={post.pessoa_fisica.nome}
-                            userPhoto={post.pessoa_fisica.foto_url}
-                            postTime={post.data_criacao}
-                            postContent={post.content}
-                            postPhoto={post.primeira_foto}></Post>
+                            post={post}
+                            icones={icones}
+                            ></Post>
                             })
                         )}
                     </Col>

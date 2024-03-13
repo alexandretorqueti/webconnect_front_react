@@ -1,0 +1,17 @@
+.numero-notificacoes {
+    width: 20px;
+    height: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-left: auto;
+    font-size: 12px;
+  }
+  
+  /* Estiliza o avatar para ter um pouco de espaço entre ele e o número */
+  .iq-profile-avatar {
+    margin-right: 8px;
+  }
+  
