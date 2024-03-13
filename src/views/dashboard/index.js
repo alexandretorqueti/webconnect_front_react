@@ -29,7 +29,8 @@ const Index = () => {
     const [pagina, setPagina] = useState(1);
     const [continuar, setContinuar] = useState(true);
     const [icones, setIcones] = useState([]);
-
+    const [stories, setStories] = useState([]);
+    const [events, setEvents] = useState([]);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -184,8 +185,12 @@ const Index = () => {
                         )}
                     </Col>
                     <Col lg={4}>
-                        <StoriesCard></StoriesCard>
-                        <EventsCard></EventsCard>
+                        {   stories.length > 0 &&
+                            <StoriesCard></StoriesCard>
+                        }
+                        {   events.length > 0 &&
+                            <EventsCard></EventsCard>
+                        }
                         <Birthday></Birthday>
                         <SuggestedPage></SuggestedPage>
                     </Col>
