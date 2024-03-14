@@ -18,7 +18,7 @@ import loader from '../../assets/images/page-img/page-load-loader.gif'
 import { PostPaginado, Icones } from '../../services/RedeSocial'
 import { Pessoas } from '../../services/Pessoas'
 
-const Index = ({ pessoaLogada }) => {
+const Index = ({}) => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -31,6 +31,9 @@ const Index = ({ pessoaLogada }) => {
     const [icones, setIcones] = useState([]);
     const [stories, setStories] = useState([]);
     const [events, setEvents] = useState([]);
+    const [birthdays, setBirthdays] = useState([]);
+    const [suggestedPages, setSuggestedPages] = useState([]);
+
     const [pessoa_logada, setPessoaLogada] = useState();
     const PostPaginadoService = new PostPaginado();
     const IconesService = new Icones();
@@ -64,26 +67,29 @@ const Index = ({ pessoaLogada }) => {
             const { continuar, pagina } = await PostPaginadoService.get(paginaAtual);
             setPosts(posts.concat(pagina));
             setContinuar(continuar);
-            
-            const icones = await IconesService.get();
-            setIcones(icones);
-
-            const pessoa = pessoaLogada;
-            setPessoaLogada(pessoa);
         }
 
         await run();
     }
 
     useEffect(() => {
-        carrega(1);
+        const run = async () => {
+            carrega(1);
+            const icones = await IconesService.get();
+            setIcones(icones);
+            setPessoaLogada(await PessoasService.getUsuarioLogado());
+        }
+        run();
     }, []);
 
     useEffect(() => {
-        if (isVisible) {
-            setPagina(pagina + 1);
-            carrega(pagina);
+        const run = async () => {
+            if (isVisible) {
+                setPagina(pagina + 1);
+                carrega(pagina);
+            }
         }
+        run();
     }, [isVisible]);
 
     return (
@@ -104,7 +110,7 @@ const Index = ({ pessoaLogada }) => {
                                     <div className="d-flex align-items-center">
                                         <div className="user-img">
                                             {pessoa_logada !== undefined &&
-                                            <img src={pessoa_logada.foto_url} alt="user1" className="avatar-60 rounded-circle"/>
+                                            <img src={pessoa_logada.foto_url} alt={pessoa_logada.nome} className="avatar-60 rounded-circle"/>
                                             }
                                         </div>
                                         <form className="post-text ms-3 w-100 "   onClick={handleShow}>
@@ -150,7 +156,7 @@ const Index = ({ pessoaLogada }) => {
                                         </li>
                                     </ul>   
                                 </Card.Body>
-                                <FormNewPost show={show} handleClose={handleClose}/>
+                                <FormNewPost show={show} handleClose={handleClose} pessoa_logada={pessoa_logada}/>
                             </Card>
                         </Col>
                         {(posts.length > 0 && posts.map((post, index) => {
@@ -163,14 +169,19 @@ const Index = ({ pessoaLogada }) => {
                         )}
                     </Col>
                     <Col lg={4}>
-                        {   stories.length > 0 &&
+                        {   stories.length > 0 && 
                             <StoriesCard></StoriesCard>
+                            // TODO
                         }
                         {   events.length > 0 &&
                             <EventsCard></EventsCard>
                         }
-                        <Birthday></Birthday>
-                        <SuggestedPage></SuggestedPage>
+                        {  birthdays.length > 0 &&
+                            <Birthday></Birthday>
+                        }
+                        {   suggestedPages.length > 0 &&
+                            <SuggestedPage></SuggestedPage>
+                        }
                     </Col>
                     <div className="col-sm-12 text-center">
                         {continuar ? <img ref={elementoRef} src={loader} alt="loader" style={{height: "100px"}}/> : 

@@ -1,4 +1,4 @@
-import React  from 'react'
+import React, { useEffect, useState }  from 'react'
 import { Dropdown, Modal} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import CustomToggle from '../../../../components/dropdowns'
@@ -16,7 +16,12 @@ import img8 from '../../../../assets/images/small/14.png'
 
 
 
-function FormNewPostComponent({show, handleClose}) {
+function FormNewPostComponent({show, handleClose, pessoa_logada}) {
+    const [pessoa, setPessoa] = useState(pessoa_logada);
+
+    useEffect(() => {
+        setPessoa(pessoa_logada);
+    }, [pessoa_logada])
    
     return (
         <Modal size="lg" className="fade" id="post-modal" onHide={handleClose} show={show} >
@@ -28,12 +33,16 @@ function FormNewPostComponent({show, handleClose}) {
             </Modal.Header>
             <Modal.Body>
                 <div className="d-flex align-items-center">
-                    <div className="user-img">
-                        <img src={user1} alt="user1" className="avatar-60 rounded-circle img-fluid"/>
-                    </div>
-                    <form className="post-text ms-3 w-100 "  data-bs-toggle="modal" data-bs-target="#post-modal">
-                    <input type="text" className="form-control rounded" placeholder="Write something here..." style={{border:"none"}}/>
-                </form>
+                    {pessoa !== undefined &&
+                        <>
+                        <div className="user-img">
+                            <img src={pessoa.foto_url} alt={pessoa.nome} className="avatar-60 rounded-circle img-fluid"/>
+                        </div>
+                        <form className="post-text ms-3 w-100 "  data-bs-toggle="modal" data-bs-target="#post-modal">
+                        <input type="text" className="form-control rounded" placeholder="Write something here..." style={{border:"none"}}/>
+                        </form>
+                        </>
+                    }
                 </div>
                 <hr/>
                 <ul className="d-flex flex-wrap align-items-center list-inline m-0 p-0">

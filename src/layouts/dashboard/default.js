@@ -46,7 +46,7 @@ const Default = () => {
                 <div className="main-content">
                     {/* <div id="content-page" className="content-page"> */}
                     {/* <DefaultRouter/> */}
-                    <Outlet pessoa_logada={pessoa_logada}/>
+                    <Outlet/>
                     {/* </div> */}
                 </div>
                 <RightSidebar pessoa_logada={pessoa_logada}/>
