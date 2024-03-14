@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Dropdown,
   Nav,
@@ -31,15 +31,19 @@ import user16 from "../../../../assets/images/page-img/01.jpg";
 import CustomToggle from "../../../dropdowns";
 // import DropdownMenu from "react-bootstrap/esm/DropdownMenu";
 
-const Header = () => {
+const Header = ({ pessoa_logada }) => {
   const minisidebar = () => {
     document.getElementsByTagName("ASIDE")[0].classList.toggle("sidebar-mini");
   };
-
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [pessoaLogada, setPessoaLogada] = useState({});
+
+  useEffect(() => {
+    setPessoaLogada(pessoa_logada);
+  }, []);
+
   return (
     <>
       <div className="iq-top-navbar">
@@ -1317,21 +1321,23 @@ const Header = () => {
                 </Link>
               </Nav.Item>
               <Dropdown as="li" className="nav-item user-dropdown">
-                <Dropdown.Toggle
-                  href="#"
-                  as={CustomToggle}
-                  variant="d-flex align-items-center"
-                >
-                  <Image
-                    src={user1}
-                    className="img-fluid rounded-circle me-3"
-                    alt="user"
-                    loading="lazy"
-                  />
-                  <div className="caption d-none d-lg-block">
-                    <h6 className="mb-0 line-height">Bni Cyst</h6>
-                  </div>
-                </Dropdown.Toggle>
+                { pessoaLogada !== undefined &&
+                  <Dropdown.Toggle
+                    href="#"
+                    as={CustomToggle}
+                    variant="d-flex align-items-center"
+                  >
+                    <Image
+                      src={pessoaLogada.foto_url}
+                      className="img-fluid rounded-circle me-3"
+                      alt="user"
+                      loading="lazy"
+                    />
+                    <div className="caption d-none d-lg-block">
+                      <h6 className="mb-0 line-height">{ pessoaLogada.nome }</h6>
+                    </div>
+                  </Dropdown.Toggle>
+                }
                 <Dropdown.Menu className="sub-drop caption-menu">
                   <Card className="shadow-none m-0">
                     <Card.Header>

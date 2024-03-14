@@ -15,15 +15,15 @@ import img1 from '../../assets/images/small/07.png'
 import img2 from '../../assets/images/small/08.png'
 import img3 from '../../assets/images/small/09.png'
 import loader from '../../assets/images/page-img/page-load-loader.gif'
+import { PostPaginado, Icones } from '../../services/RedeSocial'
+import { Pessoas } from '../../services/Pessoas'
 
-
-const Index = () => {
+const Index = ({ pessoaLogada }) => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const [posts, setPosts] = useState([]);
     const [vezes, setVezes] = useState(0);
-    const [postsCarregados, setPostsCarregados] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
     const elementoRef = useRef(null);
     const [pagina, setPagina] = useState(1);
@@ -31,6 +31,10 @@ const Index = () => {
     const [icones, setIcones] = useState([]);
     const [stories, setStories] = useState([]);
     const [events, setEvents] = useState([]);
+    const [pessoa_logada, setPessoaLogada] = useState();
+    const PostPaginadoService = new PostPaginado();
+    const IconesService = new Icones();
+    const PessoasService = new Pessoas();
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -45,7 +49,7 @@ const Index = () => {
         );
 
         if (elementoRef.current) {
-        observer.observe(elementoRef.current);
+            observer.observe(elementoRef.current);
         }
 
         return () => {
@@ -56,47 +60,19 @@ const Index = () => {
     }, [elementoRef]);
 
     const carrega = async (paginaAtual) => {
-        const fetchPosts = async () => {
-            try {
-                const response = await fetch('http://localhost:8000/redesocial/api/posts/' + paginaAtual + '/***todos***', {
-                    method: 'GET',
-                    credentials: 'include',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                });
-                if (!response.ok) {
-                    throw new Error('Algo deu errado');
-                }
-                const data = await response.json();
-                setPosts(posts.concat(data.posts));
-                setContinuar(data.continuar);
+        const run = async () => {
+            const { continuar, pagina } = await PostPaginadoService.get(paginaAtual);
+            setPosts(posts.concat(pagina));
+            setContinuar(continuar);
+            
+            const icones = await IconesService.get();
+            setIcones(icones);
 
-                setPostsCarregados(true);
-            } catch (error) {
-                console.log(error);
-            }
-        };
-        const fetchIcones = async () => {
-            try {
-                const response = await fetch('http://localhost:8000/redesocial/api/icones', {
-                    method: 'GET',
-                    credentials: 'include',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                });
-                if (!response.ok) {
-                    throw new Error('Algo deu errado');
-                }
-                const data = await response.json();
-                setIcones(data);
-            } catch (error) {
-                console.log(error);
-            }
-        };
-        fetchPosts();
-        fetchIcones();
+            const pessoa = pessoaLogada;
+            setPessoaLogada(pessoa);
+        }
+
+        await run();
     }
 
     useEffect(() => {
@@ -127,7 +103,9 @@ const Index = () => {
                                 <Card.Body >
                                     <div className="d-flex align-items-center">
                                         <div className="user-img">
-                                            <img src={user1} alt="user1" className="avatar-60 rounded-circle"/>
+                                            {pessoa_logada !== undefined &&
+                                            <img src={pessoa_logada.foto_url} alt="user1" className="avatar-60 rounded-circle"/>
+                                            }
                                         </div>
                                         <form className="post-text ms-3 w-100 "   onClick={handleShow}>
                                             <input type="text" className="form-control rounded" placeholder="Write something here..." style={{border:"none"}}/>
@@ -175,7 +153,7 @@ const Index = () => {
                                 <FormNewPost show={show} handleClose={handleClose}/>
                             </Card>
                         </Col>
-                        {(postsCarregados && posts.map((post, index) => {
+                        {(posts.length > 0 && posts.map((post, index) => {
                             return <Post 
                             key={index} 
                             post={post}

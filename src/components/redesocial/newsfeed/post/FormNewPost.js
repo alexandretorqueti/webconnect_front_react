@@ -17,7 +17,7 @@ import img8 from '../../../../assets/images/small/14.png'
 
 
 function FormNewPostComponent({show, handleClose}) {
-    
+   
     return (
         <Modal size="lg" className="fade" id="post-modal" onHide={handleClose} show={show} >
             <Modal.Header  className="d-flex justify-content-between">
