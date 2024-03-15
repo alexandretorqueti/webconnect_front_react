@@ -1,0 +1,11 @@
+/* styles.css */
+.collapse-custom {
+    transition: max-height 0.2s ease-out;
+    overflow: hidden;
+    max-height: 0; /* Inicialmente oculto */
+  }
+  
+  .collapse-custom.open {
+    max-height: 200px; /* Ajuste conforme necessário */
+  }
+  

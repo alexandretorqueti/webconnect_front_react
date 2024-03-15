@@ -103,6 +103,7 @@ function PostComponent({ post, icones, children }) {
                                 userName={comentario.pessoa_fisica.nome} 
                                 userPhoto={comentario.pessoa_fisica.foto_url}
                                 comentario={comentario.comentario}
+                                hora={comentario.naturalTime}
                                 />
                                 )
                             )

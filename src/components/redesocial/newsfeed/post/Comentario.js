@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-function ComentarioComponent({userName, userPhoto, comentario}) {
+function ComentarioComponent({userName, userPhoto, comentario, hora}) {
   return (
     <li className="mb-2">
         <div className="d-flex">
@@ -14,7 +14,7 @@ function ComentarioComponent({userName, userPhoto, comentario}) {
                     <Link to="#">like</Link>
                     <Link to="#">reply</Link>
                     <Link to="#">translate</Link>
-                    <span> 5 min </span>
+                    <span> {hora} </span>
                 </div>
             </div>
         </div>
