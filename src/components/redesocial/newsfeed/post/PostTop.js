@@ -30,27 +30,27 @@ function PostTopComponent({ pessoa_logada }) {
             <div className={`collapse-custom ${showSend ? 'open' : ''}`}>
             {showSend &&
                 <Form onSubmit={handleSubmit}>
-
-                    <div className="d-flex align-items-center">
-                    <div className="user-img">
-                        {pessoa_logada !== undefined &&
-                        <img src={pessoa_logada.foto_url} alt={pessoa_logada.nome} className="avatar-60 rounded-circle"/>
-                        }
+                    <Form.Group className="form-group">
+                      <div className="d-flex align-items-center">
+                      <div className="user-img">
+                          {pessoa_logada !== undefined &&
+                          <img src={pessoa_logada.foto_url} alt={pessoa_logada.nome} className="avatar-60 rounded-circle"/>
+                          }
+                      </div>
+                      <Form.Control
+                          as="textarea"
+                          className="ms-3 w-100"
+                          placeholder="Write something here..."
+                      />
                     </div>
-                    <Form.Control
-                        as="textarea"
-                        className="ms-3 w-100"
-                        placeholder="Write something here..."
-                        
-                    />
-                    </div>
+                    </Form.Group>
                     <Form.Group controlId="formFile" className="mb-3">
                     <Form.Label>Upload Photo/Video</Form.Label>
                     <Form.Control type="file" />
                     </Form.Group>
                     <div className="d-flex justify-content-between">
-                    <Button variant="primary" type="submit" className="mt-2">Post</Button>
                     <Button variant="primary" type="button" className="mt-2" onClick={() => setShowSend(!showSend)}>Cancel</Button>
+                    <Button variant="primary" type="submit" className="mt-2">Confirm</Button>
                     </div>
                 </Form>
             }
