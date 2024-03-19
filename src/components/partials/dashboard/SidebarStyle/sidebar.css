@@ -1,0 +1,5 @@
+@media (max-width: 1300) {
+    .sidebar.sidebar-mini {
+      transform: translateX(-250%);
+    }
+  }

@@ -8,6 +8,8 @@ import { useSelector } from 'react-redux';
 //components
 import Verticalnav from './verticalnav'
 import Scrollbar from 'smooth-scrollbar'
+
+import './sidebar.css'
 const Sidebar = () => {
 
     const sidebarType = useSelector(SettingSelector.sidebar_type) // array
@@ -19,7 +21,7 @@ const Sidebar = () => {
             window.addEventListener('resize',() =>{
                 const tabs = document.querySelectorAll('.nav')
                 const sidebarResponsive = document.querySelector('[data-sidebar="responsive"]')
-                if (window.innerWidth < 1025) {
+                if (window.innerWidth < 1300) {
                   Array.from(tabs, (elem) => {
                     if (!elem.classList.contains('flex-column') && elem.classList.contains('nav-tabs') && elem.classList.contains('nav-pills')) {
                          elem.classList.add('flex-column', 'on-resize');

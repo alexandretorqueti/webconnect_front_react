@@ -103,7 +103,7 @@ const Index = ({}) => {
 
             <Container>
                 <Row>
-                    <Col lg={larcuraColunaDoMeio} className="row m-0 p-0">
+                    <Col lg={larcuraColunaDoMeio} className="col m-0 p-0">
                         <PostTop pessoa_logada={pessoa_logada}></PostTop>
                         {(posts.length > 0 && posts.map((post, index) => {
                             return <Post 
