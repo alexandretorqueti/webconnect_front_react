@@ -20,7 +20,7 @@ const Index = ({}) => {
     const [posts, setPosts] = useState([]);
     const [vezes, setVezes] = useState(0);
     const [isVisible, setIsVisible] = useState(false);
-    const elementoRef = useRef(null);
+    const loaderRef = useRef(null);
     const [pagina, setPagina] = useState(1);
     const [continuar, setContinuar] = useState(true);
     const [icones, setIcones] = useState([]);
@@ -34,29 +34,37 @@ const Index = ({}) => {
     const PostPaginadoService = new PostPaginado();
     const IconesService = new Icones();
     const PessoasService = new Pessoas();
+    
+    const verificaVisibilidade = () => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                // Atualiza o estado quando a visibilidade do elemento muda
+                setIsVisible(entry.isIntersecting);
+            },
+            {
+                rootMargin: '0px',
+                threshold: 0.1 // Ajuste o threshold conforme necessário
+            }
+            );
+    
+            if (loaderRef.current) {
+                observer.observe(loaderRef.current);
+                const entry = observer.takeRecords()[0]; // Obtem o último registro de observação
+                if (entry && entry.isIntersecting) {
+                    setIsVisible(entry.isIntersecting);
+                }
+            }
+    
+            return () => {
+            if(loaderRef.current) {
+                observer.unobserve(loaderRef.current);
+            }
+            }
+    }
 
     useEffect(() => {
-        const observer = new IntersectionObserver(
-        ([entry]) => {
-            // Atualiza o estado quando a visibilidade do elemento muda
-            setIsVisible(entry.isIntersecting);
-        },
-        {
-            rootMargin: '0px',
-            threshold: 0.1 // Ajuste o threshold conforme necessário
-        }
-        );
-
-        if (elementoRef.current) {
-            observer.observe(elementoRef.current);
-        }
-
-        return () => {
-        if(elementoRef.current) {
-            observer.unobserve(elementoRef.current);
-        }
-        };
-    }, [elementoRef]);
+        verificaVisibilidade();
+    }, [loaderRef]);
 
     const carrega = async (paginaAtual) => {
         const run = async () => {
@@ -64,13 +72,11 @@ const Index = ({}) => {
             setPosts(posts.concat(pagina));
             setContinuar(continuar);
         }
-
         await run();
     }
 
     useEffect(() => {
         const run = async () => {
-            carrega(1);
             const icones = await IconesService.get();
             setIcones(icones);
             setPessoaLogada(await PessoasService.getUsuarioLogado());
@@ -131,7 +137,7 @@ const Index = ({}) => {
                         </Col>
                     )}
                     <div className="col-sm-12 text-center">
-                        {continuar ? <img ref={elementoRef} src={loader} alt="loader" style={{height: "100px"}}/> : 
+                        {continuar ? <img ref={loaderRef} src={loader} alt="loader" style={{height: "100px"}}/> : 
                         <p>Não há mais dados</p>}
                     </div>
                 </Row>
