@@ -26,6 +26,26 @@ export class AjaxService {
             return null;
         }
     }
+    async postJson(endPoint, data = {}) {
+        try {
+            const response = await fetch(this.enderecoBase + this.app + endPoint, {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+            if (!response.ok) {
+                throw new Error('Algo deu errado');
+            }
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            this.errorService.handlerError(error);
+            return null;
+        }
+    }
     async postForm(endPoint, formData) {
         try {
             const response = await fetch(this.enderecoBase + this.app + endPoint, {
