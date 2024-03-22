@@ -6,6 +6,10 @@ export class AjaxService {
         this.enderecoBase = 'http://localhost:8000/';
         this.errorService = new ErrorService();
         this.app = app;
+
+        if (window.location.href.indexOf('localhost') === -1) {
+            this.enderecoBase = 'https://www.webconnect.com.br/api/';
+        }
     }
 
     /*
@@ -26,7 +30,7 @@ export class AjaxService {
             return null;
         }
     }
-    async postJson(endPoint, data = {}) {
+    async postJson(endPoint, body = {}) {
         try {
             const response = await fetch(this.enderecoBase + this.app + endPoint, {
                 method: 'POST',
@@ -34,7 +38,7 @@ export class AjaxService {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(data)
+                body: JSON.stringify(body)
             });
             if (!response.ok) {
                 throw new Error('Algo deu errado');
