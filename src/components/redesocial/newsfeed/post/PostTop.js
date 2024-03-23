@@ -19,7 +19,10 @@ function PostTopComponent({ pessoa_logada }) {
     formData.append('content', postText);
     formData.append('fileIds', fotosIds);
     if (files.length > 0) {
-      formData.append('fotos', files);
+      const filesArray = Array.from(files);
+      filesArray.forEach((file) => {
+        formData.append('fotos', file);
+      });
     }
     (new Fotos()).post(formData);
     setPostText('');
