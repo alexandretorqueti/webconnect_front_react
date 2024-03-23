@@ -44,7 +44,7 @@ export class Fotos
     constructor() {
         this.AjaxService = new AjaxService('redesocial/');
     }
-    async post() {
-        return await this.AjaxService.postJson('api/fotos');
+    async post(formData) {
+        return await this.AjaxService.postForm('api/posts', formData);
     }    
 }

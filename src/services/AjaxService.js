@@ -50,6 +50,7 @@ export class AjaxService {
             return null;
         }
     }
+
     async postForm(endPoint, formData) {
         try {
             const response = await fetch(this.enderecoBase + this.app + endPoint, {
