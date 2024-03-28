@@ -10,6 +10,8 @@ export class AjaxService {
         if (window.location.href.indexOf('localhost') === -1) {
             this.enderecoBase = 'https://www.webconnect.com.br/api/';
         }
+
+        this.token = localStorage.getItem('token');
     }
 
     /*
@@ -21,7 +23,8 @@ export class AjaxService {
                 method: 'GET',
                 credentials: 'include',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Basic ' + this.token
                 },
             });
             return response.json();
@@ -36,7 +39,8 @@ export class AjaxService {
                 method: 'POST',
                 credentials: 'include',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Basic ' + this.token
                 },
                 body: JSON.stringify(body)
             });
@@ -56,7 +60,10 @@ export class AjaxService {
             const response = await fetch(this.enderecoBase + this.app + endPoint, {
                 method: 'POST',
                 credentials: 'include',
-                body: formData 
+                body: formData,
+                headers: {
+                    'Authorization': 'Basic ' + this.token
+                }
             });
 
             if (!response.ok) {

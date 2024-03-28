@@ -20,7 +20,7 @@ const RightSidebar = () => {
                 credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json',
-                    // 'Authorization': 'Token ' + localStorage.getItem('token')
+                    'Authorization': 'Basic ' + localStorage.getItem('token')
                 }
             });
             const data = await response.json();
