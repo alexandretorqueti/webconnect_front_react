@@ -1,19 +1,16 @@
 import React from 'react';
-import { Col, Card, Dropdown } from 'react-bootstrap';
+import { Col, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 import ShareOffcanvas from '../../../share-offcanvas'
-import CustomToggle from '../../../dropdowns'
 import Comentario from './Comentario'
 import FormNewComentario from './FormNewComentario'
-import DropdownCurtida from './DropdownCurtida';
+import PostLikes from './PostLikes';
+import PostComents from './PostComents';
 
-import icon1 from '../../../../assets/images/icon/01.png'
 import MenuPost from './MenuPost';
-// Importe os demais ícones da mesma maneira
 
 
-
-function PostComponent({ post, icones, children }) {
+function PostComponent({ post, icones, children, setPostAtual, setComentarioId }) {
   return (
     <Col sm={12}>
         <Card className=" card-block card-stretch card-height">
@@ -44,51 +41,9 @@ function PostComponent({ post, icones, children }) {
                 <div className="comment-area mt-3">
                     <div className="d-flex justify-content-between align-items-center flex-wrap">
                         <div className="like-block position-relative d-flex align-items-center">
-                            <div className="d-flex align-items-center">
-                                <div className="like-data">
-                                    <Dropdown>
-                                        <Dropdown.Toggle  as={CustomToggle} >
-                                            <img src={icon1} className="img-fluid" alt=""/>
-                                        </Dropdown.Toggle>
-                                        <DropdownCurtida icones={icones} />
-                                    </Dropdown>
-                                </div> 
-                                {post.pessoas_que_curtiram.length > 0 &&
-                                    <div className="total-like-block ms-2 me-3">
-                                        <Dropdown>
-                                            <Dropdown.Toggle as={CustomToggle}  id="post-option" >
-                                            {post.pessoas_que_curtiram.length} Likes
-                                            </Dropdown.Toggle>
-                                            <Dropdown.Menu>
-                                                {
-                                                    post.pessoas_que_curtiram.map((pessoa, index) =>
-                                                        <Dropdown.Item key={index} href="javascript:void(0)">
-                                                            {pessoa.pessoa_fisica__nome}
-                                                        </Dropdown.Item>
-                                                    )
-                                                }
-                                            </Dropdown.Menu>
-                                        </Dropdown>
-                                    </div>
-                                }
-                            </div> 
+                            <PostLikes pessoas_que_curtiram={post.pessoas_que_curtiram} icones={icones} />
                             {post.comentarios.length > 0 &&
-                                <div className="total-comment-block ms-2 me-3">
-                                    <Dropdown>
-                                        <Dropdown.Toggle as={CustomToggle}  id="post-option" >
-                                        {post.comentarios.length} Comment
-                                        </Dropdown.Toggle>
-                                        <Dropdown.Menu>
-                                            {
-                                                post.pessoas_que_comentaram.map((pessoa, index) => 
-                                                    <Dropdown.Item key={index} href="javascript:void(0)">
-                                                        {pessoa.pessoa_fisica__nome}
-                                                    </Dropdown.Item>
-                                                )
-                                            }
-                                        </Dropdown.Menu>
-                                    </Dropdown>
-                                </div>
+                                <PostComents comentarios={post.comentarios} pessoas_que_comentaram={post.pessoas_que_comentaram} />
                             }
                         </div>
                         <ShareOffcanvas />
@@ -109,7 +64,7 @@ function PostComponent({ post, icones, children }) {
                             )
                         }
                     </ul>
-                    <FormNewComentario post={post}/>
+                    <FormNewComentario post={post} setPostAtual={setPostAtual} setComentarioId={setComentarioId}/>
                 </div>
             </Card.Body>
         </Card>

@@ -1,8 +1,23 @@
 import { Link } from "react-router-dom"
+import { Comentarios } from '../../../../services/RedeSocial.js';
 
-function FormNewComentarioComponent({post}) {
+function FormNewComentarioComponent({post, setPostAtual, setComentarioId}) {
+  
+  function handleSubmit(e) {
+    async function run() {
+      e.preventDefault()
+      const PostId = post.id;
+      const comentario = e.target[0].value;
+      const newComentario = await (new Comentarios()).post(comentario, PostId);
+      post.comentarios.push(newComentario);
+      setPostAtual(post);
+      setComentarioId(newComentario.id);
+      e.target[0].value = '';}
+    run();
+  }
+
   return (
-    <form className="comment-text d-flex align-items-center mt-3" >
+    <form className="comment-text d-flex align-items-center mt-3" onSubmit={handleSubmit}>
     <input type="text" className="form-control rounded" placeholder="Enter Your Comment"/>
     <div className="comment-attagement d-flex">
         <Link to="#"><i className="ri-link me-3"></i></Link>
@@ -13,3 +28,5 @@ function FormNewComentarioComponent({post}) {
 }
 
 export default FormNewComentarioComponent
+
+

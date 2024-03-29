@@ -80,3 +80,9 @@ export class AjaxService {
     
 }
 
+
+export class PadraoAjax {
+    constructor() {
+        this.AjaxService = new AjaxService('redesocial/');
+    }
+}

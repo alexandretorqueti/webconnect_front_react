@@ -18,7 +18,6 @@ const Index = ({}) => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const [posts, setPosts] = useState([]);
-    const [vezes, setVezes] = useState(0);
     const [isVisible, setIsVisible] = useState(false);
     const loaderRef = useRef(null);
     const [pagina, setPagina] = useState(1);
@@ -31,6 +30,8 @@ const Index = ({}) => {
     const [temColunaDaDireita, setTemColunaDaDireita] = useState(false);
     const [larcuraColunaDoMeio, setLarguraColunaDoMeio] = useState(8);
     const [pessoa_logada, setPessoaLogada] = useState();
+    const [postAtual, setPostAtual] = useState(null);
+    const [comentarioId, setComentarioId] = useState(0);
     const PostPaginadoService = new PostPaginado();
     const IconesService = new Icones();
     const PessoasService = new Pessoas();
@@ -103,6 +104,17 @@ const Index = ({}) => {
         run();
     }, [isVisible]);
 
+    useEffect(() => {
+        if (postAtual) {
+            const index = posts.findIndex((post) => post.id === postAtual.id);
+            if (index !== -1) {
+                posts[index] = postAtual;
+                setPosts(posts);
+            }
+        }
+    }, [postAtual, comentarioId]);
+        
+
     return (
         <>
             <div id="content-page" className="content-page">
@@ -113,9 +125,12 @@ const Index = ({}) => {
                         <PostTop pessoa_logada={pessoa_logada} posts={posts} setPosts={setPosts}></PostTop>
                         {(posts.length > 0 && posts.map((post, index) => {
                             return <Post 
-                            key={index} 
+                            key={post.id} 
                             post={post}
                             icones={icones}
+                            postAtual={postAtual}
+                            setPostAtual={setPostAtual}
+                            setComentarioId={setComentarioId}
                             ></Post>
                             })
                         )}
