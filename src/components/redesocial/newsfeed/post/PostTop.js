@@ -1,48 +1,34 @@
 import React, { useState } from 'react';
 import { Col, Card, Button, Form, Row } from 'react-bootstrap';
-import { Fotos } from '../../../../services/RedeSocial.js';
+import { PostPaginado } from '../../../../services/RedeSocial.js';
 import img1 from '../../../../assets/images/small/07.png';
 
 import './PostTop.css';
 
-function PostTopComponent({ pessoa_logada }) {
+function PostTopComponent({ pessoa_logada, posts, setPosts }) {
   const [showSend, setShowSend] = useState(false);
   const [postText, setPostText] = useState('');
   const [files, setFiles] = useState([]);
-  const [fotosIds, setFotosIds] = useState([]);
 
   // Função para lidar com a submissão do formulário
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     
     const formData = new FormData();
     formData.append('content', postText);
-    formData.append('fileIds', fotosIds);
+   
     if (files.length > 0) {
       const filesArray = Array.from(files);
       filesArray.forEach((file) => {
         formData.append('fotos', file);
       });
     }
-    (new Fotos()).post(formData);
+    const newPost = await (new PostPaginado()).post(formData);
+    setPosts([newPost, ...posts]);
     setPostText('');
     setFiles([]);
-    setFotosIds([]);
     setShowSend(!showSend);
   };
-
-  //Função para enviar as Fotos selecionadas
-  const sendPhotos = async (event) => {
-    event.preventDefault();
-
-    const formData = new FormData();
-    for (let i = 0; i < files.length; i++) {
-      formData.append('fotos', files[i]);
-    }
-    const fotoId = (new Fotos()).post(formData);
-    setFotosIds([...fotosIds, fotoId]);
-  };
-
 
   return (
     <Col sm={12}>
@@ -80,9 +66,6 @@ function PostTopComponent({ pessoa_logada }) {
                       <Row>
                         <Col>
                           <Form.Control type="file" onChange={(e) => setFiles(e.target.files)} />
-                        </Col>
-                        <Col xs="auto"> {/* Ajusta automaticamente o tamanho da coluna para o conteúdo */}
-                          <Button variant="soft-primary" onClick={sendPhotos}>Send Photo</Button>
                         </Col>
                       </Row>
                     </Form.Group>

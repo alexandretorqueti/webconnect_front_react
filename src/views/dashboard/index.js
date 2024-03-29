@@ -110,7 +110,7 @@ const Index = ({}) => {
             <Container>
                 <Row>
                     <Col lg={larcuraColunaDoMeio} className="col m-0 p-0">
-                        <PostTop pessoa_logada={pessoa_logada}></PostTop>
+                        <PostTop pessoa_logada={pessoa_logada} posts={posts} setPosts={setPosts}></PostTop>
                         {(posts.length > 0 && posts.map((post, index) => {
                             return <Post 
                             key={index} 
