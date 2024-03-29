@@ -15,7 +15,7 @@ const ShareOffcanvas = () => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const [showShare, setShowShare] = useState(false);
+    const [showShare] = useState(false);
 
     return (
         <>

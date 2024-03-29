@@ -1,5 +1,6 @@
 import { Modal, Button } from 'react-bootstrap';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 function ModalConfirmComponent({ show, setShow, handleConfirm, title, message }) {
     return (
@@ -21,5 +22,13 @@ function ModalConfirmComponent({ show, setShow, handleConfirm, title, message })
         </>
     );
 }
+
+ModalConfirmComponent.propTypes = {
+    show: PropTypes.bool.isRequired,
+    setShow: PropTypes.func.isRequired,
+    handleConfirm: PropTypes.func.isRequired,
+    title: PropTypes.string.isRequired,
+    message: PropTypes.string.isRequired,
+};
 
 export default ModalConfirmComponent;
