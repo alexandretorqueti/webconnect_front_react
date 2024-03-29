@@ -1,7 +1,32 @@
 import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react';
+import Menu from '../../../Menu';
+import { Comentarios } from '../../../../services/RedeSocial';
+import ModalConfirm from '../../../ModalConfirm';
 
-function ComentarioComponent({userName, userPhoto, comentario, hora}) {
-  return (
+function ComentarioComponent({userName, userPhoto, comentario, hora, comentarioId, setDeleteComentario}) {
+    const [itens, setItens] = useState([]);
+    const [show, setShow] = useState(false);
+    const handleConfirm = async () => {
+        const result = await (new Comentarios()).delete(comentarioId);
+        if (result.status === 'success') {
+            setDeleteComentario(comentarioId);
+        } 
+    }
+    useEffect(() => {
+        setItens([{
+            id: 1,
+            title: 'Delete',
+            content: 'Delete this comment',
+            icon: 'ri-delete-bin-line',
+            enabled: true,
+            visible: true,
+            action: () => {
+                setShow(true);
+            }
+        }]);
+    }, []);
+    return (
     <li className="mb-2">
         <div className="d-flex">
             <div className="user-img">
@@ -17,6 +42,14 @@ function ComentarioComponent({userName, userPhoto, comentario, hora}) {
                     <span> {hora} </span>
                 </div>
             </div>
+            <Menu itens={itens} />
+            <ModalConfirm 
+                show={show} 
+                setShow={setShow} 
+                handleConfirm={handleConfirm} 
+                title="Delete Coment"
+                message="Are you sure you want to delete this comment?"
+            />
         </div>
     </li>
 );

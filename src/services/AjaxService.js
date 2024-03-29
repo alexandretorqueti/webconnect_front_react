@@ -54,7 +54,6 @@ export class AjaxService {
             return null;
         }
     }
-
     async postForm(endPoint, formData) {
         try {
             const response = await fetch(this.enderecoBase + this.app + endPoint, {
@@ -73,6 +72,22 @@ export class AjaxService {
             const data = await response.json();
             return data;
         } catch (error) {
+            this.errorService.handlerError(error);
+            return null;
+        }
+    }
+    async delete(endPoint) {
+        try {
+            const response = await fetch(this.enderecoBase + this.app + endPoint, {
+                method: 'DELETE',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Basic ' + this.token
+                },
+            });
+            return response.json();
+        } catch(error) {
             this.errorService.handlerError(error);
             return null;
         }

@@ -12,7 +12,11 @@ export class PostPaginado extends PadraoAjax
 
     async post(formData) {
         return await this.AjaxService.postForm('api/posts', formData);
-    }   
+    }
+
+    async delete(postId) {
+        return await this.AjaxService.delete('api/posts/' + postId);
+    }
 
 }
 
@@ -34,6 +38,10 @@ export class Comentarios extends PadraoAjax
         formData.append('comentario', comentario);
         formData.append('post_id', postId);
         return await this.AjaxService.postForm('api/posts/coments', formData);
+    }
+
+    async delete(comentarioId) {
+        return await this.AjaxService.delete('api/posts/coments/' + comentarioId);
     }
 }
 

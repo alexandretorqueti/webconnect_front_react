@@ -1,15 +1,7 @@
 import React from 'react';
-import { Col, Card, Dropdown } from 'react-bootstrap';
-import { Link } from 'react-router-dom'
-import ShareOffcanvas from '../../../share-offcanvas'
+import { Dropdown } from 'react-bootstrap';
 import CustomToggle from '../../../dropdowns'
-import Comentario from './Comentario'
-import FormNewComentario from './FormNewComentario'
-import PostLikes from './PostLikes';
 
-
-import MenuPost from './MenuPost';
-// Importe os demais ícones da mesma maneira
 
 function PostComentsComponent({ comentarios, pessoas_que_comentaram }) {
   return (

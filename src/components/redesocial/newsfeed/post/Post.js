@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Col, Card } from 'react-bootstrap';
-import { Link } from 'react-router-dom'
 import ShareOffcanvas from '../../../share-offcanvas'
 import Comentario from './Comentario'
 import FormNewComentario from './FormNewComentario'
@@ -12,6 +11,21 @@ import Carousel from 'react-bootstrap/Carousel';
 
 
 function PostComponent({ post, icones, children, setPostAtual }) {
+  const [deleteComentario, setDeleteComentario] = useState(null);
+
+  useEffect(() => {
+    if (deleteComentario) {
+        const comentarios = [...post.comentarios];
+        const index = comentarios.findIndex((comentario) => comentario.id === deleteComentario);
+        if (index !== -1) {
+            comentarios.splice(index, 1);
+            const postLocal = {...post};
+            postLocal.comentarios = comentarios;
+            setPostAtual(postLocal);
+        }
+    }
+  }, [deleteComentario]);
+
   return (
     <Col sm={12}>
         <Card className=" card-block card-stretch card-height">
@@ -28,7 +42,11 @@ function PostComponent({ post, icones, children, setPostAtual }) {
                                     {children}
                                     <p className="mb-0 text-primary">{post.data_criacao}</p>
                                 </div>
-                                <MenuPost />
+                                <MenuPost
+                                    post={post}
+                                    setPostAtual={setPostAtual}
+                                />
+                                
                             </div>
                         </div>
                     </div>
@@ -69,6 +87,8 @@ function PostComponent({ post, icones, children, setPostAtual }) {
                                 userPhoto={comentario.pessoa_fisica.foto_url}
                                 comentario={comentario.comentario}
                                 hora={comentario.naturalTime}
+                                comentarioId={comentario.id}
+                                setDeleteComentario={setDeleteComentario}
                                 />
                                 )
                             )

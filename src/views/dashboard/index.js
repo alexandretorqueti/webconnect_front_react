@@ -104,14 +104,24 @@ const Index = ({}) => {
     }, [isVisible]);
 
     useEffect(() => {
-        if (postAtual) {
+        if (postAtual && !postAtual.deleted) {
             const index = posts.findIndex((post) => post.id === postAtual.id);
             if (index !== -1) {
-                posts[index] = postAtual;
-                setPosts(posts);
+                const newPosts = [...posts];
+                newPosts[index] = postAtual;
+                setPosts(newPosts);
+            }
+        } else {
+            if (postAtual && postAtual.deleted) {
+                const index = posts.findIndex((post) => post.id === postAtual.id);
+                if (index !== -1) {
+                    const newPosts = [...posts];
+                    newPosts.splice(index, 1);
+                    setPosts(newPosts);
+                }
             }
         }
-    }, [postAtual && postAtual.comentarios.length]);
+    }, [JSON.stringify(postAtual)]);
         
 
     return (

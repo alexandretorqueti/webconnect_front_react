@@ -1,32 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Dropdown } from 'react-bootstrap';
 import CustomToggle from '../../../dropdowns'
 import DropdownCurtida from './DropdownCurtida';
 import { Curtidas } from '../../../../services/RedeSocial.js';
 
 function PostLikesComponent({pessoas_que_curtiram, icones, post_id, minha_curtida}) {
-    const [url, setUrl] = useState(null);
+    const [curtida, setCurtida] = useState(null);
+
+    useEffect(() => {
+        setCurtida(minha_curtida);
+    }, []);
+
     const handleClick = (e) => {
         e.preventDefault();
         e.stopPropagation();
-        (new Curtidas()).post(post_id, 0);
-        setUrl('');
+        const newCurtida = (new Curtidas()).post(post_id, 0);
+        setCurtida (null);
     }
     return (
         <div className="d-flex align-items-center">
             <div className="like-data">
                 <Dropdown>
                     <Dropdown.Toggle  as={CustomToggle} >
-                        {(minha_curtida && minha_curtida != null && minha_curtida.icone.nome && url === null) ?
-                        <img data-controle="1" src={minha_curtida.icone.url} className="img-fluid" alt="" onClick={handleClick}/>
+                        {(curtida && curtida != null && curtida.icone && curtida.icone.nome) ?
+                            <img data-controle="1" src={curtida.icone.icone} className="img-fluid" alt="" onClick={handleClick}/>
                         :
-                            (url && url != null && url !== '') ? 
-                            <img data-controle="2" src={url} className="img-fluid" alt="" onClick={handleClick}/>
-                            :
                             <i data-controle="3" className="las la-thumbs-up" style={{ fontSize: '31px'}}></i>
                         }
                     </Dropdown.Toggle>
-                    <DropdownCurtida icones={icones} post_id={post_id} setUrl={setUrl} />
+                    <DropdownCurtida icones={icones} post_id={post_id} setCurtida={setCurtida} />
                 </Dropdown>
             </div> 
             {pessoas_que_curtiram.length > 0 &&
@@ -38,7 +40,7 @@ function PostLikesComponent({pessoas_que_curtiram, icones, post_id, minha_curtid
                         <Dropdown.Menu>
                             {
                                 pessoas_que_curtiram.map((pessoa, index) =>
-                                    <Dropdown.Item key={pessoa.id} href="javascript:void(0)">
+                                    <Dropdown.Item key={index} href="javascript:void(0)">
                                         {pessoa.pessoa_fisica__nome}
                                     </Dropdown.Item>
                                 )
