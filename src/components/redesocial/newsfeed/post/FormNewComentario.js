@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { Comentarios } from '../../../../services/RedeSocial.js';
 
-function FormNewComentarioComponent({post, setPostAtual, setComentarioId}) {
+function FormNewComentarioComponent({post, setPostAtual}) {
   
   function handleSubmit(e) {
     async function run() {
@@ -11,7 +11,6 @@ function FormNewComentarioComponent({post, setPostAtual, setComentarioId}) {
       const newComentario = await (new Comentarios()).post(comentario, PostId);
       post.comentarios.push(newComentario);
       setPostAtual(post);
-      setComentarioId(newComentario.id);
       e.target[0].value = '';}
     run();
   }

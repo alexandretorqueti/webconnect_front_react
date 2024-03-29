@@ -31,7 +31,6 @@ const Index = ({}) => {
     const [larcuraColunaDoMeio, setLarguraColunaDoMeio] = useState(8);
     const [pessoa_logada, setPessoaLogada] = useState();
     const [postAtual, setPostAtual] = useState(null);
-    const [comentarioId, setComentarioId] = useState(0);
     const PostPaginadoService = new PostPaginado();
     const IconesService = new Icones();
     const PessoasService = new Pessoas();
@@ -112,7 +111,7 @@ const Index = ({}) => {
                 setPosts(posts);
             }
         }
-    }, [postAtual, comentarioId]);
+    }, [postAtual && postAtual.comentarios.length]);
         
 
     return (
@@ -130,7 +129,6 @@ const Index = ({}) => {
                             icones={icones}
                             postAtual={postAtual}
                             setPostAtual={setPostAtual}
-                            setComentarioId={setComentarioId}
                             ></Post>
                             })
                         )}

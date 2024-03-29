@@ -36,3 +36,14 @@ export class Comentarios extends PadraoAjax
         return await this.AjaxService.postForm('api/posts/coments', formData);
     }
 }
+
+export class Curtidas extends PadraoAjax
+{
+    async get(postId) {
+        return await this.AjaxService.get('api/posts/curtir/' + postId);
+    }
+
+    async post(postId, iconeId) {
+        return await this.AjaxService.postJson('api/posts/curtir', { 'post_id': postId, 'icone_id': iconeId});
+    }
+}

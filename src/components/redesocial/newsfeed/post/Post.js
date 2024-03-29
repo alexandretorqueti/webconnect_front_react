@@ -10,7 +10,7 @@ import PostComents from './PostComents';
 import MenuPost from './MenuPost';
 
 
-function PostComponent({ post, icones, children, setPostAtual, setComentarioId }) {
+function PostComponent({ post, icones, children, setPostAtual }) {
   return (
     <Col sm={12}>
         <Card className=" card-block card-stretch card-height">
@@ -41,7 +41,7 @@ function PostComponent({ post, icones, children, setPostAtual, setComentarioId }
                 <div className="comment-area mt-3">
                     <div className="d-flex justify-content-between align-items-center flex-wrap">
                         <div className="like-block position-relative d-flex align-items-center">
-                            <PostLikes pessoas_que_curtiram={post.pessoas_que_curtiram} icones={icones} />
+                            <PostLikes pessoas_que_curtiram={post.pessoas_que_curtiram} icones={icones} post_id={post.id} minha_curtida={post.minha_curtida} />
                             {post.comentarios.length > 0 &&
                                 <PostComents comentarios={post.comentarios} pessoas_que_comentaram={post.pessoas_que_comentaram} />
                             }
@@ -64,7 +64,7 @@ function PostComponent({ post, icones, children, setPostAtual, setComentarioId }
                             )
                         }
                     </ul>
-                    <FormNewComentario post={post} setPostAtual={setPostAtual} setComentarioId={setComentarioId}/>
+                    <FormNewComentario post={post} setPostAtual={setPostAtual}/>
                 </div>
             </Card.Body>
         </Card>
