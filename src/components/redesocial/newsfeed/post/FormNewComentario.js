@@ -9,8 +9,9 @@ function FormNewComentarioComponent({post, setPostAtual}) {
       const PostId = post.id;
       const comentario = e.target[0].value;
       const newComentario = await (new Comentarios()).post(comentario, PostId);
-      post.comentarios.push(newComentario);
-      setPostAtual(post);
+      const newPost = {...post}
+      newPost.comentarios.push(newComentario);
+      setPostAtual(newPost);
       e.target[0].value = '';}
     run();
   }
@@ -19,9 +20,7 @@ function FormNewComentarioComponent({post, setPostAtual}) {
     <form className="comment-text d-flex align-items-center mt-3" onSubmit={handleSubmit}>
     <input type="text" className="form-control rounded" placeholder="Enter Your Comment"/>
     <div className="comment-attagement d-flex">
-        <Link to="#"><i className="ri-link me-3"></i></Link>
-        <Link to="#"><i className="ri-user-smile-line me-3"></i></Link>
-        <Link to="#"><i className="ri-camera-line me-3"></i></Link>
+        
     </div>
 </form>  )
 }

@@ -15,17 +15,20 @@ const ShareOffcanvas = () => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const [showShare, setShowShare] = useState(false);
 
     return (
         <>
-            <div className="d-flex align-items-center feather-icon mt-2 mt-md-0">
-                <Link to="#" onClick={handleShow} className="d-flex align-items-center">
-                    <span className="material-symbols-outlined md-18">
-                        share
-                    </span>
-                    <span className="ms-1">99 Share</span>
-                </Link>  
-            </div>
+            {showShare &&
+                <div className="d-flex align-items-center feather-icon mt-2 mt-md-0">
+                    <Link to="#" onClick={handleShow} className="d-flex align-items-center">
+                        <span className="material-symbols-outlined md-18">
+                            share
+                        </span>
+                        <span className="ms-1">99 Share</span>
+                    </Link>  
+                </div>
+            }
             <Offcanvas show={show} onHide={handleClose}  placement='bottom'>
                 <Offcanvas.Header closeButton>
                    <Offcanvas.Title>Share</Offcanvas.Title>
