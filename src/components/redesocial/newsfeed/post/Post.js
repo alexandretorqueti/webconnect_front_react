@@ -8,6 +8,7 @@ import PostLikes from './PostLikes';
 import PostComents from './PostComents';
 
 import MenuPost from './MenuPost';
+import Carousel from 'react-bootstrap/Carousel';
 
 
 function PostComponent({ post, icones, children, setPostAtual }) {
@@ -35,8 +36,17 @@ function PostComponent({ post, icones, children, setPostAtual }) {
                 <div className="mt-3">
                     <p>{post.content}</p>
                 </div>
-                <div className="user-post">
-                    <Link to="#"><img src={post.primeira_foto} alt="" className="img-fluid rounded w-100"/></Link>
+                <div className="user-post fotos">
+                    <Carousel>
+                    {
+                        (post.fotos.length > 0) &&
+                            post.fotos.map((rsFoto, index) => {
+                                return <Carousel.Item key={rsFoto.id}>
+                                    <img src={rsFoto.foto} alt="" className="img-fluid rounded w-100"/>
+                                </Carousel.Item>
+                            })
+                    }
+                    </Carousel>
                 </div>
                 <div className="comment-area mt-3">
                     <div className="d-flex justify-content-between align-items-center flex-wrap">

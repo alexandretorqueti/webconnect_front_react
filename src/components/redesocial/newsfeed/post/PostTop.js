@@ -65,7 +65,7 @@ function PostTopComponent({ pessoa_logada, posts, setPosts }) {
                       <Form.Label>Upload Photo/Video</Form.Label>
                       <Row>
                         <Col>
-                          <Form.Control type="file" onChange={(e) => setFiles(e.target.files)} />
+                          <Form.Control multiple type="file" onChange={(e) => setFiles(e.target.files)} />
                         </Col>
                       </Row>
                     </Form.Group>
