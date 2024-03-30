@@ -1,4 +1,3 @@
-import React, {useEffect, useState, useRef}  from 'react'
 import { Row, Col, Container } from 'react-bootstrap'
 
 import Post from '../../components/redesocial/newsfeed/post/Post'
@@ -13,20 +12,20 @@ import loader from '../../assets/images/page-img/page-load-loader.gif'
 import { PostPaginado, Icones } from '../../services/RedeSocial'
 import { Pessoas } from '../../services/Pessoas'
 
-const Index = ({}) => {
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+import { Socket } from '../../services/socket'
+import { useEffect, useState, useRef } from 'react'
+
+const Index = () => {
     const [posts, setPosts] = useState([]);
     const [isVisible, setIsVisible] = useState(false);
     const loaderRef = useRef(null);
     const [pagina, setPagina] = useState(1);
     const [continuar, setContinuar] = useState(true);
     const [icones, setIcones] = useState([]);
-    const [stories, setStories] = useState([]);
-    const [events, setEvents] = useState([]);
-    const [birthdays, setBirthdays] = useState([]);
-    const [suggestedPages, setSuggestedPages] = useState([]);
+    const [stories ] = useState([]);
+    const [events ] = useState([]);
+    const [birthdays ] = useState([]);
+    const [suggestedPages ] = useState([]);
     const [temColunaDaDireita, setTemColunaDaDireita] = useState(false);
     const [larcuraColunaDoMeio, setLarguraColunaDoMeio] = useState(8);
     const [pessoa_logada, setPessoaLogada] = useState();
@@ -34,6 +33,8 @@ const Index = ({}) => {
     const PostPaginadoService = new PostPaginado();
     const IconesService = new Icones();
     const PessoasService = new Pessoas();
+    const [socket, setSocket] = useState(null)
+
     
     const verificaVisibilidade = () => {
         const observer = new IntersectionObserver(
@@ -76,10 +77,31 @@ const Index = ({}) => {
     }
 
     useEffect(() => {
+        console.log('socket', socket);
+    }, [socket]);
+
+    const recebida = (mensagem) => {
+        console.log('mensagem recebida', mensagem);
+    }
+
+    useEffect(() => {
         const run = async () => {
             const icones = await IconesService.get();
             setIcones(icones);
-            setPessoaLogada(await PessoasService.getUsuarioLogado());
+            const pessoa_logada = await PessoasService.getUsuarioLogado();
+            setPessoaLogada(pessoa_logada);
+            if (pessoa_logada && pessoa_logada.id) {
+                const newSocket = new Socket(
+                    {
+                    id: pessoa_logada.id,
+                    type: 'private',
+                    wsScheme: window.location.protocol === 'https:' ? 'wss' : 'ws',
+                    pessoaLogadaId: pessoa_logada.id, 
+                    recebida: (mensagem) => recebida(mensagem),
+                    userId: pessoa_logada.id,
+                    });
+                setSocket(newSocket);
+            }
         }
         run();
         if (stories.length > 0 || events.length > 0 || birthdays.length > 0 || suggestedPages.length > 0) {
@@ -90,7 +112,6 @@ const Index = ({}) => {
         } else {
             setLarguraColunaDoMeio(10);
         }
-
     }, []);
 
     useEffect(() => {
@@ -132,7 +153,7 @@ const Index = ({}) => {
                 <Row>
                     <Col lg={larcuraColunaDoMeio} className="col m-0 p-0">
                         <PostTop pessoa_logada={pessoa_logada} posts={posts} setPosts={setPosts}></PostTop>
-                        {(posts.length > 0 && posts.map((post, index) => {
+                        {(posts.length > 0 && posts.map((post) => {
                             return <Post 
                             key={post.id} 
                             post={post}

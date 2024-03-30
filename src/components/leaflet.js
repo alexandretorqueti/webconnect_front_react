@@ -14,42 +14,42 @@ import Leaflet6 from '../assets/images/weather/thunder.png';
 const cloudy = L.icon({
     iconUrl: Leaflet1,
     iconSize:     [70, 70], // size of the icon
-    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker s location
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
   });
 
   const day = L.icon({
     iconUrl: Leaflet2,
     iconSize:     [70, 70], // size of the icon
-    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker s location
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
   });
 
   const rainy = L.icon({
     iconUrl: Leaflet3,
     iconSize:     [70, 70], // size of the icon
-    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker s location
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
   });
 
   const snowy = L.icon({
     iconUrl: Leaflet4,
     iconSize:     [70, 70], // size of the icon
-    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker s location
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
   });
 
   const cloudy22 = L.icon({
     iconUrl: Leaflet5,
     iconSize:     [70, 70], // size of the icon
-    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker s location
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
   });
 
   const thunder = L.icon({
     iconUrl: Leaflet6,
     iconSize:     [70, 70], // size of the icon
-    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker s location
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
   });
 

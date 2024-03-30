@@ -1,4 +1,3 @@
-import React from 'react'
 import {Container, Row, Col, Card, Nav, Tab} from 'react-bootstrap'
 
 const UiTabs = () => {
@@ -34,13 +33,13 @@ const UiTabs = () => {
                                     </Nav>
                                     <Tab.Content>
                                         <Tab.Pane className="fade show" eventKey="first" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                                         </Tab.Pane>
                                         <Tab.Pane className="fade show" id="nav-profile" eventKey="second" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                                         </Tab.Pane>
                                         <Tab.Pane className="fade show" id="nav-contact" eventKey="third" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                                         </Tab.Pane>
                                     </Tab.Content>
                                 </Tab.Container>
@@ -62,13 +61,13 @@ const UiTabs = () => {
                                     </Nav>
                                     <Tab.Content>
                                         <Tab.Pane className="fade show" eventKey="first" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                                         </Tab.Pane>
                                         <Tab.Pane className="fade show" id="nav-profile" eventKey="second" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                                         </Tab.Pane>
                                         <Tab.Pane className="fade show" id="nav-contact" eventKey="third" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                                         </Tab.Pane>
                                     </Tab.Content>
                                 </Tab.Container>
@@ -95,16 +94,16 @@ const UiTabs = () => {
                                         <Col sm="9">
                                             <Tab.Content className="mt-0" id="v-pills-tabContent">
                                                 <Tab.Pane eventKey="first" className="fade show" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
                                                 </Tab.Pane>
                                                 <Tab.Pane eventKey="second" className="fade show" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
                                                 </Tab.Pane>
                                                 <Tab.Pane eventKey="third" className="fade show" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
                                                 </Tab.Pane>
                                                 <Tab.Pane eventKey="fourth" className="fade show" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
                                                 </Tab.Pane>
                                             </Tab.Content>
                                         </Col>
@@ -130,13 +129,13 @@ const UiTabs = () => {
                                     </Nav>
                                     <Tab.Content>
                                         <Tab.Pane className="fade show" eventKey="first" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                                         </Tab.Pane>
                                         <Tab.Pane className="fade show" id="nav-profile" eventKey="second" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                                         </Tab.Pane>
                                         <Tab.Pane className="fade show" id="nav-contact" eventKey="third" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                                         </Tab.Pane>
                                     </Tab.Content>
                                 </Tab.Container>
@@ -166,13 +165,13 @@ const UiTabs = () => {
                                     </Nav>
                                     <Tab.Content className="tab-content" id="pills-tabContent-2">
                                         <Tab.Pane eventKey="first" className="fade show" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                                         </Tab.Pane>
                                         <Tab.Pane eventKey="second" className="fade show" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                                         </Tab.Pane>
                                         <Tab.Pane eventKey="third" className="fade show" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                                         </Tab.Pane>
                                     </Tab.Content>
                                 </Tab.Container>
@@ -196,13 +195,13 @@ const UiTabs = () => {
                                     </Nav>
                                     <Tab.Content>
                                         <Tab.Pane className="fade show" eventKey="first" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                                         </Tab.Pane>
                                         <Tab.Pane className="fade show" id="nav-profile" eventKey="second" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                                         </Tab.Pane>
                                         <Tab.Pane className="fade show" id="nav-contact" eventKey="third" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                                         </Tab.Pane>
                                     </Tab.Content>
                                 </Tab.Container>
@@ -230,13 +229,13 @@ const UiTabs = () => {
                                     </Nav>
                                     <Tab.Content className="tab-content" id="pills-tabContent-1">
                                         <Tab.Pane eventKey="first" className="fade show" role="tabpanel" aria-labelledby="pills-home-tab-fill">
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                                         </Tab.Pane>
                                         <Tab.Pane eventKey="second" className="fade show" role="tabpanel" aria-labelledby="pills-profile-tab-fill">
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                                         </Tab.Pane>
                                         <Tab.Pane eventKey="third" className="fade show" role="tabpanel" aria-labelledby="pills-contact-tab-fill">
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                                         </Tab.Pane>
                                     </Tab.Content>
                                 </Tab.Container>
@@ -260,13 +259,13 @@ const UiTabs = () => {
                                     </Nav>
                                     <Tab.Content>
                                         <Tab.Pane className="fade show" eventKey="first" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                                         </Tab.Pane>
                                         <Tab.Pane className="fade show" id="nav-profile" eventKey="second" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                                         </Tab.Pane>
                                         <Tab.Pane className="fade show" id="nav-contact" eventKey="third" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                                         </Tab.Pane>
                                     </Tab.Content>
                                 </Tab.Container>

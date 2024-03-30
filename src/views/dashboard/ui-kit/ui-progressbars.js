@@ -1,4 +1,3 @@
-import React from 'react'
 import {Container, Col, Row, Card, ProgressBar} from 'react-bootstrap'
 
 const UiProgressbars = () => {
@@ -95,7 +94,7 @@ const UiProgressbars = () => {
                                 </div>
                             </Card.Header>
                             <Card.Body>
-                                <p>Add a <code>label</code> prop to show a visible percentage. For low percentages, consider adding a min-width to ensure the label's text is fully visible.</p>
+                                <p>Add a <code>label</code> prop to show a visible percentage. For low percentages, consider adding a min-width to ensure the label s text is fully visible.</p>
                                 <div className="progress mb-3">
                                     <ProgressBar style={{width: "25%"}} now={25} label={'25%'}/>
                                 </div>

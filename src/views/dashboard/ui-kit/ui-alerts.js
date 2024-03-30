@@ -41,7 +41,7 @@ const UiAlerts = () => {
                         </Card.Header>
                         <Card.Body>
                            <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                              Lorem Ipsum has been the industry's standard dummy text ever
+                              Lorem Ipsum has been the industry s standard dummy text ever
                            </p>
                            <Alert variant="alert alert-success alert-dismissible d-flex align-items-center gap-2 fade show mb-3" show={showA1}  onClose={() => setShowA1(false)} dismissible>
                               <span><i className="material-symbols-outlined">thumb_up</i></span>

@@ -163,7 +163,7 @@ const Profile2=()=>{
                                         <Col lg="4">
                                             <div className="item7 ms-2">
                                                 <div className="d-flex justify-content-between mb-2 flex-wrap">
-                                                    <h6>Mathilda's Interests</h6>
+                                                    <h6>Mathilda s Interests</h6>
                                                     <Link to="#">See all</Link>
                                                 </div>
                                                 <div className="d-flex ">
@@ -339,7 +339,7 @@ const Profile2=()=>{
                                     </div>
                                     <div className="item7 ms-2">
                                         <div className="d-flex justify-content-between mb-2 flex-wrap">
-                                            <span>Mathilda's Interests</span>
+                                            <span>Mathilda s Interests</span>
                                             <Link to="#">See all</Link>
                                         </div>
                                         <div className="d-flex justify-content-between">
@@ -712,7 +712,7 @@ const Profile2=()=>{
                                                 <div className="mt-2 mb-2 ratio">
                                                     <iframe title="myFrame" className="rounded embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowFullScreen></iframe>
                                                 </div>
-                                                <p>Dolce Spring Summer 2020 - Women's Show</p>
+                                                <p>Dolce Spring Summer 2020 - Women s Show</p>
                                                 <hr/>
                                                 <div className="d-flex justify-content-between align-items-center flex-wrap">
                                                         <div className="d-flex justify-content-between align-items-center">
@@ -882,7 +882,7 @@ const Profile2=()=>{
                                                                     <h5 className="mb-0 d-inline-block me-1">Emma Labelle</h5>
                                                                     <span className=" mb-0 d-inline-block">2 weeks ago</span>
                                                                 </div>
-                                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever since the 1500s</p>
                                                                 <div className="d-flex justify-content-between align-items-center flex-wrap">
                                                                     <div className="d-flex justify-content-around align-items-center">
                                                                     <div className="d-flex align-items-center me-3">
@@ -910,7 +910,7 @@ const Profile2=()=>{
                                                                                     <h5 className="mb-0 d-inline-block me-1">Emma Labelle</h5>
                                                                                     <h6 className=" mb-0 d-inline-block">2 weeks ago</h6>
                                                                                 </div>
-                                                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                                                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever since the 1500s.</p>
                                                                                 <div className="d-flex justify-content-between align-items-center flex-wrap">
                                                                                     <div className="d-flex justify-content-around align-items-center">
                                                                                         <div className="d-flex align-items-center me-3">

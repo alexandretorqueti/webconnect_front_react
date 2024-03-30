@@ -617,7 +617,7 @@ const Profile1 = () => {
                                                                     <div className="">
                                                                         <h5 className="mb-0 d-inline-block me-1">
                                                                             <Link to="#" className="">Bni Cyst</Link></h5>
-                                                                        <p className="mb-0 d-inline-block">Share Anna Mull's Post</p>
+                                                                        <p className="mb-0 d-inline-block">Share Anna Mull s Post</p>
                                                                         <p className="mb-0">5 hour ago</p>
                                                                     </div>
                                                                 </div>

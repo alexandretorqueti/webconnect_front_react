@@ -53,7 +53,7 @@ const Calendar =() =>{
                                 <Card>
                                     <Card.Header className="d-flex justify-content-between">
                                         <div className="header-title">
-                                            <h4 className="card-title">Today's Schedule</h4>
+                                            <h4 className="card-title">Today s Schedule</h4>
                                         </div>
                                     </Card.Header>
                                     <Card.Body>

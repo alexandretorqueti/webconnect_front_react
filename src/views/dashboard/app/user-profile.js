@@ -1,4 +1,3 @@
-import React,{useState} from 'react'
 import {Row, Col, Container, Dropdown, Nav, Tab, OverlayTrigger, Tooltip, Button, Modal } from 'react-bootstrap'
 import Card from '../../../components/Card'
 import CustomToggle from '../../../components/dropdowns'
@@ -666,7 +665,7 @@ const UserProfile =() =>{
                                                       <div className="d-flex justify-content-between">
                                                          <div>
                                                             <h5 className="mb-0 d-inline-block me-1"><Link to="#">Bni Cyst</Link></h5>
-                                                            <p className="mb-0 d-inline-block">Share Anna Mull's Post</p>
+                                                            <p className="mb-0 d-inline-block">Share Anna Mull s Post</p>
                                                             <p className="mb-0">5 hour ago</p>
                                                          </div>
                                                          <div className="card-post-toolbar">
@@ -905,7 +904,7 @@ const UserProfile =() =>{
                                                 </div>
                                              </div>
                                              <div className="user-post">
-                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,</p>
+                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,</p>
                                              </div>
                                              <div className="comment-area mt-3">
                                                 <div className="d-flex justify-content-between align-items-center flex-wrap">

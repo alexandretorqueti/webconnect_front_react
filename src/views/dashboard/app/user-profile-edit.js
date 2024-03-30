@@ -1,4 +1,3 @@
-import React from 'react'
 import {Container, Row, Col, Card, Tab, Form, Button, Nav} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
@@ -210,7 +209,7 @@ const UserProfileEdit =() =>{
                                               </Form.Check>
                                               <Form.Check className="form-check d-block">
                                                   <Form.Check.Input className="form-check-input" type="checkbox" defaultValue="" id="email02"/>
-                                                  <Form.Check.Label className="form-check-label" htmlFor="email02">You're sent a direct message</Form.Check.Label>
+                                                  <Form.Check.Label className="form-check-label" htmlFor="email02">You&lsquo;re sent a direct message</Form.Check.Label>
                                               </Form.Check>
                                               <Form.Check className="form-check d-block">
                                                   <Form.Check.Input type="checkbox" className="form-check-input" id="email03"defaultChecked/>

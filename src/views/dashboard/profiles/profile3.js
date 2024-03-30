@@ -899,7 +899,7 @@ const Profile3=()=>{
                                     <div className="d-flex justify-content-between">
                                         <div className="">
                                         <h5 className="mb-0 d-inline-block me-1"><Link to="#" className="">Bni Cyst</Link></h5>
-                                        <p className="mb-0 d-inline-block">Share Anna Mull's Post</p>
+                                        <p className="mb-0 d-inline-block">Share Anna Mull s Post</p>
                                         <p className="mb-0">5 hour ago</p>
                                         </div>
                                         <div className="card-post-toolbar">

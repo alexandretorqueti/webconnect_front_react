@@ -14,7 +14,7 @@
   @include border-radius();
   opacity: $btn-close-opacity;
 
-  // Override <a>'s hover style
+  // Override <a> s hover style
   &:hover {
     color: $btn-close-color;
     text-decoration: none;

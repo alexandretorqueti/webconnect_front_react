@@ -27,7 +27,7 @@ export class AjaxService {
                     'Authorization': 'Basic ' + this.token
                 },
             });
-            return response.json();
+            return await response.json();
         } catch(error) {
             this.errorService.handlerError(error);
             return null;

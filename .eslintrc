@@ -9,11 +9,16 @@
   },
   "rules": {
     "react/no-direct-mutation-state": "error",
-    "react/no-access-state-in-setstate": "error"
+    "react/no-access-state-in-setstate": "error",
+    "react/prop-types": "off" ,
+    "react/display-name": "off"
   },
   "settings": {
     "react": {
       "version": "detect"
     }
+  },
+  "env": {
+    "browser": true  // add this line
   }
 }

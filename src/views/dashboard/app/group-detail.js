@@ -655,7 +655,7 @@ const GroupDetail = () => {
                                     <Card.Body>
                                         <ul className="list-inline p-0 m-0">
                                             <li className="mb-3">
-                                                <p className="mb-0">Developer's Group...</p>
+                                                <p className="mb-0">Developer s Group...</p>
                                             </li>
                                             <li className="mb-3">
                                                 <div className="d-flex">

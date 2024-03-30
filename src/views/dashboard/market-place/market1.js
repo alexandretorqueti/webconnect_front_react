@@ -102,7 +102,7 @@ const Market1 = () => {
                   <small>Built by HubSpot</small>
                   <div className="mt-2">
                     <p className="mb-0">
-                      Integrate HubSpot's lead capture and contact management
+                      Integrate HubSpot s lead capture and contact management
                       with WordPress
                     </p>
                   </div>

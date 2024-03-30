@@ -1,4 +1,3 @@
-import React from 'react'
 import {Container, Col, Row, Card, Pagination} from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 
@@ -33,7 +32,7 @@ const UiPaginations = () => {
                                 </div>
                             </Card.Header>
                             <Card.Body>
-                                <p>In addition, as pages likely have more than one such navigation section, it’s advisable to provide a descriptive <code>aria-label</code> for the <code>&lt;nav&gt;</code> to reflect its purpose. For example, if the pagination component is used to navigate between a set of search results, an appropriate label could be <code>aria-label="Search results pages"</code>.</p>
+                                <p>In addition, as pages likely have more than one such navigation section, it s advisable to provide a descriptive <code>aria-label</code> for the <code>&lt;nav&gt;</code> to reflect its purpose. For example, if the pagination component is used to navigate between a set of search results, an appropriate label could be <code>aria-label=&ldquo;Search results pages&ldquo;</code>.</p>
                                 <nav aria-label="Page navigation example">
                                     <ul className="pagination mb-0">
                                         <li className="page-item"><Link className="page-link" to="#">Previous</Link></li>
@@ -53,7 +52,7 @@ const UiPaginations = () => {
                   </Card.Header>
                   <Card.Body>
                      <p>Pagination links are customizable for different circumstances. Use <code>.disabled</code> for links that appear un-clickable and <code>.active</code> to indicate the current page.</p>
-                     <p>While the <code>.disabled</code> className uses <code>pointer-events: none</code> to <em>try</em> to disable the link functionality of <code>&lt;a&gt;</code>s, that CSS property is not yet standardized and doesn’t account for keyboard navigation. As such, you should always add <code>tabindex="-1"</code> on disabled links and use custom JavaScript to fully disable their functionality.</p>
+                     <p>While the <code>.disabled</code> className uses <code>pointer-events: none</code> to <em>try</em> to disable the link functionality of <code>&lt;a&gt;</code>s, that CSS property is not yet standardized and doesn t account for keyboard navigation. As such, you should always add <code>tabindex=&ldquo;-1&ldquo;</code> on disabled links and use custom JavaScript to fully disable their functionality.</p>
                      <nav aria-label="...">
                         <ul className="pagination">
                            <li className="page-item disabled">
@@ -97,7 +96,7 @@ const UiPaginations = () => {
                      </div>
                   </Card.Header>
                   <div className="card-body">
-                     <p>In addition, as pages likely have more than one such navigation section, it’s advisable to provide a descriptive <code>aria-label</code> for the <code>&lt;nav&gt;</code> to reflect its purpose. For example, if the pagination component is used to navigate between a set of search results, an appropriate label could be <code>aria-label="Search results pages"</code>.</p>
+                     <p>In addition, as pages likely have more than one such navigation section, it’s advisable to provide a descriptive <code>aria-label</code> for the <code>&lt;nav&gt;</code> to reflect its purpose. For example, if the pagination component is used to navigate between a set of search results, an appropriate label could be <code>aria-label=&ldquo;Search results pages&ldquo;</code>.</p>
                      <nav aria-label="Page navigation example">
                         <ul className="pagination">
                            <li className="page-item"><Link className="page-link border-primary bg-primary text-white" to="#">Previous</Link></li>

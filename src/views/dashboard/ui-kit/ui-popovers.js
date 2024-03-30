@@ -1,4 +1,3 @@
-import React from 'react'
 import  {Container, Col, Row, Card, Button, OverlayTrigger, Popover, Tooltip} from 'react-bootstrap'
 
 const UiPopovers = () => {
@@ -28,7 +27,7 @@ const UiPopovers = () => {
                                     <Popover id="popover-basic">
                                         <Popover.Header as="h3">Popover Title</Popover.Header>
                                         <Popover.Body>
-                                        And here's some amazing content. It's very engaging. Right?
+                                        And here s some amazing content. It s very engaging. Right?
                                         </Popover.Body>
                                     </Popover>
                                     }>
@@ -43,12 +42,12 @@ const UiPopovers = () => {
                                 </div>
                             </Card.Header>
                             <Card.Body>
-                                <p>Use the <code>focus</code> trigger to dismiss popovers on the user’s next click of a different element than the toggle element.</p>
+                                <p>Use the <code>focus</code> trigger to dismiss popovers on the user s next click of a different element than the toggle element.</p>
                                 <OverlayTrigger trigger="click" placement="right" overlay={
                                     <Popover id="popover-basic">
                                         <Popover.Header as="h3">Dismissible popover</Popover.Header>
                                         <Popover.Body>
-                                        And here's some amazing content. It's very engaging. Right?
+                                        And here s some amazing content. It s very engaging. Right?
                                         </Popover.Body>
                                     </Popover>
                                     }>

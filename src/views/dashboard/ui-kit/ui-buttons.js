@@ -41,7 +41,7 @@ const UiButtons = () => {
                            </div>
                         </Card.Header>
                         <Card.Body>
-                           <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever</p>
+                           <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever</p>
                            <Button variant="primary" className="mb-1">Primary</Button>{' '}
                            <Button variant="secondary" className="mb-1">Secondary</Button>{' '}
                            <Button variant="success" className="mb-1">Success</Button>{' '}
@@ -62,7 +62,7 @@ const UiButtons = () => {
                            </div>
                         </Card.Header>
                         <Card.Body>
-                           <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever</p>
+                           <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever</p>
                            <Button variant="primary" className="rounded-pill mb-1">Primary</Button>{' '}
                            <Button variant="secondary" className="rounded-pill mb-1">Secondary</Button>{' '}
                            <Button variant="success" className="rounded-pill mb-1">Success</Button>{' '}
@@ -85,7 +85,7 @@ const UiButtons = () => {
                            </div>
                         </Card.Header>
                         <Card.Body>
-                           <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever</p>
+                           <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever</p>
                            <Button variant="outline-primary" className="mb-1">Primary</Button>{' '}
                            <Button variant="outline-secondary" className="mb-1">Secondary</Button>{' '}
                            <Button variant="outline-success" className="mb-1">Success</Button>{' '}
@@ -105,7 +105,7 @@ const UiButtons = () => {
                            </div>
                         </Card.Header>
                         <Card.Body>
-                           <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever</p>
+                           <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever</p>
                            <Button variant="outline-primary" className="rounded-pill mb-1">Primary</Button>{' '}
                            <Button variant="outline-secondary" className="rounded-pill mb-1">Secondary</Button>{' '}
                            <Button variant="outline-success" className="rounded-pill mb-1">Success</Button>{' '}
@@ -127,7 +127,7 @@ const UiButtons = () => {
                            </div>
                         </Card.Header>
                         <Card.Body>
-                           <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever</p>
+                           <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever</p>
                            <Button variant="soft-primary" className="mb-1">Primary</Button>{' '}
                            <Button variant="soft-secondary"className="mb-1">Secondary</Button>{' '}
                            <Button variant="soft-success"className="mb-1">Success</Button>{' '}
@@ -147,7 +147,7 @@ const UiButtons = () => {
                            </div>
                         </Card.Header>
                         <Card.Body>
-                           <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever</p>
+                           <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever</p>
                            <Button variant="soft-primary" className="rounded-pill mb-1">Primary</Button>{' '}
                            <Button variant="soft-secondary" className="rounded-pill mb-1">Secondary</Button>{' '}
                            <Button variant="soft-success" className="rounded-pill mb-1">Success</Button>{' '}
@@ -170,7 +170,7 @@ const UiButtons = () => {
                         </Card.Header>
                         <Card.Body>
                            <i className="material-symbols-outlined me-1">favorite</i>
-                           <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever</p>
+                           <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever</p>
                            <Button variant="primary" className="btn d-inline-flex mb-1"><i className="material-symbols-outlined me-1">subject</i>Primary</Button>{' '}
                            <Button variant="secondary" className="btn d-inline-flex mb-1"><i className="material-symbols-outlined me-1">favorite</i>Secondary</Button>{' '}
                            <Button variant="success" className="btn d-inline-flex mb-1"><i className="material-symbols-outlined me-1">subject</i>Success</Button>{' '}
@@ -191,7 +191,7 @@ const UiButtons = () => {
                            </div>
                         </Card.Header>
                         <Card.Body>
-                           <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever</p>
+                           <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever</p>
                            <Button variant="primary" className="rounded-pill btn mb-1 d-inline-flex"><i className="material-symbols-outlined me-1">subject</i>Primary</Button>{' '}
                            <Button variant="secondary" className="rounded-pill btn mb-1 d-inline-flex"><i className="material-symbols-outlined me-1">favorite</i>Secondary</Button>{' '}
                            <Button variant="success" className="rounded-pill btn mb-1 d-inline-flex"><i className="material-symbols-outlined me-1">subject</i>Success</Button>{' '}
@@ -214,7 +214,7 @@ const UiButtons = () => {
                            </div>
                         </Card.Header>
                         <Card.Body>
-                           <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever</p>
+                           <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever</p>
                            <Button variant="outline-primary"><i className="ri-heart-line me-1"></i>Primary</Button>{' '}
                            <Button variant="outline-secondary" className="mb-1"><i className="ri-alert-line me-1"></i>Secondary</Button>{' '}
                            <Button variant="outline-success" className="mb-1"><i className="ri-heart-line me-1"></i>Success</Button>{' '}
@@ -234,7 +234,7 @@ const UiButtons = () => {
                            </div>
                         </Card.Header>
                         <Card.Body>
-                           <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever</p>
+                           <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever</p>
                            <Button variant="outline-primary" className="rounded-pill mb-1"><i className="ri-heart-line me-1"></i>Primary</Button>{' '}
                            <Button variant="outline-secondary" className="rounded-pill mb-1"><i className="ri-alert-line me-1"></i>Secondary</Button>{' '}
                            <Button variant="outline-success" className="rounded-pill mb-1"><i className="ri-heart-line me-1"></i>Success</Button>{' '}
@@ -256,7 +256,7 @@ const UiButtons = () => {
                            </div>
                         </Card.Header>
                         <Card.Body>
-                           <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever</p>
+                           <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever</p>
                            <Button variant="soft-primary"><i className="ri-heart-line me-1"></i>Primary</Button>{' '}
                            <Button variant="soft-secondary" className="mb-1"><i className="ri-alert-line me-1"></i>Secondary</Button>{' '}
                            <Button variant="soft-success" className="mb-1"><i className="ri-heart-line me-1"></i>Success</Button>{' '}
@@ -276,7 +276,7 @@ const UiButtons = () => {
                            </div>
                         </Card.Header>
                         <Card.Body>
-                           <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever</p>
+                           <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever</p>
                            <Button variant="soft-primary" className="rounded-pill mb-1"><i className="ri-heart-line me-1"></i>Primary</Button>{' '}
                            <Button variant="soft-secondary" className="rounded-pill mb-1"><i className="ri-alert-line me-1"></i>Secondary</Button>{' '}
                            <Button variant="soft-success" className="rounded-pill mb-1"><i className="ri-heart-line me-1"></i>Success</Button>{' '}
@@ -298,7 +298,7 @@ const UiButtons = () => {
                            </div>
                         </Card.Header>
                         <Card.Body>
-                           <p className="mb-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever</p>
+                           <p className="mb-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever</p>
                            <Link className="btn btn-primary mt-1" to="#" role="button">Link</Link>{' '}
                            <Button variant="success" className="mt-1" type="submit">Button</Button>{' '}
                            <input className="btn btn-danger mt-1" type="button" value="Input"/>{' '}
@@ -315,7 +315,7 @@ const UiButtons = () => {
                            </div>
                         </Card.Header>
                         <Card.Body>
-                           <p className="mb-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever</p>
+                           <p className="mb-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever</p>
                            <Button variant="primary" size="sm" className=" mt-1">Small button</Button>{' '}
                            <Button variant="success" className="  mt-1">Button</Button>{' '}
                            <Button variant="info" size="lg" className=" mt-1">Large Button</Button>{' '}
@@ -332,7 +332,7 @@ const UiButtons = () => {
                            </div>
                         </Card.Header>
                         <Card.Body>
-                           <p className="mb-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever</p>
+                           <p className="mb-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever</p>
                            <Button variant="primary" className=" btn-block mt-1">Block level button</Button>{' '}
                            <Button variant="success" className="btn-block mt-1">Block level button</Button>{' '}
                         </Card.Body>
@@ -346,7 +346,7 @@ const UiButtons = () => {
                            </div>
                         </Card.Header>
                         <Card.Body>
-                           <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever</p>
+                           <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever</p>
                            <Button variant="primary" className=" d-inline-flex mb-1"><i className="material-symbols-outlined me-0">info</i></Button>{' '}
                            <Button variant="secondary" className="d-inline-flex mb-1"><i className="material-symbols-outlined me-0">gpp_maybe</i></Button>{' '}
                            <Button variant="success" className="d-inline-flex mb-1"><i className="material-symbols-outlined me-0">add_alert</i></Button>{' '}
@@ -376,7 +376,7 @@ const UiButtons = () => {
                            </div>
                         </Card.Header>
                         <Card.Body>
-                           <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever</p>
+                           <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever</p>
                            <Button variant="primary" disabled>Primary button</Button>{' '}
                            <Button variant="success" disabled>Button</Button>{' '}
                            <Button variant="outline-primary" disabled>Button</Button>{' '}
@@ -391,7 +391,7 @@ const UiButtons = () => {
                            </div>
                         </Card.Header>
                         <Card.Body>
-                           <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever</p>
+                           <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever</p>
                            <Button variant="primary" >
                               Single toggle
                            </Button>{' '}
@@ -414,7 +414,7 @@ const UiButtons = () => {
                            </div>
                         </Card.Header>
                         <Card.Body>
-                           <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever</p>
+                           <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever</p>
                            <Button variant="primary" className="active mb-1">Active</Button>{' '}
                            <Button variant="secondary" className="active mb-1">Active</Button>{' '}
                            <Button variant="warning" className="active mb-1">Active</Button>{' '}
@@ -430,7 +430,7 @@ const UiButtons = () => {
                            </div>
                         </Card.Header>
                         <Card.Body>
-                           <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever</p>
+                           <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever</p>
                            <div className="bd-example">
                               <div className="btn-group btn-group-lg" role="group" aria-label="Large button group">
                                  <Button variant="outline-primary">Left</Button>{' '}
@@ -459,7 +459,7 @@ const UiButtons = () => {
                            </div>
                         </Card.Header>
                         <Card.Body>
-                           <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever</p>
+                           <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever</p>
                               <ButtonGroup vertical={true}>
                                  {radios1.map((radio, idx) => (
                                     <ToggleButton
@@ -485,7 +485,7 @@ const UiButtons = () => {
                            </div>
                         </Card.Header>
                         <Card.Body>
-                           <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever</p>
+                           <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever</p>
                            <div className="btn-group checkboxradio mb-1" role="group" aria-label="Basic checkbox toggle button group">
                               <input type="checkbox" className="btn-check" id="btncheck1" />
                               <label className="btn btn-outline-primary" >Checkbox 1</label>
@@ -521,7 +521,7 @@ const UiButtons = () => {
                            </div>
                         </Card.Header>
                         <Card.Body>
-                           <p className="mb-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever</p>
+                           <p className="mb-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever</p>
                            <div className="btn-group mt-1" role="group" aria-label="Basic example">
                               <Button variant="primary">Left</Button>
                               <Button variant="primary">Middle</Button>
@@ -551,7 +551,7 @@ const UiButtons = () => {
                            </div>
                         </Card.Header>
                         <Card.Body>
-                           <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever</p>
+                           <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever</p>
                            <div className="btn-group" role="group" aria-label="Button group with nested dropdown">
                               <Button variant="primary">1</Button>
                               <Button variant="primary">2</Button>
@@ -638,7 +638,7 @@ const UiButtons = () => {
                            </div>
                         </Card.Header>
                         <Card.Body>
-                           <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever</p>
+                           <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever</p>
                            <div className="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                               <div className="btn-group me-2" role="group" aria-label="First group">
                                  <Button variant="primary">1</Button>

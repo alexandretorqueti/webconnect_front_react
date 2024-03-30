@@ -180,7 +180,7 @@
     --#{$prefix}modal-box-shadow: #{$modal-content-box-shadow-sm-up};
   }
 
-  // Automatically set modal's width for larger viewports
+  // Automatically set modal s width for larger viewports
   .modal-dialog {
     max-width: var(--#{$prefix}modal-width);
     margin-right: auto;

@@ -1,5 +1,4 @@
 
-import React from 'react'
 import {Row, Col, Container} from 'react-bootstrap'
 import Card from '../../../components/Card'
 import {Link} from 'react-router-dom'
@@ -140,7 +139,7 @@ const UiTypographys = () => {
                            </div>
                         </div>
                         <Card.Body>
-                           <p>For quoting blocks of content from another source within your document. Wrap <code>&lt;blockquote className="blockquote"&gt;</code> around any <abbr title="HyperText Markup Language">HTML</abbr> as the quote.</p>
+                           <p>For quoting blocks of content from another source within your document. Wrap <code>&lt;blockquote className=&ldquo;blockquote&ldquo;&gt;</code> around any <abbr title="HyperText Markup Language">HTML</abbr> as the quote.</p>
                            <blockquote className="blockquote">
                               <p className="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
                               <footer className="blockquote-footer mt-0">Someone famous in <cite title="Source Title">Source Title</cite></footer>

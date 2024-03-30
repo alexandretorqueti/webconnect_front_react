@@ -60,7 +60,7 @@ const UiCards = () => {
                         <Card.Img variant="top" src={img07}  alt="#"/>
                         <Card.Body>
                            <Card.Title as="h4">Card title</Card.Title>
-                           <Card.Text>Some quick example text to build on the card title and make up the bulk of the card's content.</Card.Text>
+                           <Card.Text>Some quick example text to build on the card title and make up the bulk of the card s content.</Card.Text>
                         </Card.Body>
                         <ListGroup className=" list-group-flush">
                            <ListGroupItem>Cras justo odio</ListGroupItem>
@@ -309,7 +309,7 @@ const UiCards = () => {
                      <Card border="primary" className="mb-3 " >
                         <Card.Body className="text-primary">
                            <Card.Title as="h4" className="text-primary">Primary card title</Card.Title>
-                           <Card.Text>Some quick example text to build on the card title  text to build on the card title and make up the bulk of the card's content.</Card.Text>
+                           <Card.Text>Some quick example text to build on the card title  text to build on the card title and make up the bulk of the card s content.</Card.Text>
                         </Card.Body>
                      </Card>
                   </Col>
@@ -317,7 +317,7 @@ const UiCards = () => {
                      <Card border="secondary" className="mb-3 " >
                         <Card.Body className="text-secondary">
                            <Card.Title as="h4" className="text-secondary">Primary card title</Card.Title>
-                           <Card.Text>Some quick example text to build on the card title  text to build on the card title and make up the bulk of the card's content.</Card.Text>
+                           <Card.Text>Some quick example text to build on the card title  text to build on the card title and make up the bulk of the card s content.</Card.Text>
                         </Card.Body>
                      </Card>
                   </Col>
@@ -325,7 +325,7 @@ const UiCards = () => {
                      <Card border="success" className="mb-3 " >
                         <Card.Body className="text-success">
                            <Card.Title as="h4" className="text-success">Primary card title</Card.Title>
-                           <Card.Text>Some quick example text to build on the card title  text to build on the card title and make up the bulk of the card's content.</Card.Text>
+                           <Card.Text>Some quick example text to build on the card title  text to build on the card title and make up the bulk of the card s content.</Card.Text>
                         </Card.Body>
                      </Card>
                   </Col>
@@ -333,7 +333,7 @@ const UiCards = () => {
                      <Card border="danger" className="mb-3 " >
                         <Card.Body className="text-danger">
                            <Card.Title as="h4" className="text-danger">Primary card title</Card.Title>
-                           <Card.Text>Some quick example text to build on the card title  text to build on the card title and make up the bulk of the card's content.</Card.Text>
+                           <Card.Text>Some quick example text to build on the card title  text to build on the card title and make up the bulk of the card s content.</Card.Text>
                         </Card.Body>
                      </Card>
                   </Col>
@@ -341,7 +341,7 @@ const UiCards = () => {
                      <Card border="warning" className="mb-3 " >
                         <Card.Body className="text-warning">
                            <Card.Title as="h4" className="text-warning">Primary card title</Card.Title>
-                           <Card.Text>Some quick example text to build on the card title  text to build on the card title and make up the bulk of the card's content.</Card.Text>
+                           <Card.Text>Some quick example text to build on the card title  text to build on the card title and make up the bulk of the card s content.</Card.Text>
                         </Card.Body>
                      </Card>
                   </Col>
@@ -349,7 +349,7 @@ const UiCards = () => {
                      <Card border="info" className="mb-3 " >
                         <Card.Body className="text-info">
                            <Card.Title as="h4" className="text-info">Primary card title</Card.Title>
-                           <Card.Text>Some quick example text to build on the card title  text to build on the card title and make up the bulk of the card's content.</Card.Text>
+                           <Card.Text>Some quick example text to build on the card title  text to build on the card title and make up the bulk of the card s content.</Card.Text>
                         </Card.Body>
                      </Card>
                   </Col>
