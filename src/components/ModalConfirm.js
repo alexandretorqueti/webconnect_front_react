@@ -1,5 +1,5 @@
 import { Modal, Button } from 'react-bootstrap';
-import React from 'react';
+;
 import PropTypes from 'prop-types';
 
 function ModalConfirmComponent({ show, setShow, handleConfirm, title, message }) {

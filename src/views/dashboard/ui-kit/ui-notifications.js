@@ -1,4 +1,3 @@
-import React from 'react'
 import {Container, Row, Col, Card, Toast, ToastContainer} from 'react-bootstrap'
 
 const UiNotifications = () => {

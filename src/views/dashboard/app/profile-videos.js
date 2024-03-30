@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import {useState} from 'react'
 import { Container, Row, OverlayTrigger, Tooltip, Col} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 import ReactFsLightbox from 'fslightbox-react';
@@ -16,9 +16,7 @@ import img57 from '../../../assets/images/page-img/57.jpg'
 import img58 from '../../../assets/images/page-img/58.jpg'
 import img59 from '../../../assets/images/page-img/59.jpg'
 import img60 from '../../../assets/images/page-img/60.jpg'
-import video from '../../../assets/images/plugins/video-2.mp4'
-import video1 from '../../../assets/images/plugins/video-3.mp4'
-import video2 from '../../../assets/images/plugins/video-1.mp4'
+
 
 // Fslightbox plugin
 const FsLightbox = ReactFsLightbox.default ? ReactFsLightbox.default : ReactFsLightbox;
@@ -39,7 +37,7 @@ const ProfileVideos =() =>{
         <>
             <FsLightbox
                 toggler={imageController.toggler}
-                sources={[video,video1,video2,video2,video1,video,video1,video2,video,video2,video,video1,video,video1,video2]}
+                sources={[]}
                 slide={imageController.slide}
             />
             <ProfileHeader title="Your Videos" img={img9}/>

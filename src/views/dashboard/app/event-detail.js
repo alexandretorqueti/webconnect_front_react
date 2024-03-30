@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import {useState} from 'react'
 import {Container, Card, Row, Col, Dropdown, OverlayTrigger, Tooltip, Button, Modal} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 import ProfileHeader from '../../../components/profile-header'

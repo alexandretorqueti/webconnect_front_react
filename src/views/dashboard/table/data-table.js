@@ -1,4 +1,4 @@
-import React from 'react'
+
 import {Row, Col, Container, Card} from 'react-bootstrap'
 
 const Data_table = [

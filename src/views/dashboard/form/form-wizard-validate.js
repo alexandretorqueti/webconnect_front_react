@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import {useState} from 'react'
 import {Container, Col, Row, Card, Form, Nav, TabContent, TabPane, Button, Image} from 'react-bootstrap'
 
 // img

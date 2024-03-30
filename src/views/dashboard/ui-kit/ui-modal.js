@@ -1,4 +1,4 @@
-import {React,useState} from 'react'
+import {useState} from 'react'
 import {Container, Col, Row, Card, Button, Modal} from 'react-bootstrap'
 
 const UiModals = () => {
@@ -67,7 +67,7 @@ const UiModals = () => {
                                 </div>
                             </Card.Header>
                             <Card.Body>
-                                <p>A modal with header, body, and set of actions in the footer. Use <code>&lt;Modal/&gt;</code> in combination with other components to show or hide your Modal. The <code> &lt;Modal/&gt;</code> Component comes with a few convenient "sub components":<code> &lt;Modal.Header/&gt;</code>, <code> &lt;Modal.Title/&gt;</code>, <code> &lt;Modal.Body/&gt;</code>, and <code> &lt;Modal.Footer/&gt;</code>, which you can use to build the Modal content.</p>
+                                <p>A modal with header, body, and set of actions in the footer. Use <code>&lt;Modal/&gt;</code> in combination with other components to show or hide your Modal. The <code> &lt;Modal/&gt;</code> Component comes with a few convenient &ldquo;sub components&ldquo;:<code> &lt;Modal.Header/&gt;</code>, <code> &lt;Modal.Title/&gt;</code>, <code> &lt;Modal.Body/&gt;</code>, and <code> &lt;Modal.Footer/&gt;</code>, which you can use to build the Modal content.</p>
                                 <Button variant="primary" onClick={handleShow}>
                                     Launch demo modal
                                 </Button>
@@ -249,7 +249,7 @@ const UiModals = () => {
                                 </div>
                             </Card.Header>
                             <Card.Body>
-                                <p>You can vertically center a modal by passing the <code>"centered"</code> prop.</p>
+                                <p>You can vertically center a modal by passing the <code>&ldquo;centered&ldquo;</code> prop.</p>
                                 <Button className="me-2" variant="primary" onClick={handleShow6}>
                                     Launch demo modal
                                 </Button>

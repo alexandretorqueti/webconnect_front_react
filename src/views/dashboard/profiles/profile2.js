@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import {useState} from 'react'
 import {Link} from 'react-router-dom'
 import { Container,Row,Col,Modal,Button,Dropdown } from 'react-bootstrap'
 import Card from '../../../components/Card'

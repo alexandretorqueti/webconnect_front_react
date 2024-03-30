@@ -10,8 +10,9 @@
   "rules": {
     "react/no-direct-mutation-state": "error",
     "react/no-access-state-in-setstate": "error",
-    "react/prop-types": "off" ,
-    "react/display-name": "off"
+    "react/prop-types": "off",
+    "react/display-name": "off",
+    "import/no-unresolved": "off"  // add this line
   },
   "settings": {
     "react": {
@@ -19,6 +20,6 @@
     }
   },
   "env": {
-    "browser": true  // add this line
+    "browser": true
   }
 }

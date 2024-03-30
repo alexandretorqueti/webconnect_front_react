@@ -1,4 +1,4 @@
-import React from 'react';
+;
 import {Container, Row, Col, Card, Accordion} from 'react-bootstrap'
 
 const Faq = () => {

@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import {useState} from 'react'
 import {Row, Col, Container, Form, Button, Image, Alert} from 'react-bootstrap'
 import {Link, useNavigate} from 'react-router-dom'
 
