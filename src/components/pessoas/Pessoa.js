@@ -1,8 +1,8 @@
 
 import {Image} from 'react-bootstrap'
-import './PessoaLogada.css'
+import './Pessoa.css'
 
-function PessoaLogadaComponent({nome, foto, horaLogado, online, numeroNotificacoes}) {
+function PessoaComponent({nome, foto, horaLogado, online, numeroNotificacoes}) {
   return (
     <div className="d-flex align-items-center mb-4">
         <div className={(online) ? "iq-profile-avatar status-online" : "iq-profile-avatar status-offline"} >
@@ -17,4 +17,4 @@ function PessoaLogadaComponent({nome, foto, horaLogado, online, numeroNotificaco
   );
 }
 
-export default PessoaLogadaComponent;
+export default PessoaComponent;

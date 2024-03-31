@@ -11,5 +11,8 @@ export class Pessoas
     async getPessoasSemRelacao(pagina) {
         return await this.AjaxService.get('api/pessoas_sem_relacao/' + pagina);
     }
+    async getPessoasComRelacao() {
+        return await this.AjaxService.get('api/pessoas_com_relacao');
+    }
 }
 
