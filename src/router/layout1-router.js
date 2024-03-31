@@ -1,5 +1,3 @@
-import React from "react";
-
 //pages
 import Groups from "../views/dashboard/app/groups";
 import GroupDetail from "../views/dashboard/app/group-detail";

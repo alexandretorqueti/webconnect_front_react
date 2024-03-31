@@ -8,5 +8,8 @@ export class Pessoas
     async getUsuarioLogado() {
         return await this.AjaxService.get('api/pessoa_logada');
     }
+    async getPessoasSemRelacao(pagina) {
+        return await this.AjaxService.get('api/pessoas_sem_relacao/' + pagina);
+    }
 }
 
