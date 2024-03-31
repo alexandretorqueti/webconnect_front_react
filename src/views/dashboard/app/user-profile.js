@@ -4,6 +4,7 @@ import CustomToggle from '../../../components/dropdowns'
 import ShareOffcanvas from '../../../components/share-offcanvas'
 import {Link} from 'react-router-dom'
 import ReactFsLightbox from 'fslightbox-react';
+import { useState } from 'react'
 
 // images
 import img1 from '../../../assets/images/page-img/profile-bg1.jpg'
@@ -452,7 +453,7 @@ const UserProfile =() =>{
                                                                         <i className="ri-user-unfollow-line h4"></i>
                                                                         <div className="data ms-2">
                                                                             <h6>Friends except</h6>
-                                                                            <p className="mb-0">Don't show to some friends</p>
+                                                                            <p className="mb-0">Don&lsquo;t show to some friends</p>
                                                                         </div>
                                                                     </div>
                                                                 </Dropdown.Item>
@@ -1212,7 +1213,7 @@ const UserProfile =() =>{
                                                 <Nav.Link href="#" eventKey="about4">Work and Education</Nav.Link>
                                              </Nav.Item>
                                              <Nav.Item >
-                                                <Nav.Link href="#" eventKey="about5">Places You've Lived</Nav.Link>
+                                                <Nav.Link href="#" eventKey="about5">Places You&lsquo;ve Lived</Nav.Link>
                                              </Nav.Item>
                                           </Nav>
                                        </Card.Body>
@@ -2090,7 +2091,7 @@ const UserProfile =() =>{
                                                                   <img loading="lazy" src={user05} alt="profile-img" className="img-fluid"/>
                                                                </Link>
                                                                <div className="friend-info ms-3">
-                                                                  <h5>Rick O'Shea</h5>
+                                                                  <h5>Rick O&lsquo;Shea</h5>
                                                                   <p className="mb-0">50  friends</p>
                                                                </div>
                                                             </div>

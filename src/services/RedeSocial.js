@@ -4,9 +4,16 @@ export class PostPaginado extends PadraoAjax
 { 
     async get(paginaAtual) {
         const data = await this.AjaxService.get('api/posts/' + paginaAtual + '/***todos***');
-        return {
-            'continuar': data.continuar,
-            'pagina': data.posts
+        if (data && data.continuar) {
+            return {
+                'continuar': data.continuar,
+                'pagina': data.posts
+            }
+        } else {
+            return {
+                'continuar': false,
+                'pagina': []
+            }
         }
     }
 
@@ -53,5 +60,16 @@ export class Curtidas extends PadraoAjax
 
     async post(postId, iconeId) {
         return await this.AjaxService.postJson('api/posts/curtir', { 'post_id': postId, 'icone_id': iconeId});
+    }
+}
+
+export class CurtidasComentarios extends PadraoAjax
+{
+    async get(comentarioId) {
+        return await this.AjaxService.get('api/posts/coments/curtir/' + comentarioId);
+    }
+
+    async post(comentarioId) {
+        return await this.AjaxService.postJson('api/posts/coments/curtir', { 'coment_id': comentarioId });
     }
 }

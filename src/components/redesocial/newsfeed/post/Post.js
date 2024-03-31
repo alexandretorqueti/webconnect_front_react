@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Col, Card } from 'react-bootstrap';
 import ShareOffcanvas from '../../../share-offcanvas'
 import Comentario from './Comentario'
@@ -12,6 +12,7 @@ import Carousel from 'react-bootstrap/Carousel';
 
 function PostComponent({ post, icones, children, setPostAtual }) {
   const [deleteComentario, setDeleteComentario] = useState(null);
+  const [minhaCurtidaComentario, setMinhaCurtidaComentario] = useState({ comentario_id: 0, curtida : null });
 
   useEffect(() => {
     if (deleteComentario) {
@@ -24,7 +25,23 @@ function PostComponent({ post, icones, children, setPostAtual }) {
             setPostAtual(postLocal);
         }
     }
-  }, [deleteComentario]);
+  }, [deleteComentario, post, setPostAtual]);
+
+  useEffect(() => {
+    // Faço uma cópia local do post
+    const postLocal = {...post};
+    // Encontro o comentário que foi curtido
+    const comentario = postLocal.comentarios.find((comentario) => comentario.id === minhaCurtidaComentario.comentario_id);
+    // Se o comentário foi encontrado
+    if (comentario) {
+        // Atualizo a quantidade de curtidas
+        comentario.quantidade_curtidas += (minhaCurtidaComentario.curtida) ? 1 : -1;
+        comentario.minha_curtida = minhaCurtidaComentario.curtida;
+        // Atualizo o post
+        setPostAtual(postLocal);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [minhaCurtidaComentario.comentario_id, minhaCurtidaComentario.curtida]);
 
   return (
     <Col sm={12}>
@@ -58,7 +75,7 @@ function PostComponent({ post, icones, children, setPostAtual }) {
                     <Carousel>
                     {
                         (post.fotos.length > 0) &&
-                            post.fotos.map((rsFoto, index) => {
+                            post.fotos.map((rsFoto) => {
                                 return <Carousel.Item key={rsFoto.id}>
                                     <img src={rsFoto.foto} alt="" className="img-fluid rounded w-100"/>
                                 </Carousel.Item>
@@ -80,15 +97,12 @@ function PostComponent({ post, icones, children, setPostAtual }) {
                     <ul className="post-comments list-inline p-0 m-0">
                         {
                             (
-                                post.comentarios.length > 0 && post.comentarios.map((comentario, index) =>
+                                post.comentarios.length > 0 && post.comentarios.map((comentario) =>
                                 <Comentario
-                                key={index}
-                                userName={comentario.pessoa_fisica.nome} 
-                                userPhoto={comentario.pessoa_fisica.foto_url}
-                                comentario={comentario.comentario}
-                                hora={comentario.naturalTime}
-                                comentarioId={comentario.id}
+                                key={comentario.id}
+                                comentario={comentario}
                                 setDeleteComentario={setDeleteComentario}
+                                setMinhaCurtidaComentario={setMinhaCurtidaComentario}
                                 />
                                 )
                             )

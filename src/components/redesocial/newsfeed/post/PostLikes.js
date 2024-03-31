@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Dropdown } from 'react-bootstrap';
 import CustomToggle from '../../../dropdowns'
 import DropdownCurtida from './DropdownCurtida';
@@ -9,12 +9,13 @@ function PostLikesComponent({pessoas_que_curtiram, icones, post_id, minha_curtid
 
     useEffect(() => {
         setCurtida(minha_curtida);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const handleClick = (e) => {
         e.preventDefault();
         e.stopPropagation();
-        const newCurtida = (new Curtidas()).post(post_id, 0);
+        (new Curtidas()).post(post_id, 0);
         setCurtida (null);
     }
     return (
