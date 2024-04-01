@@ -1,0 +1,13 @@
+.chat-user-detail-popup-local {
+  position: absolute;
+  top: 0;
+  width: 360px;
+  background: #fff;
+  right: auto;
+  overflow: hidden;
+  left: 0px;
+  z-index: 9;
+  height: 100%;
+  transition: all 0.45s ease-in-out;
+  border-radius: 0.313rem;
+}

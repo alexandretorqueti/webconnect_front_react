@@ -1,6 +1,5 @@
-import React from "react";
 import ChatLayout from "../layouts/dashboard/chat-layout";
-import Chat from "../views/dashboard/app/chat";
+import Chat from "../views/dashboard/app/chat/chat";
 
 export const ChatRouter = [
   {
