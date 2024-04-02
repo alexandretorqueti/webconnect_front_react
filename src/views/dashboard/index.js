@@ -10,10 +10,8 @@ import PostTop from '../../components/redesocial/newsfeed/post/PostTop'
 
 import loader from '../../assets/images/page-img/page-load-loader.gif'
 import { PostPaginado, Icones } from '../../services/RedeSocial'
-import { Pessoas } from '../../services/Pessoas'
-
-import { Socket } from '../../services/socket'
 import { useEffect, useState, useRef } from 'react'
+import { useGlobalContext } from '../../GlobalContext'
 
 const Index = () => {
     const [posts, setPosts] = useState([]);
@@ -28,12 +26,10 @@ const Index = () => {
     const [suggestedPages ] = useState([]);
     const [temColunaDaDireita, setTemColunaDaDireita] = useState(false);
     const [larcuraColunaDoMeio, setLarguraColunaDoMeio] = useState(8);
-    const [pessoa_logada, setPessoaLogada] = useState();
     const [postAtual, setPostAtual] = useState(null);
     const PostPaginadoService = new PostPaginado();
     const IconesService = new Icones();
-    const PessoasService = new Pessoas();
-    const [socket, setSocket] = useState(null)
+    const { pessoa_logada } = useGlobalContext.pessoa_logada;
 
     
     const verificaVisibilidade = () => {
@@ -77,31 +73,9 @@ const Index = () => {
     }
 
     useEffect(() => {
-        console.log('socket', socket);
-    }, [socket]);
-
-    const recebida = (mensagem) => {
-        console.log('mensagem recebida', mensagem);
-    }
-
-    useEffect(() => {
         const run = async () => {
             const icones = await IconesService.get();
             setIcones(icones);
-            const pessoa_logada = await PessoasService.getUsuarioLogado();
-            setPessoaLogada(pessoa_logada);
-            if (pessoa_logada && pessoa_logada.id) {
-                const newSocket = new Socket(
-                    {
-                    id: pessoa_logada.id,
-                    type: 'private',
-                    wsScheme: window.location.protocol === 'https:' ? 'wss' : 'ws',
-                    pessoaLogadaId: pessoa_logada.id, 
-                    recebida: (mensagem) => recebida(mensagem),
-                    userId: pessoa_logada.id,
-                    });
-                setSocket(newSocket);
-            }
         }
         run();
         if (stories.length > 0 || events.length > 0 || birthdays.length > 0 || suggestedPages.length > 0) {

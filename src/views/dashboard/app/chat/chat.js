@@ -120,7 +120,7 @@ const Chat=()=>{
                                                 <Tab.Pane eventKey="start" className="tab-pane fade show" id="default-block" role="tabpanel">
                                                 <div className="chat-start">
                                                     <span className="iq-start-icon text-primary"><i className="material-symbols-outlined md-42">sms</i></span>
-                                                    <Button id="chat-start" sPrefix="btn bg-white mt-3">Start
+                                                    <Button id="chat-start" prefix="btn bg-white mt-3">Start
                                                     Conversation!</Button>
                                                 </div>
                                                 </Tab.Pane>
