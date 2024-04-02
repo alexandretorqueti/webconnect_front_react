@@ -11,3 +11,10 @@
   transition: all 0.45s ease-in-out;
   border-radius: 0.313rem;
 }
+
+.react-quill-custom {
+  width: 90%; /* Ajusta a largura para 90% da largura do elemento pai */
+  height: 90%; /* Ajusta a altura para 90% da altura do elemento pai */
+  padding: 5%; /* Adiciona um padding de 5% ao redor do componente */
+  box-sizing: border-box; /* Inclui o padding e a borda no tamanho total do elemento */
+}
