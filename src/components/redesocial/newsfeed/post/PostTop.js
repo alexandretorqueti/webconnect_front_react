@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { Col, Card, Button, Form, Row } from 'react-bootstrap';
 import { PostPaginado } from '../../../../services/RedeSocial.js';
 import img1 from '../../../../assets/images/small/07.png';

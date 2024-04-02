@@ -1,4 +1,4 @@
-import React from 'react'
+
 import {Row,Col,Image,Container} from 'react-bootstrap'
 import Card from '../../../components/Card'
 import {Link} from 'react-router-dom'
@@ -40,7 +40,7 @@ const BlogList = () => {
                                     </div>
                                  </div>
                                  <h5 className="mb-2">Containing coronavirus spread comes</h5>
-                                 <p>In the blogpost, the IMF experts observed, "Success in containing the virus comes at the price of slowing economic activity."</p> <Link to="#" tabIndex="-1" className="d-flex align-items-center">Read More <i className="material-symbols-outlined md-14 filled">arrow_forward_ios</i></Link>
+                                 <p>In the blogpost, the IMF experts observed, Success in containing the virus comes at the price of slowing economic activity.</p> <Link to="#" tabIndex="-1" className="d-flex align-items-center">Read More <i className="material-symbols-outlined md-14 filled">arrow_forward_ios</i></Link>
                                  <div className="group-smile mt-4 d-flex flex-wrap align-items-center justify-content-between position-right-side">
                                     <div className="iq-media-group">
                                        <Link to="#" className="iq-media">
@@ -74,7 +74,7 @@ const BlogList = () => {
                                     <Link to="#" tabIndex="-1">4 Month ago</Link>
                                  </div>
                                  <h5 className="mb-2">Containing coronavirus spread comes</h5>
-                                 <p>In the blogpost, the IMF experts observed, "Success in containing the virus comes at the price of slowing economic activity."</p> <Link to="#" tabIndex="-1" className="d-flex align-items-center">Read More<i className="material-symbols-outlined md-14 filled">arrow_forward_ios</i></Link>
+                                 <p>In the blogpost, the IMF experts observed, Success in containing the virus comes at the price of slowing economic activity.</p> <Link to="#" tabIndex="-1" className="d-flex align-items-center">Read More<i className="material-symbols-outlined md-14 filled">arrow_forward_ios</i></Link>
                                  <div className="group-smile mt-4 d-flex flex-wrap align-items-center justify-content-between position-right-side">
                                     <div className="iq-media-group">
                                        <Link to="#" className="iq-media">
@@ -119,7 +119,7 @@ const BlogList = () => {
                                     </div>
                                  </div>
                                  <h5 className="mb-2">Containing coronavirus spread comes</h5>
-                                 <p>In the blogpost, the IMF experts observed, "Success in containing the virus comes at the price of slowing economic activity."</p> <Link to="#" tabIndex="-1" className="d-flex align-items-center">Read More <i className="material-symbols-outlined md-14 filled">arrow_forward_ios</i></Link>
+                                 <p>In the blogpost, the IMF experts observed, Success in containing the virus comes at the price of slowing economic activity.</p> <Link to="#" tabIndex="-1" className="d-flex align-items-center">Read More <i className="material-symbols-outlined md-14 filled">arrow_forward_ios</i></Link>
                                  <div className="group-smile mt-4 d-flex flex-wrap align-items-center justify-content-between position-right-side">
                                     <div className="iq-media-group">
                                        <Link to="#" className="iq-media">
@@ -155,7 +155,7 @@ const BlogList = () => {
                                     <Link to="#" tabIndex="-1">4 Month ago</Link>
                                  </div>
                                  <h5 className="mb-2">Containing coronavirus spread comes</h5>
-                                 <p>In the blogpost, the IMF experts observed, "Success in containing the virus comes at the price of slowing economic activity."</p> <Link to="#" tabIndex="-1" className="d-flex align-items-center">Read More <i className="material-symbols-outlined md-14 filled">arrow_forward_ios</i></Link>
+                                 <p>In the blogpost, the IMF experts observed, Success in containing the virus comes at the price of slowing economic activity.</p> <Link to="#" tabIndex="-1" className="d-flex align-items-center">Read More <i className="material-symbols-outlined md-14 filled">arrow_forward_ios</i></Link>
                                  <div className="group-smile mt-4 d-flex flex-wrap align-items-center justify-content-between position-right-side">
                                     <div className="iq-media-group">
                                        <Link to="#" className="iq-media">
@@ -202,7 +202,7 @@ const BlogList = () => {
                                     </div>
                                  </div>
                                  <h5 className="mb-2">Containing coronavirus spread comes</h5>
-                                 <p>In the blogpost, the IMF experts observed, "Success in containing the virus comes at the price of slowing economic activity."</p> <Link to="#" tabIndex="-1" className="d-flex align-items-center">Read More <i className="material-symbols-outlined md-14 filled">arrow_forward_ios</i></Link>
+                                 <p>In the blogpost, the IMF experts observed, Success in containing the virus comes at the price of slowing economic activity.</p> <Link to="#" tabIndex="-1" className="d-flex align-items-center">Read More <i className="material-symbols-outlined md-14 filled">arrow_forward_ios</i></Link>
                                  <div className="group-smile mt-4 d-flex flex-wrap align-items-center justify-content-between position-right-side">
                                     <div className="iq-media-group">
                                        <Link to="#" className="iq-media">
@@ -236,7 +236,7 @@ const BlogList = () => {
                                     <Link to="#" tabIndex="-1">4 Month ago</Link>
                                  </div>
                                  <h5 className="mb-2">Containing coronavirus spread comes</h5>
-                                 <p>In the blogpost, the IMF experts observed, "Success in containing the virus comes at the price of slowing economic activity."</p> <Link to="#" tabIndex="-1" className="d-flex align-items-center">Read More <i className="material-symbols-outlined md-14 filled">arrow_forward_ios</i></Link>
+                                 <p>In the blogpost, the IMF experts observed, Success in containing the virus comes at the price of slowing economic activity.</p> <Link to="#" tabIndex="-1" className="d-flex align-items-center">Read More <i className="material-symbols-outlined md-14 filled">arrow_forward_ios</i></Link>
                                  <div className="group-smile mt-4 d-flex flex-wrap align-items-center justify-content-between position-right-side">
                                     <div className="iq-media-group">
                                        <Link to="#" className="iq-media">
@@ -282,7 +282,7 @@ const BlogList = () => {
                                     </div>
                                  </div>
                                  <h5 className="mb-2">Containing coronavirus spread comes</h5>
-                                 <p>In the blogpost, the IMF experts observed, "Success in containing the virus comes at the price of slowing economic activity."</p> <Link to="#" tabIndex="-1" className="d-flex align-items-center">Read More <i className="material-symbols-outlined md-14 filled">arrow_forward_ios</i></Link>
+                                 <p>In the blogpost, the IMF experts observed, Success in containing the virus comes at the price of slowing economic activity.</p> <Link to="#" tabIndex="-1" className="d-flex align-items-center">Read More <i className="material-symbols-outlined md-14 filled">arrow_forward_ios</i></Link>
                                  <div className="group-smile mt-4 d-flex flex-wrap align-items-center justify-content-between position-right-side">
                                     <div className="iq-media-group">
                                        <Link to="#" className="iq-media">
@@ -318,7 +318,7 @@ const BlogList = () => {
                                     <Link to="#" tabIndex="-1">4 Month ago</Link>
                                  </div>
                                  <h5 className="mb-2">Containing coronavirus spread comes</h5>
-                                 <p>In the blogpost, the IMF experts observed, "Success in containing the virus comes at the price of slowing economic activity."</p> <Link to="#" tabIndex="-1" className="d-flex align-items-center">Read More <i className="material-symbols-outlined md-14 filled">arrow_forward_ios</i></Link>
+                                 <p>In the blogpost, the IMF experts observed, Success in containing the virus comes at the price of slowing economic activity.</p> <Link to="#" tabIndex="-1" className="d-flex align-items-center">Read More <i className="material-symbols-outlined md-14 filled">arrow_forward_ios</i></Link>
                                  <div className="group-smile mt-4 d-flex flex-wrap align-items-center justify-content-between position-right-side">
                                     <div className="iq-media-group">
                                        <Link to="#" className="iq-media">

@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import {useState} from 'react'
 import {Container, Card, Row, Col, Dropdown, OverlayTrigger, Tooltip, Button, Modal} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 import ProfileHeader from '../../../components/profile-header'
@@ -188,7 +188,7 @@ const EventDetail = () => {
                             <Card.Body>
                                 <ul className="list-inline p-0 m-0">
                                     <li className="mb-3">
-                                        <p className="mb-0">Event Planning's...</p>
+                                        <p className="mb-0">Event Planning s...</p>
                                     </li>                              
                                     <li className="mb-3 d-flex align-items-center">
                                         <div className="avatar-40 rounded-circle bg-gray text-center me-3"><i className="ri-map-pin-line h4"></i></div>
@@ -341,7 +341,7 @@ const EventDetail = () => {
                                                                         <i className="ri-user-unfollow-line h4"></i>
                                                                         <div className="data ms-2">
                                                                             <h6>Friends except</h6>
-                                                                            <p className="mb-0">Don't show to some friends</p>
+                                                                            <p className="mb-0">Don t show to some friends</p>
                                                                         </div>
                                                                     </div>
                                                                 </Dropdown.Item>

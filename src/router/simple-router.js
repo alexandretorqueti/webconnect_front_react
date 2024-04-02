@@ -1,6 +1,6 @@
 // src/router/simple-router.js
 
-import React from "react";
+
 
 // auth
 import ConfirmMail from "../views/dashboard/auth/confirm-mail";

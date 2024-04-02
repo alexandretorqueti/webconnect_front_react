@@ -1,4 +1,4 @@
-import React from 'react'
+
 import {Row, Col, Button, Form, Container, Image} from 'react-bootstrap'
 import {Link, useNavigate} from 'react-router-dom'
 
@@ -69,7 +69,7 @@ const Recoverpw = () => {
                         <Col md="6" className="bg-white pt-5 pt-5 pb-lg-0 pb-5">
                             <div className="sign-in-from">
                                 <h1 className="mb-0">Reset Password</h1>
-                                <p>Enter your email address and we'll send you an email with instructions to reset your password.</p>
+                                <p>Enter your email address and we ll send you an email with instructions to reset your password.</p>
                                 <Form className="mt-4">
                                     <Form.Group>
                                         <Form.Label>Email address</Form.Label>

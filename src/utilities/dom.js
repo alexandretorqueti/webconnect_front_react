@@ -57,7 +57,7 @@ export const getAttr = function (elem,attr) {
 export const setAttr = function (elems,object) {
   let _newElem = elems
   if(_.isString(_newElem)){
-      _newElem = getElems(elems);;
+      _newElem = getElems(elems);
   }
   _.forEach(_newElem, function (elem) {
       elem.setAttribute(object.prop, object.value);
@@ -73,7 +73,7 @@ export const removeAttr = function (elem,attr) {
 export const setContent = function (selector, content) {
   let _newElem = selector
   if(_.isString(_newElem)){
-      _newElem = getElems(selector);;
+      _newElem = getElems(selector);
   }
   if(typeof _newElem.length !== typeof undefined){
       _.forEach(_newElem, function (elem) {

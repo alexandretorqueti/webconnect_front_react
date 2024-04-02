@@ -1,4 +1,4 @@
-import React from 'react'
+
 import {Row,Col,Container,Form} from 'react-bootstrap'
 import Card from '../../../components/Card'
 import {Link} from 'react-router-dom'
@@ -35,7 +35,7 @@ const EmailCompose = () => {
     //     },
     //     {
     //       value: 2,
-    //       label: "Rick O'Shea"
+    //       label: "Rick O Shea"
     //     },
     //     {
     //       value: 3,

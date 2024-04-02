@@ -11,7 +11,7 @@ const CheckboxBtn = memo((props) => {
         return false
     }
 
-    const changeDispatch = (e) => {
+    const changeDispatch = () => {
         const value = props.value
         if(checkboxCheckValue(props.defaultChecked, props.value)) {
             dispatch(SettingAction[props.btnName]([...props.defaultChecked.filter(item => item !== value)]))

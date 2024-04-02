@@ -1,6 +1,3 @@
-
-import React from 'react'
-
 const UiDropdowns = () => {
     return (
         <div>

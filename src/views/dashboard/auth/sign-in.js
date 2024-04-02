@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import {useState} from 'react'
 import {Row, Col, Container, Form, Button, Image, Alert} from 'react-bootstrap'
 import {Link, useNavigate} from 'react-router-dom'
 
@@ -58,7 +58,7 @@ const SignIn = () => {
          console.error(error);
        }
    };
-   let history =useNavigate()
+   // let history =useNavigate()
    return (
       <>
          <section className="sign-in-page">
@@ -140,7 +140,7 @@ const SignIn = () => {
                               <span>{erro}</span>
                            </div>
                            <div className="sign-info">
-                              <span className="dark-color d-inline-block line-height-2">Don't have an account? <Link to="/auth/sign-up">Sign up</Link></span>
+                              <span className="dark-color d-inline-block line-height-2">Don t have an account? <Link to="/auth/sign-up">Sign up</Link></span>
                                  <ul className="iq-social-media">
                                     <li>
                                        <Link to="#">

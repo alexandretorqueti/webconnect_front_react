@@ -1,4 +1,4 @@
-import React from 'react'
+
 import {Container, Row, Col, Button} from 'react-bootstrap'
 import Card from '../../../components/Card'
 import {Link} from 'react-router-dom'
@@ -189,7 +189,7 @@ const Lineawesome = () => {
                                 </div>
                             </Card.Header>
                             <Card.Body>
-                                <p>Use Class <code>&lt;i className="las la-bell"&gt;&lt;/i&gt;</code></p>
+                                <p>Use Class <code>&lt;i className=&ldquo;las la-bell&ldquo;&gt;&lt;/i&gt;</code></p>
                                 <Row className="mt-3">
                                     {
                                         lineawesome.map((item,idx) => (

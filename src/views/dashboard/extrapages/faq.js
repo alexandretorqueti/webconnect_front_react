@@ -1,4 +1,3 @@
-import React from 'react';
 import {Container, Row, Col, Card, Accordion} from 'react-bootstrap'
 
 const Faq = () => {
@@ -22,7 +21,7 @@ const Faq = () => {
                                         It is a long established reader will be?
                                 </Accordion.Header>
                                 <Accordion.Body>
-                                    <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</p>
+                                    <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for lorem ipsum will uncover many web sites still in their infancy.</p>
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item className="mb-3" eventKey="1">

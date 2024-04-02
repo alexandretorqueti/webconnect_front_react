@@ -1,9 +1,9 @@
-import React,{useEffect} from 'react'
+import {useEffect} from 'react'
 
 //datepicker
 import { Datepicker } from 'vanillajs-datepicker';
 import { DateRangePicker } from 'vanillajs-datepicker';
-import '../../node_modules/vanillajs-datepicker/dist/css/datepicker.min.css'
+import '/node_modules/vanillajs-datepicker/dist/css/datepicker.min.css'
 
 const Datepickers = (props) => {
 

@@ -1,8 +1,8 @@
-import React from 'react'
+
 import { Link} from 'react-router-dom'
 import {Row, Col, Container} from 'react-bootstrap'
 
-const Footer = (props) => {
+const Footer = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const mode = urlParams.get('dark');
     if (mode !== null) {

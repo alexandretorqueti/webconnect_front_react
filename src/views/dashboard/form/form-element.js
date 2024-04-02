@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import {useState} from 'react'
 import {Row, Col, Form, Button, Container, Card} from 'react-bootstrap'
 import Select from 'react-select';
 

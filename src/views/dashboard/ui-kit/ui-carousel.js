@@ -1,4 +1,3 @@
-import React from 'react'
 import { Card, Carousel, Row, Col, Container } from 'react-bootstrap'
 import card1 from '../../../assets/images/small/img-1.jpg'
 

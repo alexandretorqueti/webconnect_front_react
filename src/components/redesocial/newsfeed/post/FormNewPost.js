@@ -1,4 +1,4 @@
-import React, { useEffect, useState }  from 'react'
+import  { useEffect, useState }  from 'react'
 import { Dropdown, Modal} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import CustomToggle from '../../../../components/dropdowns'
@@ -117,7 +117,7 @@ function FormNewPostComponent({show, handleClose, pessoa_logada}) {
                                         <i className="ri-user-unfollow-line h4"></i>
                                         <div className="data ms-2">
                                             <h6>Friends except</h6>
-                                            <p className="mb-0">Don't show to some friends</p>
+                                            <p className="mb-0">Don t show to some friends</p>
                                         </div>
                                         </div>
                                     </Dropdown.Item>

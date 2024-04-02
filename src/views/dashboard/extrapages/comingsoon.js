@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import {useEffect} from 'react'
 import {Container, Row, Col, Button, Form, Image, Card} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 
@@ -73,7 +73,7 @@ const ComingSoon = () => {
                                 <Image src={logo} className="img-fluid" alt="logo"/>
                                 <h3 className="logo-title d-none d-sm-block" data-setting="app_name">SocialV</h3>
                             </Link>
-                                <h2 className="mt-4 mb-1">Stay tunned, we're launching very soon</h2>
+                                <h2 className="mt-4 mb-1">Stay tunned, we re launching very soon</h2>
                                 <p>We are working very hard to give you the best experience possible!</p>
                                 <ul className="countdown row list-inline d-flex align-items-center" data-date="jun 02 2022 20:20:22">
                                     <Col as="li" md="6" xl="3">

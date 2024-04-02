@@ -11,7 +11,7 @@ function MenuComponent({itens}) {
                 </Dropdown.Toggle>
                 <Dropdown.Menu className="dropdown-menu m-0 p-0">
                     {itens && itens.map(
-                        (item, index) => {return (
+                        (item) => {return (
                             (item.visible) &&
                             <Dropdown.Item 
                                 key={item.id} 

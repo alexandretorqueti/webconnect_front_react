@@ -1,4 +1,4 @@
-import React, {}  from 'react'
+import  {}  from 'react'
 import { Dropdown} from 'react-bootstrap'
 import Card from '../../Card'
 import CustomToggle from '../../dropdowns'
@@ -8,7 +8,7 @@ import CustomToggle from '../../dropdowns'
 import s4 from '../../../assets/images/page-img/s4.jpg'
 import s5 from '../../../assets/images/page-img/s5.jpg'
 
-function EventsCardComponent(props) {
+function EventsCardComponent() {
   return (
     <Card>
     <div className="card-header d-flex justify-content-between">

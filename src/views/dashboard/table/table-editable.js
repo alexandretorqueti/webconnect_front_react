@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import {useState} from 'react'
 import {Container, Row, Col, Card, Button} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 
@@ -123,7 +123,7 @@ const TableEditable = () => {
                                         </thead>
                                         <tbody>      
                                             {Add.map((adds,props) => (      
-                                                <tr key={props} dataid={adds.id}>
+                                                <tr key={props} data-id={adds.id}>
                                                     <td name="Name"    contentEditable={true} suppressContentEditableWarning={true} onBlur={handleAddFormChanges}>{adds.Name}</td>
                                                     <td name="Age"     contentEditable={true} suppressContentEditableWarning={true} onBlur={handleAddFormChanges}>{adds.Age}</td>
                                                     <td name="Company" contentEditable={true} suppressContentEditableWarning={true} onBlur={handleAddFormChanges}>{adds.Company}</td>

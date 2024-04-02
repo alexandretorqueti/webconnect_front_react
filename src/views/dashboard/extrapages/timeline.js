@@ -1,4 +1,4 @@
-import React from 'react'
+
 import {Row, Col, Card, Container, Image} from 'react-bootstrap'
 // import {Link} from 'react-router-dom'
 

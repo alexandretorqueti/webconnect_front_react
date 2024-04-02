@@ -1,7 +1,7 @@
 // Veja os arquivos abaixo e reanalise a questão do roteamento
 // src/index.js
 
-import React, { StrictMode} from 'react';
+import  { StrictMode} from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 // import reportWebVitals from './reportWebVitals';

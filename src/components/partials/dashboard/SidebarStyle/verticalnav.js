@@ -1,4 +1,4 @@
-import React, { useState, useContext} from 'react'
+import  React, { useState, useContext} from 'react'
 
 //router
 import { Link, useLocation } from 'react-router-dom'
@@ -17,7 +17,7 @@ function CustomToggle({ children, eventKey, onClick }) {
     const isCurrentEventKey = activeEventKey === eventKey;
 
     return (
-        <Link to="#" aria-expanded={isCurrentEventKey ? 'true' : 'false'} className="nav-link" role="button" onClick={(e) => {
+        <Link to="#" aria-expanded={isCurrentEventKey ? 'true' : 'false'} className="nav-link" role="button" onClick={() => {
             decoratedOnClick(isCurrentEventKey)
         }}>
             {children}
@@ -214,7 +214,7 @@ const VerticalNav = React.memo(() => {
                         <i className="right-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                                <path strokeLinecap="round" strokeWidth="2" d="M9 5l7 7-7 7" />
                             </svg>
                         </i>
                     </CustomToggle>
@@ -382,7 +382,7 @@ const VerticalNav = React.memo(() => {
                         <i className="right-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                                <path strokeLinecap="round" strokeWidth="2" d="M9 5l7 7-7 7" />
                             </svg>
                         </i>
                     </CustomToggle>
@@ -791,7 +791,7 @@ const VerticalNav = React.memo(() => {
                         <span className="item-name">Utilities</span>
                         <i className="right-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                                <path strokeLinecap="round" strokeWidth="2" d="M9 5l7 7-7 7" />
                             </svg>
                         </i>
                     </CustomToggle>

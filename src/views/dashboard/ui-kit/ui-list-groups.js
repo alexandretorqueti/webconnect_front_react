@@ -1,4 +1,3 @@
-import React from 'react'
 import {Container, Row, Col, Card, ListGroup} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 
@@ -41,7 +40,7 @@ const UiListGroups = () => {
                                 </div>
                             </Card.Header>
                             <Card.Body>
-                                <p>Set the <code>disabled</code> prop to prevent actions on a <code>&lt;ListGroup.Item&gt;</code>. For elements that aren't naturally disable-able (like anchors)<code> onClick </code> handlers are added that call <code>preventDefault</code> to mimick disabled behavior.</p>
+                                <p>Set the <code>disabled</code> prop to prevent actions on a <code>&lt;ListGroup.Item&gt;</code>. For elements that aren t naturally disable-able (like anchors)<code> onClick </code> handlers are added that call <code>preventDefault</code> to mimick disabled behavior.</p>
                                 <ListGroup>
                                     <ListGroup.Item disabled>Cras justo odio</ListGroup.Item>
                                     <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>

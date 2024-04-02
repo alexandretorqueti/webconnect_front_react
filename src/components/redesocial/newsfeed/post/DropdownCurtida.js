@@ -19,7 +19,7 @@ function DropdownCurtidaComponent({icones, post_id, setCurtida}) {
     icones.length > 0 &&
         <Dropdown.Menu className=" py-2">
             {
-                icones.map((icone, index) =>
+                icones.map((icone) =>
                     <OverlayTrigger
                         key={icone.id}
                         placement="top"

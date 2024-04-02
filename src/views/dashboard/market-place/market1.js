@@ -1,4 +1,4 @@
-import React from "react";
+
 import { Container, Row, Col } from "react-bootstrap";
 import Card from "../../../components/Card";
 
@@ -215,7 +215,7 @@ const Market1 = () => {
                   <small>Built by Voicify</small>
                   <div className="mt-1">
                     <p className="mb-0">
-                      Access your HubSpot data in real time through Amazon's
+                      Access your HubSpot data in real time through Amazon s
                       Alexa
                     </p>
                   </div>

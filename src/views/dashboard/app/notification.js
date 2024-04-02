@@ -1,4 +1,4 @@
-import React from 'react'
+
 import {Row, Col, Container, Dropdown} from 'react-bootstrap'
 import Card from '../../../components/Card'
 import { Link } from 'react-router-dom'
@@ -208,7 +208,7 @@ const Notification = () => {
                               <div className="w-100">
                                  <div className="d-flex justify-content-between">
                                     <div className="ms-3">
-                                       <h6>Rick O'Shea posted a comment on your photo</h6>
+                                       <h6>Rick O Shea posted a comment on your photo</h6>
                                        <p className="mb-0">50  ago</p>
                                     </div>
                                     <div className="d-flex align-items-center">

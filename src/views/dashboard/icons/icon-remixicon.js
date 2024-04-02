@@ -1,4 +1,4 @@
-import React from 'react'
+
 import {Container,Row,Col,Button,Card} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 import '../../../assets/vendor/remixicon/fonts/remixicon.css'
@@ -188,7 +188,7 @@ const Remixicon = () => {
                                 </div>
                             </Card.Header>
                             <Card.Body>
-                                <p>Use Class <code>&lt;i className="ri-4k-fill"&gt;&lt;/i&gt;</code></p>
+                                <p>Use Class <code>&lt;i className=&ldquo;ri-4k-fill&ldquo;&gt;&lt;/i&gt;</code></p>
                                 <Row className="mt-3">
                                     {
                                         remixicon.map((item,idx) => (

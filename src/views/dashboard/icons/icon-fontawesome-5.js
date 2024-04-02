@@ -1,4 +1,4 @@
-import React from 'react'
+
 import {Container,Row,Col,Card,Button} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 
@@ -189,7 +189,7 @@ const Fontawesome = () => {
                                 </div>
                             </Card.Header>
                             <Card.Body>
-                                <p>Use Class{' '} <code>&lt;i className="far fa-address-book"&gt;&lt;/i&gt;</code></p>
+                                <p>Use Class{' '} <code>&lt;i className=&ldquo;far fa-address-book&ldquo;&gt;&lt;/i&gt;</code></p>
                                 <Row className="mt-3">
                                     {
                                         Data_table.map((item,idx) => (

@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import {useState} from 'react'
 import {Link} from 'react-router-dom'
 import { Container,Row,Col,Nav,Tab, Dropdown, Modal, Button} from 'react-bootstrap'
 import Card from '../../../components/Card'
@@ -238,7 +238,7 @@ const Profile3=()=>{
                                             <Card.Body>
                                                 <h5>Intro</h5>
                                                 <span><svg xmlns="http://www.w3.org/2000/svg" width="20px" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path strokeLinecap="round" trokelinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                
                                                 </svg><span className="ms-2">Joined August 2012</span></span>
                                                 <div className="mt-2">
                                                 <div className="d-grid gap-2">
@@ -611,7 +611,7 @@ const Profile3=()=>{
                                                             <i className="ri-user-unfollow-line h4"></i>
                                                             <div className="data ms-2">
                                                                 <h6>Friends except</h6>
-                                                                <p className="mb-0">Don't show to some friends</p>
+                                                                <p className="mb-0">Don t show to some friends</p>
                                                             </div>
                                                         </div>
                                                     </Dropdown.Item>
@@ -640,14 +640,14 @@ const Profile3=()=>{
                                 <div>
                                     <button type="button" className="btn btn-primary">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="17px" height="17px" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" trokelinejoin="round" strokeWidth="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                                        <path strokeLinecap="round"  strokeWidth="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
                                         </svg>
                                         <span className="ms-2 mb-2">Filters</span>
                                     </button>{' '}
                                     <button type="button" className="btn btn-primary">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="17px" height="17px" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" trokelinejoin="round" strokeWidth="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                                        <path strokeLinecap="round" trokelinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        <path strokeLinecap="round"  strokeWidth="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                                        <path strokeLinecap="round"  strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                         </svg>
                                         <span className="ms-2 mb-2">Manages Posts</span>
                                     </button>
@@ -657,12 +657,12 @@ const Profile3=()=>{
                             <Nav as="ul" className="tab-nav-pane nav-tabs  justify-content-evenly mb-0">
                                 <Nav.Item as="li" className="pb-0 mb-0">
                                     <Nav.Link eventKey="first" data-bs-toggle="tab" className="font-weight-bold text-uppercase ms-3"><svg xmlns="http://www.w3.org/2000/svg" width="17px" height="17px" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" trokelinejoin="round" strokeWidth="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+                                    <path strokeLinecap="round"  strokeWidth="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
                                     </svg>List View</Nav.Link>
                                 </Nav.Item>
                                 <Nav.Item as="li" className="pb-0 mb-0">
                                     <Nav.Link eventKey="second" data-bs-toggle="tab" className="font-weight-bold text-uppercase ms-3"><svg xmlns="http://www.w3.org/2000/svg" width="17px" height="17px" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" trokelinejoin="round" strokeWidth="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                    <path strokeLinecap="round"  strokeWidth="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                                     </svg>Grid View</Nav.Link>
                                 </Nav.Item>
                             </Nav>

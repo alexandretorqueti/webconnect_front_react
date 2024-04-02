@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import {useState} from 'react'
 import {Row, Col, Container, Dropdown,Modal,Button} from 'react-bootstrap'
 import Card from '../../../components/Card'
 import CustomToggle from '../../../components/dropdowns'
@@ -389,7 +389,7 @@ const FriendProfile =() =>{
                                                          <i className="ri-user-unfollow-line h4"></i>
                                                          <div className="data ms-2">
                                                                <h6>Friends except</h6>
-                                                               <p className="mb-0">Don't show to some friends</p>
+                                                               <p className="mb-0">Don t show to some friends</p>
                                                          </div>
                                                       </div>
                                                    </Dropdown.Item>

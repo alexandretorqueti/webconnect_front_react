@@ -1,4 +1,4 @@
-import React from 'react'
+
 import {Container, Row, Col, Card, Form} from 'react-bootstrap'
 
 const FormCheckbox = () => {

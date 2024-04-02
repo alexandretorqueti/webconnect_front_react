@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import {useEffect} from 'react'
 // Import selectors & action from setting store
 import * as SettingSelector from '../../../../store/setting/selectors'
 

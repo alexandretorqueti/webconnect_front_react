@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import {useState} from 'react'
 import { Container, Row, Col, Card, Dropdown, Button, Modal, OverlayTrigger, Tooltip,Form } from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 import ProfileHeader from '../../../components/profile-header'
@@ -59,11 +59,11 @@ const GroupDetail = () => {
                                             <img className="rounded-circle img-fluid avatar-100" src={img1} alt=""/>
                                         </div>
                                         <div className="info">
-                                            <h4>Developer's...</h4>
+                                            <h4>Developer...</h4>
                                             <p className="mb-0"><i className="ri-lock-fill pe-2"></i>Private Group . 323 members</p>
                                         </div>
                                     </div>
-                                    <div mt-md="0" mt="2" className="group-member d-flex align-items-center">
+                                    <div className="group-member d-flex align-items-center">
                                         <div className="iq-media-group me-3">
                                             <Link to="#" className="iq-media">
                                                 <img className="img-fluid avatar-40 rounded-circle" src={user1} alt=""/>
@@ -221,7 +221,7 @@ const GroupDetail = () => {
                                                                         <i className="ri-user-unfollow-line h4"></i>
                                                                         <div className="data ms-2">
                                                                             <h6>Friends except</h6>
-                                                                            <p className="mb-0">Don't show to some friends</p>
+                                                                            <p className="mb-0">Don t show to some friends</p>
                                                                         </div>
                                                                     </div>
                                                                 </Dropdown.Item>

@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import {useEffect} from 'react'
 
 import L from '../../node_modules/leaflet/dist/leaflet-src'
 import '../../node_modules/leaflet/dist/leaflet.css'

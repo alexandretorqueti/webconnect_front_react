@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import {useState} from 'react'
 import {Link} from 'react-router-dom'
 import {Container, Row,Col, Nav,Tab, Button} from 'react-bootstrap'
 import Card from '../../../components/Card'
@@ -303,7 +303,7 @@ const activity = [
                             <h2 className="text-center">Roy</h2>
                             <h5>098hgdvb53562...9056
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18px" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                                    <path strokeLinecap="round" strokeWidth="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
                                 </svg>
                             </h5>
                             <div className="mt-2">
@@ -391,12 +391,12 @@ const activity = [
                                                         <div className="d-flex justify-content-between">
                                                             <div>
                                                                 <small><svg xmlns="http://www.w3.org/2000/svg" width="16px" className="mb-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                                    <path strokeLinecap="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                                                                     </svg><small className="ms-1">{item.hours}</small>
                                                                 </small>
                                                             </div>
                                                                 <small><svg xmlns="http://www.w3.org/2000/svg" width="16px" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                                                <path strokeLinecap="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                                                                 </svg><small className="ms-1">{item.like}</small></small>
                                                         </div>
                                                     </Card.Body>        
@@ -433,12 +433,12 @@ const activity = [
                                                         <div className="d-flex justify-content-between">
                                                             <div>
                                                                 <small><svg xmlns="http://www.w3.org/2000/svg" width="16px" className="mb-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                                    <path strokeLinecap="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                                                                     </svg><small className="ms-1">{item.hours}</small>
                                                                 </small>
                                                             </div>
                                                                 <small><svg xmlns="http://www.w3.org/2000/svg" width="16px" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                                                <path strokeLinecap="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                                                                 </svg><small className="ms-1">{item.like}</small></small>
                                                         </div>
                                                     </Card.Body>        
@@ -573,12 +573,12 @@ const activity = [
                                                             <div className="d-flex justify-content-between">
                                                                 <div>
                                                                     <small><svg xmlns="http://www.w3.org/2000/svg" width="16px" className="mb-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                                        <path strokeLinecap="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                                                                         </svg><small className="ms-1">{item.hours}</small>
                                                                     </small>
                                                                 </div>
                                                                     <small><svg xmlns="http://www.w3.org/2000/svg" width="16px" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                                                    <path strokeLinecap="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                                                                     </svg><small className="ms-1">{item.like}</small></small>
                                                             </div>
                                                         </Card.Body>        
@@ -611,12 +611,12 @@ const activity = [
                                                             <div className="d-flex justify-content-between">
                                                                 <div>
                                                                     <small><svg xmlns="http://www.w3.org/2000/svg" width="16px" className="mb-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                                        <path strokeLinecap="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                                                                         </svg><small className="ms-1">{item.hours}</small>
                                                                     </small>
                                                                 </div>
                                                                     <small><svg xmlns="http://www.w3.org/2000/svg" width="16px" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                                                    <path strokeLinecap="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                                                                     </svg><small className="ms-1">{item.like}</small></small>
                                                             </div>
                                                         </Card.Body>        
@@ -653,12 +653,12 @@ const activity = [
                                                             <div className="d-flex justify-content-between">
                                                                 <div>
                                                                     <small><svg xmlns="http://www.w3.org/2000/svg" width="12px" className="mb-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                                        <path strokeLinecap="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                                                                         </svg><small className="ms-1">{item.hours}</small>
                                                                     </small>
                                                                 </div>
                                                                     <small><svg xmlns="http://www.w3.org/2000/svg" width="12px" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                                                    <path strokeLinecap="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                                                                     </svg><small className="ms-1">{item.like}</small></small>
                                                             </div>
                                                         </Card.Body>        

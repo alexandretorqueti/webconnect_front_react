@@ -19,6 +19,7 @@
     }
   },
   "env": {
-    "browser": true  // add this line
+    "browser": true,
+    "node": true
   }
 }

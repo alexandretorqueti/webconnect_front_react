@@ -1,4 +1,4 @@
-import React from 'react'
+
 import {Card, Container, Row, Col, Button, Image} from 'react-bootstrap'
 
 //image

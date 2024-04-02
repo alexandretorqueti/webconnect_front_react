@@ -1,4 +1,3 @@
-import React from 'react'
 import { Row, Card, Container, Col, ListGroup, ListGroupItem , Button, CardGroup} from 'react-bootstrap'
 
 // image

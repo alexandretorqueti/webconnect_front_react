@@ -1,4 +1,4 @@
-import React from 'react'
+
 import {Card, Row, Col, Container, Form} from 'react-bootstrap'
 
 const FormSwitch = () => {

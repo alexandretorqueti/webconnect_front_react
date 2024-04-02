@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import {useState} from 'react'
 import {Row, Col, Container, Nav, Tab, Tooltip, OverlayTrigger, Button, Dropdown, Form} from 'react-bootstrap'
 import Card from '../../../components/Card'
 import {Link} from 'react-router-dom'
@@ -1728,7 +1728,7 @@ const Email = () => {
                                         <div className="col-sm-10">
                                             <select  id="cc" className="select2jsMultiSelect form-control" multiple="multiple">
                                             <option defaultValue="Brock Lee">Brock Lee</option>
-                                            <option defaultValue="Rick O'Shea">Rick O'Shea</option>
+                                            <option defaultValue="Rick O Shea">Rick O Shea</option>
                                             <option defaultValue="Cliff Hanger">Cliff Hanger</option>
                                             <option defaultValue="Barb Dwyer">Barb Dwyer</option>
                                             </select>

@@ -1,4 +1,4 @@
-import React from 'react'
+
 import {Row,Col,Image,Container,Button,Form} from 'react-bootstrap'
 import Card from '../../../components/Card'
 import {Link} from 'react-router-dom'
@@ -245,7 +245,7 @@ const BlogDetail =() => {
                                        </div>
                                     </div>
                                     <div className="blog-description">
-                                       <p>TThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
+                                       <p>TThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which Don t look even slightly believable.</p>
                                        <div className="d-flex align-items-center justify-content-between mb-2 position-right-side"> 
                                        <Link to="#" className="comments d-flex align-items-center"><i className="material-symbols-outlined pe-2 md-18 text-primary">
                                  mode_comment
@@ -276,7 +276,7 @@ const BlogDetail =() => {
                                        </div>
                                     </div>
                                     <div className="blog-description">
-                                       <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.randomised words which don't look even slightly believable variations of passages.</p>
+                                       <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.randomised words which Don t look even slightly believable variations of passages.</p>
                                        <div className="d-flex align-items-center justify-content-between mb-2 position-right-side"> 
                                        <Link to="#" className="comments d-flex align-items-center"><i className="material-symbols-outlined pe-2 md-18 text-primary">
                                  mode_comment

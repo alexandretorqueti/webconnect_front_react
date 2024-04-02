@@ -1,6 +1,6 @@
 // src/router/index.js
 
-import React from "react";
+
 import ProtectedRoute from "../components/ProtectedRouter";
 
 // Outras importações...

@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import {useState} from 'react'
 import {Row, Col, Container, Alert} from 'react-bootstrap'
 import Card from '../../../components/Card'
 
