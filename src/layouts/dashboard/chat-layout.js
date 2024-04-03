@@ -11,10 +11,9 @@ const ChatLayout = () => {
   return (
       <>
         <main className="main-content">
-            <Container fluid className="content-inner p-0" id="page_layout">
-          {/* <ChatRouter /> */}
+          <Container fluid className="content-inner p-0" id="page_layout">
           <Outlet/>
-            </Container>
+          </Container>
         </main>
       </>
   )

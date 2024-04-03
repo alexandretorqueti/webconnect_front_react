@@ -5,7 +5,7 @@ export class Pessoas
     constructor() {
         this.AjaxService = new AjaxService('pessoas/');
     }
-    async getUsuarioLogado() {
+    async getPessoaLogada() {
         return await this.AjaxService.get('api/pessoa_logada');
     }
     async getPessoasSemRelacao(pagina) {

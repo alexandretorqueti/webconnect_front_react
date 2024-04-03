@@ -7,7 +7,7 @@ const GlobalContext = createContext();
 
 export const GlobalProvider = ({ children }) => {
   const [socket, setSocket] = useState(null);
-  const [pessoaLogada, setPessoaLogada] = useState();
+  const [pessoa_logada, setPessoaLogada] = useState();
 
   const recebida = (mensagem) => {
     console.log('mensagem recebida', mensagem);
@@ -20,7 +20,7 @@ export const GlobalProvider = ({ children }) => {
   useEffect(() => {
     const PessoasService = new Pessoas();
     const run = async () => {
-      const pessoa_logada = await PessoasService.getUsuarioLogado();
+      const pessoa_logada = await PessoasService.getPessoaLogada();
       setPessoaLogada(pessoa_logada);
       if (pessoa_logada && pessoa_logada.id) {
         const newSocket = new Socket(
@@ -48,7 +48,7 @@ export const GlobalProvider = ({ children }) => {
   }, []);
 
   return (
-    <GlobalContext.Provider value={{ socket, pessoaLogada }}>
+    <GlobalContext.Provider value={{ socket, pessoa_logada }}>
       {children}
     </GlobalContext.Provider>
   );

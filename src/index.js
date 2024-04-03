@@ -28,13 +28,13 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Provider store={store}>
-      <GlobalProvider>
-        <App>
-          <RouterProvider router={router}>
-          </RouterProvider>
-        </App>
-      </GlobalProvider>
-    </Provider>
+    <GlobalProvider>
+      <Provider store={store}>
+          <App>
+            <RouterProvider router={router}>
+            </RouterProvider>
+          </App>
+      </Provider>
+    </GlobalProvider>
   </StrictMode>
 )

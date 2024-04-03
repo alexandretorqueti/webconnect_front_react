@@ -22,10 +22,11 @@ import CustomToggle from "../../../dropdowns";
 
 import SearchItem from "../../../SearchItem";
 import SuggestionsItem from "../../../SuggestionsItem";
-
+import { useGlobalContext } from '../../../../GlobalContext'
 import { Pessoas } from "../../../../services/Pessoas";
 
-const Header = ({ pessoa_logada }) => {
+const Header = () => {
+
   const minisidebar = () => {
     document.getElementsByTagName("ASIDE")[0].classList.toggle("sidebar-mini");
   };
@@ -34,7 +35,7 @@ const Header = ({ pessoa_logada }) => {
   const handleShow = () => setShow(true);
   const [pessoaLogada, setPessoaLogada] = useState({});
   const [pessoasSemRelacao, setPessoasSemRelacao] = useState([]);
-
+  const [pessoa_logada] = useState(useGlobalContext().pessoaLogada);
 
   useEffect(() => {
     const run = async () => {

@@ -29,7 +29,7 @@ const Index = () => {
     const [postAtual, setPostAtual] = useState(null);
     const PostPaginadoService = new PostPaginado();
     const IconesService = new Icones();
-    const { pessoa_logada } = useGlobalContext.pessoa_logada;
+    const { pessoa_logada } = useGlobalContext();
 
     
     const verificaVisibilidade = () => {
@@ -74,7 +74,7 @@ const Index = () => {
 
     useEffect(() => {
         const run = async () => {
-            const icones = await IconesService.get();
+            const icones = await IconesService.get();            
             setIcones(icones);
         }
         run();
