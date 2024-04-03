@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import {Form, Button} from 'react-bootstrap'
 import { useGlobalContext } from '../../../../GlobalContext';
 import './chat.css'
@@ -7,7 +7,7 @@ import './chat.css'
 
 const FormSendMessage = ({ pessoa, pessoa_logada }) => {
     const [message, setMessage] = useState('');
-    const { socket } = useGlobalContext();
+    const { socket, TIPOSMENSAGENS } = useGlobalContext();
     const handleSubmit = (e) => {
         
 
@@ -22,7 +22,7 @@ const FormSendMessage = ({ pessoa, pessoa_logada }) => {
                 message: message,
                 pessoa_id_from: pessoa_logada.id,
                 pessoa_id_to: pessoa.id,
-                type: 'private'
+                tipo: TIPOSMENSAGENS.MENSAGEM_ENTRE_USUARIOS
             }
         )
         
