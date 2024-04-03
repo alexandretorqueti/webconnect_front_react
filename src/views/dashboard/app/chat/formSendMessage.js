@@ -5,7 +5,7 @@ import { useGlobalContext } from '../../../../GlobalContext';
 import './chat.css'
 
 
-const FormSendMessage = () => {
+const FormSendMessage = ({ pessoa, pessoa_logada }) => {
     const [message, setMessage] = useState('');
     const { socket } = useGlobalContext();
     const handleSubmit = (e) => {
@@ -20,9 +20,9 @@ const FormSendMessage = () => {
         socket.tenta_enviar(
             {
                 message: message,
-                pessoa_id_from: 1,
-                pessoa_id_to: 2,
-                type: 'chat'
+                pessoa_id_from: pessoa_logada.id,
+                pessoa_id_to: pessoa.id,
+                type: 'private'
             }
         )
         
