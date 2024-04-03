@@ -16,11 +16,8 @@ function App(props) {
   const dispatch = useDispatch()
   dispatch(setSetting())
 
-  // Socket
-  // const socket = new Socket({
   return (
     <div className="App">
-      {/* <IndexRouters /> */}
       {props.children}
     </div>
   );

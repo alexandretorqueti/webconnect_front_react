@@ -45,7 +45,7 @@ export class Socket {
         console.log(`Conectando à sala ${this.id} do tipo ${this.type}... (${this.timeStamp})`);
         this.socket.onmessage = (e) => {
           const data = JSON.parse(e.data);
-          console.log(`mensagem [${data.message}] em ${this.type}/${this.id} ${this.timeStamp}`);
+          console.log(`onmessage [${data.message}] em ${this.type}/${this.id} ${this.timeStamp}`);
           this.recebida(data);
         };
         // Aqui preciso verificar se ela foi fechada propositalmente ou por erro
@@ -86,13 +86,13 @@ export class Socket {
      * Envia a mensagem para o servidor.
      * @param {string} data - Dados da mensagem a ser enviada.
      */
-  envia(data) {
-    try {
-      const data = this.pega_mensagem_da_fila();
-      this.socket.send(data);
-      console.log(`Mensagem enviada (${JSON.parse(data).message}) no chat ${this.id} do tipo ${this.type}! (${this.timeStamp})`);
+  envia() {
+    const d = this.pega_mensagem_da_fila();
+    try {      
+      this.socket.send(d);
+      console.log(`Mensagem enviada (${JSON.parse(d).message}) no chat ${this.id} do tipo ${this.type}! (${this.timeStamp})`);
     } catch (e) {
-      this.recoloca_mensagem_na_fila(data);
+      this.recoloca_mensagem_na_fila(d);
       this.tentativas = 0;
       this.conectar();
     }

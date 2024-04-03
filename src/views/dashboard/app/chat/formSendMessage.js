@@ -9,14 +9,10 @@ const FormSendMessage = ({ pessoa, pessoa_logada }) => {
     const [message, setMessage] = useState('');
     const { socket, TIPOSMENSAGENS } = useGlobalContext();
     const handleSubmit = (e) => {
-        
-
         e.preventDefault();
-
         if (message.trim() === '') {
             return;
         }
-
         socket.tenta_enviar(
             {
                 message: message,
@@ -25,7 +21,6 @@ const FormSendMessage = ({ pessoa, pessoa_logada }) => {
                 tipo: TIPOSMENSAGENS.MENSAGEM_ENTRE_USUARIOS
             }
         )
-        
         console.log('Mensagem enviada:', message);
         setMessage('');
     };

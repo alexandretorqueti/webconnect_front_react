@@ -33,14 +33,11 @@ const Header = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const [pessoaLogada, setPessoaLogada] = useState({});
+  const { pessoaLogada } = useGlobalContext();
   const [pessoasSemRelacao, setPessoasSemRelacao] = useState([]);
-  const [pessoa_logada] = useState(useGlobalContext().pessoaLogada);
-
+  
   useEffect(() => {
     const run = async () => {
-      setPessoaLogada(pessoa_logada);
-
       const localPessoasSemRelacao = await (new Pessoas()).getPessoasSemRelacao(1);
       setPessoasSemRelacao(localPessoasSemRelacao);
     }

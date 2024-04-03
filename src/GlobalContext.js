@@ -1,5 +1,5 @@
 // SocketContext.js
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState, useRef } from 'react';
 import { Socket } from './services/Socket';
 import { Pessoas } from './services/Pessoas';
 
@@ -25,15 +25,10 @@ const MENSAGENS = {
 export const GlobalProvider = ({ children }) => {
   const [socket, setSocket] = useState(null);
   const [pessoa_logada, setPessoaLogada] = useState();
-
-  const recebida = (mensagem) => {
-    console.log('mensagem recebida', mensagem);
-  }
-
-  useEffect(() => {
-    console.log('socket', socket);
-  }, [socket]);
-
+  const fnEnviarMensagemRef = useRef();
+  const setFnEnviarMensagem = (novaFn) => {
+    fnEnviarMensagemRef.current = novaFn;
+  };
   useEffect(() => {
     const PessoasService = new Pessoas();
     const run = async () => {
@@ -46,26 +41,17 @@ export const GlobalProvider = ({ children }) => {
             type: 'private',
             wsScheme: window.location.protocol === 'https:' ? 'wss' : 'ws',
             pessoaLogadaId: pessoa_logada.id, 
-            recebida: (mensagem) => recebida(mensagem),
+            recebida: (data) => fnEnviarMensagemRef.current(data),
             userId: pessoa_logada.id,
             });
         setSocket(newSocket);
       }
     };
-
     run();
-
-    return () => {
-      // Verifica se o socket existe antes de tentar desconectar
-      if (socket) {
-        socket.close();
-      }
-    };
-    
   }, []);
 
   return (
-    <GlobalContext.Provider value={{ socket, pessoa_logada, TIPOSMENSAGENS, MENSAGENS }}>
+    <GlobalContext.Provider value={{ socket, pessoa_logada, TIPOSMENSAGENS, MENSAGENS, fnEnviarMensagem: fnEnviarMensagemRef.current, setFnEnviarMensagem  }}>
       {children}
     </GlobalContext.Provider>
   );
