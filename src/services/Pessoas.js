@@ -14,5 +14,12 @@ export class Pessoas
     async getPessoasComRelacao() {
         return await this.AjaxService.get('api/pessoas_com_relacao');
     }
+    async Login(username, password) {
+        const sendToken = false;
+        return await this.AjaxService.postJson('api-token-auth', {
+            username,
+            password
+        }, sendToken);
+    }
 }
 

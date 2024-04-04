@@ -71,7 +71,7 @@ const Index = () => {
         }
         await run();
     }
-
+    
     useEffect(() => {
         const run = async () => {
             const icones = await IconesService.get();            
@@ -86,6 +86,8 @@ const Index = () => {
         } else {
             setLarguraColunaDoMeio(10);
         }
+
+        
     }, []);
 
     useEffect(() => {

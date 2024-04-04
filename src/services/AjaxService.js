@@ -24,7 +24,7 @@ export class AjaxService {
                 credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Basic ' + this.token
+                    'Authorization': 'Bearer ' + this.token
                 },
             });
             return await response.json();
@@ -33,15 +33,18 @@ export class AjaxService {
             return null;
         }
     }
-    async postJson(endPoint, body = {}) {
+    async postJson(endPoint, body = {}, sendToken = true) {
+        const headers = {
+            'Content-Type': 'application/json',
+        };
+        if (sendToken) {
+            headers['Authorization'] = 'Bearer ' + this.token;
+        }
         try {
             const response = await fetch(this.enderecoBase + this.app + endPoint, {
                 method: 'POST',
                 credentials: 'include',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Basic ' + this.token
-                },
+                headers: headers,
                 body: JSON.stringify(body)
             });
             if (!response.ok) {
@@ -61,7 +64,7 @@ export class AjaxService {
                 credentials: 'include',
                 body: formData,
                 headers: {
-                    'Authorization': 'Basic ' + this.token
+                    'Authorization': 'Bearer ' + this.token
                 }
             });
 
@@ -83,7 +86,7 @@ export class AjaxService {
                 credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Basic ' + this.token
+                    'Authorization': 'Bearer ' + this.token
                 },
             });
             return response.json();

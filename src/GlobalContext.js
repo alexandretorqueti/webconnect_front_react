@@ -29,6 +29,7 @@ export const GlobalProvider = ({ children }) => {
   const setFnEnviarMensagem = (novaFn) => {
     fnEnviarMensagemRef.current = novaFn;
   };
+  
   useEffect(() => {
     const PessoasService = new Pessoas();
     const run = async () => {
@@ -51,7 +52,16 @@ export const GlobalProvider = ({ children }) => {
   }, []);
 
   return (
-    <GlobalContext.Provider value={{ socket, pessoa_logada, TIPOSMENSAGENS, MENSAGENS, fnEnviarMensagem: fnEnviarMensagemRef.current, setFnEnviarMensagem  }}>
+    <GlobalContext.Provider value={
+        { 
+          socket, 
+          pessoa_logada, 
+          TIPOSMENSAGENS, 
+          MENSAGENS, 
+          fnEnviarMensagem: fnEnviarMensagemRef.current, 
+          setFnEnviarMensagem  
+        }
+      }>
       {children}
     </GlobalContext.Provider>
   );

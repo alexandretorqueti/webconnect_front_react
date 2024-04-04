@@ -1,21 +1,13 @@
 import { useEffect, useState } from 'react'
 import {Card} from 'react-bootstrap'
 import PessoaLogada from '../../../pessoas/Pessoa'
-
+import { Pessoas } from '../../../../services/Pessoas'
 const RightSidebar = () => {
     const [pessoas, setPessoas] = useState([]);
-    
+    const PessoasService = new Pessoas();
     const carregaDados = async () => {
         try {
-            const response = await fetch('http://localhost:8000/pessoas/api/pessoas_com_relacao', {
-                method: 'GET',
-                credentials: 'include',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Basic ' + localStorage.getItem('token')
-                }
-            });
-            const data = await response.json();
+            const data = await PessoasService.getPessoasComRelacao();
             setPessoas(data);
         } catch (error) {
             console.error('Erro:', error);

@@ -16,6 +16,7 @@ import logo from '../../../assets/images/logo-full.png'
 import login1 from '../../../assets/images/login/1.png'
 import login2 from '../../../assets/images/login/2.png'
 import login3 from '../../../assets/images/login/3.png'
+import { Pessoas } from '../../../services/Pessoas';
 
 // install Swiper modules
 SwiperCore.use([Navigation, Autoplay]);
@@ -27,36 +28,25 @@ const SignIn = () => {
    const [password, setPassword] = useState('');
    const [erro, setErro] = useState('');
    const [mensagem, setMensagem] = useState('');
-
+   const PessoasService = new Pessoas();
    // Função para lidar com o envio do formulário
    const handleSignIn = async (e) => {
        e.preventDefault(); // Evita o recarregamento da página
        setErro('');
        setMensagem('');
-       try {
-           const response = await fetch('http://localhost:8000/api-token-auth/', {
-               method: 'POST',
-               headers: {
-                   'Content-Type': 'application/json',
-               },
-               body: JSON.stringify({
-                   username : email,
-                   password,
-               }),
-           });
-
-           if (!response.ok) {
-               throw new Error('Não foi possível autenticar com os dados fornecidos');
-           }
-           setMensagem('Logado com sucesso');
-           const data = await response.json();
-           localStorage.setItem('token', data.token);
-           
-           navigate('/');
-       } catch (error) {
-         setErro(error.message)
-         console.error(error);
+       const run = async () => {
+         try {
+            const data = await PessoasService.Login(email, password);
+            setMensagem('Logado com sucesso');
+            localStorage.setItem('token', data.token);
+            
+            navigate('/');
+         } catch (error) {
+            setErro(error.message)
+            console.error(error);
+         }
        }
+       run();
    };
    // let history =useNavigate()
    return (
