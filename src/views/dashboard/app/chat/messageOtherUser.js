@@ -3,7 +3,7 @@ import './chat.css'
 
 const MessageOtherUserComponent = ({ mensagem, pessoa }) => {
     return (
-        <div className="chat d-flex other-user">
+    <div className="chat d-flex other-user">
         <div className="chat-user">
             <Link className="avatar m-0" to="">
                 <img loading="lazy" src={pessoa.foto_url} alt="avatar" className="avatar-35 "/>

@@ -1,6 +1,6 @@
-import {useState} from 'react'
-import {Link} from 'react-router-dom'
-import {Tab, Button,Dropdown} from 'react-bootstrap'
+import { useState, useRef } from 'react'
+import { Link } from 'react-router-dom'
+import { Tab, Button,Dropdown } from 'react-bootstrap'
 import CustomToggle from '../../../../components/dropdowns'
 
 import './chat.css'
@@ -10,6 +10,9 @@ import FormSendMessage from './formSendMessage'
 
 function MessagesComponent({ pessoa, pessoa_logada }) {
   const [showDetail, setShowDetail] = useState(false)
+  const [mensagens, setMensagens] = useState(null);
+  const divMensagensRef = useRef(null);
+  
   return (
     <Tab.Pane  eventKey="chat"  className="fade show active" id="chatbox"  role="tabpanel">
         <div className="chat-head">
@@ -68,7 +71,7 @@ function MessagesComponent({ pessoa, pessoa_logada }) {
                 </div>
             </header>
         </div>
-        <ContentChat pessoa={pessoa} pessoa_logada={pessoa_logada}></ContentChat>
+        <ContentChat pessoa={pessoa} pessoa_logada={pessoa_logada} mensagens={mensagens} setMensagens={setMensagens} divMensagensRef={divMensagensRef} ></ContentChat>
         <FormSendMessage pessoa={pessoa} pessoa_logada={pessoa_logada}></FormSendMessage>
     </Tab.Pane>  );
 }

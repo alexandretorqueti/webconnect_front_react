@@ -21,7 +21,6 @@ const FormSendMessage = ({ pessoa, pessoa_logada }) => {
                 tipo: TIPOSMENSAGENS.MENSAGEM_ENTRE_USUARIOS
             }
         )
-        console.log('Mensagem enviada:', message);
         setMessage('');
     };
 

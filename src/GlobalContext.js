@@ -25,9 +25,9 @@ const MENSAGENS = {
 export const GlobalProvider = ({ children }) => {
   const [socket, setSocket] = useState(null);
   const [pessoa_logada, setPessoaLogada] = useState({});
-  const fnEnviarMensagemRef = useRef();
-  const setFnEnviarMensagem = (novaFn) => {
-    fnEnviarMensagemRef.current = novaFn;
+  const fnReceberMensagemRef = useRef({ current: () => {} } );
+  const setFnReceberMensagem = (novaFn) => {
+    fnReceberMensagemRef.current = novaFn;
   };
   
   useEffect(() => {
@@ -42,7 +42,10 @@ export const GlobalProvider = ({ children }) => {
             type: 'private',
             wsScheme: window.location.protocol === 'https:' ? 'wss' : 'ws',
             pessoaLogadaId: pessoa_logada.id, 
-            recebida: (data) => fnEnviarMensagemRef.current(data),
+            recebida: (data) => {
+              if (fnReceberMensagemRef.current && typeof fnReceberMensagemRef.current === 'function')
+                fnReceberMensagemRef.current(data)
+            },
             userId: pessoa_logada.id,
             });
         setSocket(newSocket);
@@ -58,8 +61,8 @@ export const GlobalProvider = ({ children }) => {
           pessoa_logada, 
           TIPOSMENSAGENS, 
           MENSAGENS, 
-          fnEnviarMensagem: fnEnviarMensagemRef.current, 
-          setFnEnviarMensagem  
+          fnReceberMensagem: fnReceberMensagemRef.current, 
+          setFnReceberMensagem: setFnReceberMensagem  
         }
       }>
       {children}
