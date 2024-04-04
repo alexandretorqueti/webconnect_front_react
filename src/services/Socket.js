@@ -41,6 +41,7 @@ export class Socket {
         const wsScheme = window.location.protocol === 'https:' ? 'wss' : 'ws';
         let url = `${wsScheme}://${window.location.host}/ws/chat/${this.type}/${this.id}/${this.pessoaLogadaId}/`;
         url = url.replace('3000', '8000');
+        console.log('Url: ' + url);
         this.socket = new WebSocket(url);
         console.log(`Conectando à sala ${this.id} do tipo ${this.type}... (${this.timeStamp})`);
         this.socket.onmessage = (e) => {

@@ -24,7 +24,7 @@ const MENSAGENS = {
 
 export const GlobalProvider = ({ children }) => {
   const [socket, setSocket] = useState(null);
-  const [pessoa_logada, setPessoaLogada] = useState();
+  const [pessoa_logada, setPessoaLogada] = useState({});
   const fnEnviarMensagemRef = useRef();
   const setFnEnviarMensagem = (novaFn) => {
     fnEnviarMensagemRef.current = novaFn;

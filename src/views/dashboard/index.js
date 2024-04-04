@@ -12,7 +12,7 @@ import loader from '../../assets/images/page-img/page-load-loader.gif'
 import { PostPaginado, Icones } from '../../services/RedeSocial'
 import { useEffect, useState, useRef } from 'react'
 import { useGlobalContext } from '../../GlobalContext'
-
+import { useNavigate } from 'react-router-dom'
 const Index = () => {
     const [posts, setPosts] = useState([]);
     const [isVisible, setIsVisible] = useState(false);
@@ -71,7 +71,7 @@ const Index = () => {
         }
         await run();
     }
-    
+    const navigate = useNavigate();
     useEffect(() => {
         const run = async () => {
             const icones = await IconesService.get();            
@@ -87,7 +87,9 @@ const Index = () => {
             setLarguraColunaDoMeio(10);
         }
 
-        
+        if (!pessoa_logada) {
+            navigate('/auth/sign-in');
+        }
     }, []);
 
     useEffect(() => {
