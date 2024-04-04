@@ -5,8 +5,8 @@ export class Mensagens
     constructor() {
         this.AjaxService = new AjaxService('mensagens/');
     }
-    async getMensagensUsuario(pessoaId) {
-        return await this.AjaxService.get('api/mensagensPessoa/' + pessoaId);
+    async getMensagensUsuario(pessoaId, pagina) {
+        return await this.AjaxService.get('api/mensagensPessoa/' + pessoaId + '/' + pagina);
     }
     
 }
