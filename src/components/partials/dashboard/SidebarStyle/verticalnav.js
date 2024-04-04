@@ -295,7 +295,8 @@ const VerticalNav = React.memo(() => {
                     </Link>
                 </li>
                 <Nav.Item as="li">
-                    <Link className={`${location.pathname === '/dashboard/app/file' ? 'active' : ''} nav-link `} aria-current="page" to="/dashboard/app/file">
+                    <Link className={`${location.pathname === '/dashboard/app/file' ? 'active' : ''} nav-link `} 
+                    aria-current="page" to="/dashboard/app/file">
                         <OverlayTrigger placement="right" overlay={<Tooltip>Files</Tooltip>}>
                         <i className="icon material-symbols-outlined">
                            insert_drive_file
@@ -305,7 +306,10 @@ const VerticalNav = React.memo(() => {
                     </Link>
                 </Nav.Item>
                 <Nav.Item as="li">
-                    <Link className={`${location.pathname === '/chat/index' ? 'active' : ''} nav-link `} aria-current="page" to="/chat/index" target='_blank noopener,noreferrer'>
+                    <Link 
+                        className={`${location.pathname === '/chat/index' ? 'active' : ''} nav-link `} 
+                        aria-current="page" to="/chat/index" 
+                        >
                         <OverlayTrigger placement="right" overlay={<Tooltip>Chat</Tooltip>}>
                         <i className="icon material-symbols-outlined">
                             message

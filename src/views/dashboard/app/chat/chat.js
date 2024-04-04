@@ -25,6 +25,11 @@ const Chat=()=>{
         }
         run();
     }, []);
+
+    // Usando React para voltar para raiz do site
+    const redirecionaParaHome = () => {
+        window.location.href = '/';
+    }
     
     return(
         (pessoa_logada) &&
@@ -33,11 +38,17 @@ const Chat=()=>{
                 <Col sm="12">
                     <Card>
                         <Card.Body className="chat-page p-0">
-                            <div className="chat-data-block">
+                        <div className="chat-data-block">
                                 <Row>
                                     <Col lg="3" className="chat-data-left scroller">
                                         <div className="chat-search pt-3 ps-3">
-                                            <div className="d-flex align-items-center" onClick={() => setShow1('true')} style={{ 'cursor':'pointer' }}>
+                                            
+                                            <Row>
+                                                <Col lg="1">
+                                                <i className="ri-arrow-go-back-line" onClick={redirecionaParaHome}></i>
+                                                </Col>    
+                                                <Col lg="1">
+                                                <div className="d-flex align-items-center" onClick={() => setShow1('true')} style={{ 'cursor':'pointer' }}>
                                                 <div className="chat-profile me-3">
                                                     <img loading="lazy" src={pessoa_logada.foto_url} alt="chat-user" className="avatar-60 "/>
                                                 </div>
@@ -47,8 +58,11 @@ const Chat=()=>{
                                                     <p key={area.id} className="m-0">{area.nome}</p>
                                                     )}
                                                 </div>
-                                            </div>
-                                            <div id="user-detail-popup" className={`scroller ${show1 === 'true' ? 'show' : '' }`}>
+                                                </div>
+
+                                                </Col> 
+                                                <Col lg="4">   
+                                                <div id="user-detail-popup" className={`scroller ${show1 === 'true' ? 'show' : '' }`}>
                                                 <div className="user-profile">
                                                     <Button type="submit" variant=" close-popup p-3"><i className="material-symbols-outlined md-18" onClick={() => setShow1('false')}>close</i></Button>
                                                     <div className="user text-center mb-4">
@@ -86,14 +100,19 @@ const Chat=()=>{
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="chat-searchbar mt-4">
-                                                <Form.Group className="form-group chat-search-data m-0">
-                                                    <input type="text" className="form-control round" id="chat-search" placeholder="Search"/>
-                                                        <i className="material-symbols-outlined">
-                                                            search
-                                                        </i>
-                                                </Form.Group>
-                                            </div>
+                                                </Col>    
+                                                <Col lg="6">
+                                                    <div className="chat-searchbar mt-4">
+                                                        <Form.Group className="form-group chat-search-data m-0">
+                                                            <input type="text" className="form-control round" id="chat-search" placeholder="Search"/>
+                                                                <i className="material-symbols-outlined">
+                                                                    search
+                                                                </i>
+                                                        </Form.Group>
+                                                    </div>
+                                                </Col>    
+                                            </Row>
+                                           
                                         </div>
                                         <div className="chat-sidebar-channel scroller mt-4 ps-3">
                                         <h5 className="mt-3">Direct Message</h5>
