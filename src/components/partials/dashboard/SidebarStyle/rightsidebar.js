@@ -80,7 +80,7 @@ const RightSidebar = () => {
         setInterval(() => {
             const localTick = tickRef.current;
             setTick(localTick + 1);
-            if (localTick % 300 === 0) {
+            if (tickRef.current % 300 === 0) {
                 const minuto_local = minutoRef.current;
                 setMinuto(minuto_local + 1);
             }
