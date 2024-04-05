@@ -8,48 +8,52 @@ import { useGlobalContext } from '../../../../GlobalContext';
 import  { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 
-function ContentChatComponent({ pessoa, pessoa_logada, mensagens, setMensagens, divMensagensRef }) {
-    const { setFnReceberMensagem: setFnReceberMensagem } = useGlobalContext();
+function ContentChatComponent({ pessoa, pessoa_logada, divMensagensRef }) {
+    const { mensagens, TIPOSMENSAGENS } = useGlobalContext();
+
     const [pagina, setPagina] = useState(1);
     const [continua, setContinua] = useState(true);
+    const [posicaoMensagem, setPosicaoMensagem] = useState(0);
+    const [mensagens_chat, setMensagensChat] = useState([]);
 
-    const fnReceber = ({id, message, pessoa_id_to}, msg) => {
-        if (msg.filter(m => m.id === id).length === 0) {
-            const newMessagem = {
-                id: id,
-                mensagem: message,
-                data: 'now',
-                destinatario: pessoa_id_to,
+    useEffect(() => {
+        let posicao = posicaoMensagem;
+        while (mensagens[posicao])
+        {
+            const mensagemAtual = mensagens[posicao];
+            if (mensagemAtual['tipo'] === TIPOSMENSAGENS.MENSAGEM_ENTRE_USUARIOS) {
+                if (mensagemAtual.pessoa_id_to === pessoa_logada.id)
+                {
+                    const { id, message, pessoa_id_to } = mensagemAtual;
+                    const newMessagem = {
+                        id: id,
+                        mensagem: message,
+                        data: 'now',
+                        destinatario: pessoa_id_to,
+                    }
+                    const msgLocal = [...mensagens_chat, newMessagem];
+                    setMensagensChat(msgLocal);
+                    setTimeout(() => {
+                        divMensagensRef.current.scrollTop = divMensagensRef.current.scrollHeight;
+                    }
+                    , 100);
+                }
             }
-            const msgLocal = [...msg, newMessagem]
-            setMensagens(msgLocal);
 
-            setFnReceberMensagem((data) => fnReceber(data, msgLocal));
-            setTimeout(() => {
-                divMensagensRef.current.scrollTop = divMensagensRef.current.scrollHeight;
-            }, 100);
+            posicao++;
+            setPosicaoMensagem(posicao);
         }
-    }
+    }, [mensagens.length]);
+
     useEffect(() => {
         const MensagensService = new Mensagens();
         const run = async () => {
             const { pagina_de_mensagens, tem_outra } = await MensagensService.getMensagensUsuario(pessoa.id, pagina);
-            setMensagens(pagina_de_mensagens);
+            setMensagensChat(pagina_de_mensagens);
             setContinua(tem_outra);
-            let element = divMensagensRef.current;
-            const parentDivs = [];
-    
-            while (element.parentNode) {
-                element = element.parentNode;
-                if (element.tagName === 'DIV') {
-                    parentDivs.push(element);
-                }
-            }
-            parentDivs.forEach(div => div.style.overflow = 'hidden');
             setTimeout(() => {
                 divMensagensRef.current.scrollTop = divMensagensRef.current.scrollHeight;
             }, 100);
-    
         }
         run();
     }, [pessoa]);
@@ -60,15 +64,11 @@ function ContentChatComponent({ pessoa, pessoa_logada, mensagens, setMensagens, 
         setPagina(localPagina);
         const { pagina_de_mensagens, tem_outra } = await MensagensService.getMensagensUsuario(pessoa.id, localPagina);
         setContinua(tem_outra);
-        setMensagens([...pagina_de_mensagens,...mensagens]);
+        setMensagensChat([...pagina_de_mensagens,...mensagens_chat]);
         setTimeout(() => {
             divMensagensRef.current.scrollTo({ top: 0, behavior: 'smooth' })
         }, 100);
     }
-
-    useEffect(() => {
-        setFnReceberMensagem((data) => fnReceber(data, mensagens));
-    }, [mensagens, divMensagensRef]);
 
     return (
     <div ref={divMensagensRef} className="chat-content scroller" style={{ 'overscrollBehavior': 'none' }}>
@@ -79,7 +79,7 @@ function ContentChatComponent({ pessoa, pessoa_logada, mensagens, setMensagens, 
             </span>
         </OverlayTrigger>
         }
-        {mensagens && mensagens.map((mensagem) =>
+        {mensagens_chat && mensagens_chat.map((mensagem) =>
             pessoa_logada.id === mensagem.destinatario ?
             <MessageOtherUser key={mensagem.id} mensagem={mensagem} pessoa={pessoa}></MessageOtherUser> :
             <MessageLocalUser key={mensagem.id} mensagem={mensagem} pessoa={pessoa_logada}></MessageLocalUser>

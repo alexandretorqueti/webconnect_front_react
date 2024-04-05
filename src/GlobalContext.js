@@ -1,5 +1,5 @@
 // SocketContext.js
-import { createContext, useContext, useEffect, useState, useRef } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { Socket } from './services/Socket';
 import { Pessoas } from './services/Pessoas';
 
@@ -25,12 +25,11 @@ const MENSAGENS = {
 export const GlobalProvider = ({ children }) => {
   const [socket, setSocket] = useState(null);
   const [pessoa_logada, setPessoaLogada] = useState({});
-  const fnReceberMensagemRef = useRef({ current: () => {} } );
-  const setFnReceberMensagem = (novaFn) => {
-    fnReceberMensagemRef.current = novaFn;
-  };
-  
+  const [mensagens, setMensagens] = useState([]);
+  const [mensagem, setMensagem] = useState({});
+
   useEffect(() => {
+    
     const PessoasService = new Pessoas();
     const run = async () => {
       const pessoa_logada = await PessoasService.getPessoaLogada();
@@ -42,9 +41,8 @@ export const GlobalProvider = ({ children }) => {
             type: 'private',
             wsScheme: window.location.protocol === 'https:' ? 'wss' : 'ws',
             pessoaLogadaId: pessoa_logada.id, 
-            recebida: (data) => {
-              if (fnReceberMensagemRef.current && typeof fnReceberMensagemRef.current === 'function')
-                fnReceberMensagemRef.current(data)
+            recebida: function(msg) { 
+              setMensagem(msg);
             },
             userId: pessoa_logada.id,
             });
@@ -54,6 +52,19 @@ export const GlobalProvider = ({ children }) => {
     run();
   }, []);
 
+  // Cada mensagem recebida é processada aqui e enviada para o componente que precisa
+  
+  useEffect(() => {
+    const centralDeMensagens = () => {
+      const mensagens_local = [...mensagens, mensagem];
+      setMensagens(mensagens_local);
+    };
+    const run = () => {
+      centralDeMensagens();
+    };
+    run();
+  }, [mensagem]);
+
   return (
     <GlobalContext.Provider value={
         { 
@@ -61,8 +72,7 @@ export const GlobalProvider = ({ children }) => {
           pessoa_logada, 
           TIPOSMENSAGENS, 
           MENSAGENS, 
-          fnReceberMensagem: fnReceberMensagemRef.current, 
-          setFnReceberMensagem: setFnReceberMensagem  
+          mensagens,
         }
       }>
       {children}

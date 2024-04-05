@@ -1,8 +1,12 @@
-import { useEffect, useState } from 'react'
-import {Card} from 'react-bootstrap'
-import PessoaLogada from '../../../pessoas/Pessoa'
-import { Pessoas } from '../../../../services/Pessoas'
+import { useEffect, useState } from 'react';
+import {Card} from 'react-bootstrap';
+import PessoaLogada from '../../../pessoas/Pessoa';
+import { Pessoas } from '../../../../services/Pessoas';
+import { useGlobalContext } from '../../../../GlobalContext';
+
 const RightSidebar = () => {
+    const { mensagens, TIPOSMENSAGENS, MENSAGENS } = useGlobalContext();
+    const [posicaoMensagem, setPosicaoMensagem] = useState(0);
     const [pessoas, setPessoas] = useState([]);
     const PessoasService = new Pessoas();
     const carregaDados = async () => {
@@ -13,6 +17,34 @@ const RightSidebar = () => {
             console.error('Erro:', error);
         }
     }
+
+    useEffect(() => {
+        let posicao = posicaoMensagem;
+        while (mensagens[posicao])
+        {
+            const mensagemAtual = mensagens[posicao];
+            if (mensagemAtual['tipo'] === TIPOSMENSAGENS.EVENTOS_DO_CHAT) {
+                const { pessoa_id_from, message } = mensagemAtual;
+                if (message === MENSAGENS.USUARIO_OFFLINE || message === MENSAGENS.USUARIO_ONLINE) {
+                    const pessoa = pessoas.find(pessoa => pessoa.id == pessoa_id_from);
+                    if (pessoa) {
+                        const pessoas_local = pessoas.map(p => {
+                            if (p.id == pessoa_id_from) {
+                                p.status_online = message === MENSAGENS.USUARIO_ONLINE ? true : false;
+                                if (p.status_online) {
+                                    p.hora_ultimo_login_humanizada = 'agora';
+                                }
+                            }
+                            return p;
+                        });
+                        setPessoas(pessoas_local);
+                    }
+                }
+            }
+            posicao++;
+            setPosicaoMensagem(posicao);
+        }
+    }, [mensagens.length]);
 
     useEffect(() => {
         carregaDados();
