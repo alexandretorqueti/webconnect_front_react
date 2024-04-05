@@ -3,8 +3,10 @@ import { useEffect, useState } from 'react';
 import Menu from '../../../Menu';
 import { Comentarios, CurtidasComentarios } from '../../../../services/RedeSocial';
 import ModalConfirm from '../../../ModalConfirm';
+import { useGlobalContext } from '../../../../GlobalContext';
 
 function ComentarioComponent({ comentario , setDeleteComentario, setMinhaCurtidaComentario}) {
+    const { pessoa_logada } = useGlobalContext();
     const [itens, setItens] = useState([]);
     const [show, setShow] = useState(false);
     
@@ -57,7 +59,7 @@ function ComentarioComponent({ comentario , setDeleteComentario, setMinhaCurtida
                     </div>
                 </div>
             </div>
-            <Menu itens={itens} />
+            {pessoa_logada && pessoa_logada.id === comentario.pessoa_fisica.id && <Menu itens={itens} />}
             <ModalConfirm 
                 show={show} 
                 setShow={setShow} 

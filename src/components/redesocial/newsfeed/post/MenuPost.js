@@ -1,8 +1,10 @@
 import  { useState, useEffect } from 'react';
 import Menu  from '../../../Menu';
 import { PostPaginado } from '../../../../services/RedeSocial';
+import { useGlobalContext } from '../../../../GlobalContext';   
 
 function MenuPostComponent({post, setPostAtual}) {
+    const { pessoa_logada } = useGlobalContext();
     const [itens, setItens] = useState([]);
     const action = () => {
         alert('Action');
@@ -84,8 +86,9 @@ function MenuPostComponent({post, setPostAtual}) {
         }]);
     }, []);
 
+
     return (
-        <Menu itens={itens} />
+        (pessoa_logada && pessoa_logada.id === post.pessoa_fisica.id) && <Menu itens={itens} />
     );
 }
 
