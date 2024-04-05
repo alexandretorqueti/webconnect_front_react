@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef} from 'react';
 import {Card} from 'react-bootstrap';
 import PessoaLogada from '../../../pessoas/Pessoa';
 import { Pessoas } from '../../../../services/Pessoas';
+import { Mensagens } from '../../../../services/Mensagens';
 import { useGlobalContext } from '../../../../GlobalContext';
 
 const RightSidebar = () => {
@@ -9,6 +10,10 @@ const RightSidebar = () => {
     const [posicaoMensagem, setPosicaoMensagem] = useState(0);
     const [pessoas, setPessoas] = useState([]);
     const PessoasService = new Pessoas();
+    const [tick, setTick] = useState(0);
+    const [minuto, setMinuto] = useState(0);
+    const minutoRef = useRef(minuto);
+    const tickRef = useRef(tick);
     const carregaDados = async () => {
         try {
             const data = await PessoasService.getPessoasComRelacao();
@@ -28,7 +33,7 @@ const RightSidebar = () => {
                 if (message === MENSAGENS.USUARIO_OFFLINE || message === MENSAGENS.USUARIO_ONLINE) {
                     const pessoa = pessoas.find(pessoa => pessoa.id == pessoa_id_from);
                     if (pessoa) {
-                        const pessoas_local = pessoas.map(p => {
+                        const pessoas_local = [...pessoas].map(p => {
                             if (p.id == pessoa_id_from) {
                                 p.status_online = message === MENSAGENS.USUARIO_ONLINE ? true : false;
                                 if (p.status_online) {
@@ -45,9 +50,41 @@ const RightSidebar = () => {
             setPosicaoMensagem(posicao);
         }
     }, [mensagens.length]);
+    const MensagensService = new Mensagens();
+    
+
+    useEffect(() => {
+        const pessoas_local = [...pessoas];
+        const run = async () => {
+            for (const p of pessoas_local) {
+                if (p.hora_ultimo_login) {
+                    const result = await MensagensService.getDiff(p.hora_ultimo_login);
+                    if (result.diferenca) {
+                        p.hora_ultimo_login_humanizada = result.diferenca;
+                    }
+                }
+            }
+            setPessoas(pessoas_local);
+        }
+        run();
+
+    }, [minuto]);
+
+    useEffect(() => {
+        minutoRef.current = minuto;
+        tickRef.current = tick;
+    }, [minuto, tick]);
 
     useEffect(() => {
         carregaDados();
+        setInterval(() => {
+            const localTick = tickRef.current;
+            setTick(localTick + 1);
+            if (localTick % 300 === 0) {
+                const minuto_local = minutoRef.current;
+                setMinuto(minuto_local + 1);
+            }
+        }, 1000);
     }, []);
 
     const minirightsidebar =() =>{
