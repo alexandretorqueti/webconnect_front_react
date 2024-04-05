@@ -3,6 +3,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import { Socket } from './services/Socket';
 import { Pessoas } from './services/Pessoas';
 
+
 const GlobalContext = createContext();
 
 const TIPOSMENSAGENS = {
@@ -27,28 +28,43 @@ export const GlobalProvider = ({ children }) => {
   const [pessoa_logada, setPessoaLogada] = useState({});
   const [mensagens, setMensagens] = useState([]);
   const [mensagem, setMensagem] = useState({});
-
+  const [naoLogado, setNaoLogado] = useState(false);
   useEffect(() => {
-    
+   
     const PessoasService = new Pessoas();
     const run = async () => {
-      const pessoa_logada = await PessoasService.getPessoaLogada();
-      setPessoaLogada(pessoa_logada);
-      if (pessoa_logada && pessoa_logada.id) {
-        const newSocket = new Socket(
-            {
-            id: pessoa_logada.id,
-            type: 'private',
-            wsScheme: window.location.protocol === 'https:' ? 'wss' : 'ws',
-            pessoaLogadaId: pessoa_logada.id, 
-            recebida: function(msg) { 
-              setMensagem(msg);
-            },
-            userId: pessoa_logada.id,
-            });
-        setSocket(newSocket);
+      if (location.href.indexOf('auth/sign-in') === -1) {
+        let naoLogadoLocal = false;
+        let pessoa_logada = {};
+        try {
+          pessoa_logada = await PessoasService.getPessoaLogada().catch((error) => {
+            naoLogadoLocal = true;
+            throw error;
+          });
+        } catch (error) {
+          naoLogadoLocal = true
+        }
+        // ou naoLoagadoLocal é true ou pessoa_logada.detail === 'Invalid token'
+        if (naoLogadoLocal || pessoa_logada.detail === 'Invalid token') {
+          setNaoLogado(true);
+        }
+        setPessoaLogada(pessoa_logada);
+        if (pessoa_logada && pessoa_logada.id) {
+          const newSocket = new Socket(
+              {
+              id: pessoa_logada.id,
+              type: 'private',
+              wsScheme: window.location.protocol === 'https:' ? 'wss' : 'ws',
+              pessoaLogadaId: pessoa_logada.id, 
+              recebida: function(msg) { 
+                setMensagem(msg);
+              },
+              userId: pessoa_logada.id,
+              });
+          setSocket(newSocket);
+        }
       }
-    };
+    }
     run();
   }, []);
 
@@ -72,7 +88,8 @@ export const GlobalProvider = ({ children }) => {
           pessoa_logada, 
           TIPOSMENSAGENS, 
           MENSAGENS, 
-          mensagens,
+          mensagens, 
+          naoLogado
         }
       }>
       {children}

@@ -29,8 +29,8 @@ const Index = () => {
     const [postAtual, setPostAtual] = useState(null);
     const PostPaginadoService = new PostPaginado();
     const IconesService = new Icones();
-    const { pessoa_logada } = useGlobalContext();
-
+    const { pessoa_logada, naoLogado } = useGlobalContext();
+    const navigate = useNavigate();
     
     const verificaVisibilidade = () => {
         const observer = new IntersectionObserver(
@@ -71,8 +71,11 @@ const Index = () => {
         }
         await run();
     }
-    const navigate = useNavigate();
+  
     useEffect(() => {
+        if (naoLogado) {
+            navigate('/auth/sign-in');
+        }
         const run = async () => {
             const icones = await IconesService.get();            
             setIcones(icones);

@@ -8,7 +8,7 @@ export class AjaxService {
         this.app = app;
 
         if (window.location.href.indexOf('localhost') === -1) {
-            this.enderecoBase = 'https://www.webconnect.com.br/api/';
+            this.enderecoBase = 'https://webconnect.com.br/api/';
         }
 
         this.token = localStorage.getItem('token');
@@ -30,7 +30,7 @@ export class AjaxService {
             return await response.json();
         } catch(error) {
             this.errorService.handlerError(error);
-            return null;
+            throw error;
         }
     }
     async postJson(endPoint, body = {}, sendToken = true) {
@@ -54,7 +54,7 @@ export class AjaxService {
             return data;
         } catch (error) {
             this.errorService.handlerError(error);
-            return null;
+            throw error;
         }
     }
     async postForm(endPoint, formData) {
@@ -76,7 +76,7 @@ export class AjaxService {
             return data;
         } catch (error) {
             this.errorService.handlerError(error);
-            return null;
+            throw error;
         }
     }
     async delete(endPoint) {
@@ -92,7 +92,7 @@ export class AjaxService {
             return response.json();
         } catch(error) {
             this.errorService.handlerError(error);
-            return null;
+            throw error;
         }
     }
     
