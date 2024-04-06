@@ -74,7 +74,7 @@ function ContentChatComponent({ pessoa, pessoa_logada, divMensagensRef }) {
     }
 
     return (
-    <div ref={divMensagensRef} className="chat-content scroller" style={{ 'overscrollBehavior': 'none' }}>
+    <div ref={divMensagensRef} className="chat-content scroller">
         {continua &&
         <OverlayTrigger placement="right" overlay={<Tooltip id="tooltip-disabled">More Messages</Tooltip>}>
             <span className="d-inline-block" onClick={carregaProximaPagina}>
