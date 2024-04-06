@@ -34,7 +34,8 @@ function ContentChatComponent({ pessoa, pessoa_logada, divMensagensRef }) {
                     const msgLocal = [...mensagens_chat, newMessagem];
                     setMensagensChat(msgLocal);
                     setTimeout(() => {
-                        divMensagensRef.current.scrollTop = divMensagensRef.current.scrollHeight;
+                        if (divMensagensRef.current)
+                            divMensagensRef.current.scrollTop = divMensagensRef.current.scrollHeight;
                     }
                     , 100);
                 }
@@ -52,7 +53,8 @@ function ContentChatComponent({ pessoa, pessoa_logada, divMensagensRef }) {
             setMensagensChat(pagina_de_mensagens);
             setContinua(tem_outra);
             setTimeout(() => {
-                divMensagensRef.current.scrollTop = divMensagensRef.current.scrollHeight;
+                if (divMensagensRef.current)
+                    divMensagensRef.current.scrollTop = divMensagensRef.current.scrollHeight;
             }, 100);
         }
         run();
@@ -66,7 +68,8 @@ function ContentChatComponent({ pessoa, pessoa_logada, divMensagensRef }) {
         setContinua(tem_outra);
         setMensagensChat([...pagina_de_mensagens,...mensagens_chat]);
         setTimeout(() => {
-            divMensagensRef.current.scrollTo({ top: 0, behavior: 'smooth' })
+            if (divMensagensRef.current)
+                divMensagensRef.current.scrollTo({ top: 0, behavior: 'smooth' })
         }, 100);
     }
 

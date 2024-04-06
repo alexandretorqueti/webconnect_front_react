@@ -8,7 +8,7 @@ import ChatUserDetail from './chatUserDetail'
 import ContentChat from './content'
 import FormSendMessage from './formSendMessage'
 
-function MessagesComponent({ pessoa, pessoa_logada }) {
+function MessagesComponent({ pessoa, pessoa_logada, setShowChat }) {
   const [showDetail, setShowDetail] = useState(false)
   const [mensagens, setMensagens] = useState(null);
   const divMensagensRef = useRef(null);
@@ -17,6 +17,8 @@ function MessagesComponent({ pessoa, pessoa_logada }) {
     <Tab.Pane  eventKey="chat"  className="fade show active" id="chatbox"  role="tabpanel">
         <div className="chat-head">
             <header className="d-flex justify-content-between align-items-center bg-white pt-3  ps-3 pe-3 pb-3">
+                
+
                 <div className="d-flex align-items-center">
                     <div className="sidebar-toggle">
                         <i className="ri-menu-3-line"></i>
@@ -68,6 +70,9 @@ function MessagesComponent({ pessoa, pessoa_logada }) {
                             <Dropdown.Item className="d-flex align-items-center" href="#"><i className="material-symbols-outlined md-18 me-1">watch_later</i>Block</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
+                    <Link to="#" className="chat-icon-phone bg-soft-primary d-flex justify-content-center align-items-center" onClick={() => { setShowChat(false); }}>
+                    <i className="ri-close-fill"></i>
+                    </Link>
                 </div>
             </header>
         </div>

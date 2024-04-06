@@ -22,3 +22,24 @@ i {
   cursor: pointer;
   font-size: large;
 }
+
+@media (max-width: 991.98px) {
+  .chat-data-left {
+    position: absolute;
+    left: 0;
+    max-width: 100%; /* Alterado para 100% para ocupar toda a largura da tela */
+    top: 0;
+    z-index: 9;
+    background: #fff;
+    transform: translateX(0); /* Alterado para 0 para não mover o elemento */
+    opacity: 1; /* Alterado para 1 para tornar o elemento completamente opaco */
+    transition: all 0.45s ease-in-out;
+    overflow-y: scroll;
+    height: 100%;
+  }
+}
+
+.col-lg-9 {
+  flex: 0 0 auto;
+  width: 100%;
+}
