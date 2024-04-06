@@ -27,7 +27,7 @@ const FormSendMessage = ({ pessoa, pessoa_logada }) => {
 
 
     return (
-        <div className="chat-footer p-3 bg-white" style={{ 'minHeight' : '100vh' }}>
+        <div className="chat-footer p-3 bg-white">
             <Form className="d-flex align-items-center" action="#" onSubmit={handleSubmit}>
                 <div className="chat-attagement d-flex">
                     <Link to="#"><i className="far fa-smile pe-3" aria-hidden="true"></i></Link>

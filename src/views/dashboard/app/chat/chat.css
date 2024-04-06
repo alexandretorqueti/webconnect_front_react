@@ -60,6 +60,14 @@ i {
   width: 100%;
 }
 
-.chat-page .card, .card-body {
-  height: 100vh !important;
+.tab-content > .tab-pane {
+  display: block;
+}
+
+.chat-start {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 0rem);
+  flex-direction: column;
 }
