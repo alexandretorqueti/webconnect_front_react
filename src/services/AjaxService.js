@@ -8,7 +8,7 @@ export class AjaxService {
         this.app = app;
 
         if (window.location.href.indexOf('localhost') === -1) {
-            this.enderecoBase = 'https://webconnect.com.br/api/';
+            this.enderecoBase = 'https://webconnect.com.br/';
         }
 
         this.token = localStorage.getItem('token');
