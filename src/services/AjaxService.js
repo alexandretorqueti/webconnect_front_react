@@ -24,7 +24,8 @@ export class AjaxService {
                 credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + this.token
+                    'Authorization': 'Bearer ' + this.token,
+                    'X-CSRFToken': getCookie('csrftoken'),
                 },
             });
             return await response.json();
@@ -106,20 +107,4 @@ export class PadraoAjax {
     constructor() {
         this.AjaxService = new AjaxService('redesocial/');
     }
-}
-
-function getCookie(name) {
-    let cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        const cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-            const cookie = cookies[i].trim();
-            // Verifica se o cookie começa com o nome procurado seguido por `=`.
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
-        }
-    }
-    return cookieValue;
 }
