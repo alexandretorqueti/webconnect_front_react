@@ -30,7 +30,8 @@ export const GlobalProvider = ({ children }) => {
   const [mensagem, setMensagem] = useState({});
   const [naoLogado, setNaoLogado] = useState(false);
   useEffect(() => {
-   
+    const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    localStorage.setItem('csrfToken', token);
     const PessoasService = new Pessoas();
     const run = async () => {
       if (location.href.indexOf('auth/sign-in') === -1) {
