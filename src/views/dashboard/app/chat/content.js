@@ -22,7 +22,7 @@ function ContentChatComponent({ pessoa, pessoa_logada, divMensagensRef }) {
         {
             const mensagemAtual = mensagens[posicao];
             if (mensagemAtual['tipo'] === TIPOSMENSAGENS.MENSAGEM_ENTRE_USUARIOS) {
-                if (mensagemAtual.pessoa_id_to === pessoa_logada.id)
+                if (mensagemAtual.pessoa_id_to === pessoa_logada.id /*OU*/ || mensagemAtual.pessoa_id_from === pessoa_logada.id)
                 {
                     const { id, message, pessoa_id_to } = mensagemAtual;
                     const newMessagem = {

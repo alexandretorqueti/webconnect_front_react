@@ -12,6 +12,10 @@ export class AjaxService {
         }
 
         this.token = localStorage.getItem('token');
+        this.csr = getCookie('csrftoken');
+        if (this.csr === null) {
+            this.csr = '';
+        }
     }
 
     /*
@@ -25,7 +29,7 @@ export class AjaxService {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': 'Bearer ' + this.token,
-                    'X-CSRFToken': getCookie('csrftoken'),
+                    'X-CSRFToken': this.csr,
                 },
             });
             return await response.json();
@@ -37,7 +41,7 @@ export class AjaxService {
     async postJson(endPoint, body = {}, sendToken = true) {
         const headers = {
             'Content-Type': 'application/json',
-            'X-CSRFToken': getCookie('csrftoken'),
+            'X-CSRFToken': this.csr,
         };
         if (sendToken) {
             headers['Authorization'] = 'Bearer ' + this.token;
@@ -67,7 +71,7 @@ export class AjaxService {
                 body: formData,
                 headers: {
                     'Authorization': 'Bearer ' + this.token,
-                    'X-CSRFToken': getCookie('csrftoken'),
+                    'X-CSRFToken': this.csr,
                 }
             });
 
@@ -90,7 +94,7 @@ export class AjaxService {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': 'Bearer ' + this.token,
-                    'X-CSRFToken': getCookie('csrftoken'),
+                    'X-CSRFToken': this.csr,
                 },
             });
             return response.json();

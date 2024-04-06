@@ -73,14 +73,16 @@ export const GlobalProvider = ({ children }) => {
   
   useEffect(() => {
     const centralDeMensagens = () => {
-      const mensagens_local = [...mensagens, mensagem];
-      setMensagens(mensagens_local);
+      if (mensagem.message) {
+        const mensagens_local = [...mensagens, mensagem];
+        setMensagens(mensagens_local);
+      }
     };
     const run = () => {
       centralDeMensagens();
     };
     run();
-  }, [mensagem]);
+  }, [JSON.stringify(mensagem)]);
 
   return (
     <GlobalContext.Provider value={
