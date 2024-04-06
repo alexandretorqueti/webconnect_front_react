@@ -20,7 +20,7 @@ function MessagesComponent({ pessoa, pessoa_logada, setShowChat }) {
                 
 
                 <div className="d-flex align-items-center">
-                    <div className="sidebar-toggle">
+                    <div className="sidebar-toggle" onClick={() => setShowChat(false)}>
                         <i className="ri-menu-3-line"></i>
                     </div>
                     <div className="avatar chat-user-profile m-0 me-3" style={{ 'cursor': 'pointer' }} onClick={() => setShowDetail(true)}>

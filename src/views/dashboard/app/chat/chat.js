@@ -40,8 +40,8 @@ const Chat=()=>{
                         <Card.Body className="chat-page p-0">
                         <div className="chat-data-block">
                                 <Row>
-                                    {(!showChat) &&
-                                    <Col lg="3" className="chat-data-left scroller">
+                                    
+                                    <Col lg="3" className={(showChat) ? "chat-data-left scroller esconde" : "chat-data-left scroller mostra"}>
                                         <div className="chat-search pt-3 ps-3">
                                             
                                             <Row>
@@ -131,14 +131,15 @@ const Chat=()=>{
                                         </Nav>
                                     </div>
                                     </Col>
-                                    }
+                                    
                                     <Col lg={9} className={showChat ? " chat-data p-0 chat-data-right cemporcento" : " chat-data p-0 chat-data-right"}>
                                         <Tab.Content>
                                             {showChat ?
                                             <Messages
                                                 pessoa={pessoa_selecionada} 
                                                 pessoa_logada={pessoa_logada} 
-                                                setShowChat={setShowChat}></Messages>
+                                                setShowChat={setShowChat}
+                                                ></Messages>
                                             :
                                             <Tab.Pane eventKey="start" className="tab-pane fade show" id="default-block" role="tabpanel">
                                             <div className="chat-start">
