@@ -68,6 +68,14 @@ i {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 0rem);
+  height: 100vh;
   flex-direction: column;
+}
+
+@media (max-width: 600px) {
+  #left-tabs-example-tabpane-chat {
+    display: flex;
+    flex-direction: column;
+    height: 93vh;
+  }
 }
