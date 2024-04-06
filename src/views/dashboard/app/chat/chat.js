@@ -34,7 +34,7 @@ const Chat=()=>{
     return(
         (pessoa_logada) &&
         <Tab.Container id="left-tabs-example"  defaultActiveKey="start">                        
-            <Row>
+            <Row >
                 <Col sm="12">
                     <Card>
                         <Card.Body className="chat-page p-0">
@@ -132,10 +132,10 @@ const Chat=()=>{
                                     </div>
                                     </Col>
                                     }
-                                    <Col lg={9} className=" chat-data p-0 chat-data-right">
+                                    <Col lg={9} className={showChat ? " chat-data p-0 chat-data-right cemporcento" : " chat-data p-0 chat-data-right"}>
                                         <Tab.Content>
                                             {showChat ?
-                                            <Messages 
+                                            <Messages
                                                 pessoa={pessoa_selecionada} 
                                                 pessoa_logada={pessoa_logada} 
                                                 setShowChat={setShowChat}></Messages>

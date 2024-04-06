@@ -27,19 +27,39 @@ i {
   .chat-data-left {
     position: absolute;
     left: 0;
-    max-width: 100%; /* Alterado para 100% para ocupar toda a largura da tela */
+    max-width: 100%;
     top: 0;
     z-index: 9;
     background: #fff;
-    transform: translateX(0); /* Alterado para 0 para não mover o elemento */
-    opacity: 1; /* Alterado para 1 para tornar o elemento completamente opaco */
+    transform: translateX(0);
+    opacity: 1;
     transition: all 0.45s ease-in-out;
     overflow-y: scroll;
     height: 100%;
   }
 }
+.scroller {
+  overflow-y: auto;
+  scrollbar-color: var(--bs-primary) rgba(var(--bs-primary-rgb), 0.2);
+  scrollbar-width: thin;
+}
+.row > * {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 100%;
+  padding-right: calc(var(--bs-gutter-x) * .5);
+  padding-left: calc(var(--bs-gutter-x) * .5);
+  margin-top: var(--bs-gutter-y);
+}
+*, ::before, ::after {
+  box-sizing: border-box;
+}
 
-.col-lg-9 {
+.cemporcento {
   flex: 0 0 auto;
   width: 100%;
+}
+
+.chat-page .card, .card-body {
+  height: 100vh !important;
 }

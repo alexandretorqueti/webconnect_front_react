@@ -14,7 +14,7 @@ function MessagesComponent({ pessoa, pessoa_logada, setShowChat }) {
   const divMensagensRef = useRef(null);
   
   return (
-    <Tab.Pane  eventKey="chat"  className="fade show active" id="chatbox"  role="tabpanel">
+    <Tab.Pane  eventKey="chat"  className="fade show active " id="chatbox"  role="tabpanel">
         <div className="chat-head">
             <header className="d-flex justify-content-between align-items-center bg-white pt-3  ps-3 pe-3 pb-3">
                 
