@@ -76,6 +76,6 @@ i {
   #left-tabs-example-tabpane-chat {
     display: flex;
     flex-direction: column;
-    height: 93vh;
+    height: 90vh;
   }
 }
