@@ -1,6 +1,6 @@
 
 import {Row,Col,Container,Form,Button,Image} from 'react-bootstrap'
-import {Link, useNavigate} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 
 //swiper
@@ -17,11 +17,37 @@ import login1 from '../../../assets/images/login/1.png'
 import login2 from '../../../assets/images/login/2.png'
 import login3 from '../../../assets/images/login/3.png'
 
+import FormInputComponent from '../../../components/formInput';
+
+import { useEffect, useState } from 'react';
+
 // install Swiper modules
 SwiperCore.use([Navigation, Autoplay]);
 
 const SignUp = () => {
-   let history =useNavigate()
+   const [username, setUsername] = useState('')
+   const [first_name, setFirstName] = useState('')
+   const [last_name, setLastName] = useState('')
+   const [email, setEmail] = useState('')
+   const [confirmEmail, setConfirmEmail] = useState('')
+   const [password, setPassword] = useState('')
+   const [confirmPassword, setConfirmPassword] = useState('')
+   const [acceptTerms, setAcceptTerms] = useState(false)
+   const [formValid, setFormValid] = useState(false)
+   const [error, setError] = useState(false)
+
+   useEffect(() => {
+      setFormValid(!error)
+   }, [username, first_name, last_name, email, confirmEmail, password, confirmPassword, acceptTerms])
+
+
+   // let history =useNavigate()
+   const handleSubmit = (e) => {
+      e.preventDefault;
+      
+      //   history.push('/')
+   }
+
    return (
       <>
          <section className="sign-in-page">
@@ -68,28 +94,110 @@ const SignUp = () => {
                      <div className="sign-in-from">
                         <h1 className="mb-0">Sign Up</h1>
                         <p>Enter your email address and password to access admin panel.</p>
-                        <Form className="mt-4">
-                           <Form.Group className="form-group">
-                              <Form.Label>Your Full Name</Form.Label>
-                              <Form.Control type="email" className="mb-0" id="exampleInputEmail1" placeholder="Your Full Name"/>
-                           </Form.Group>
-                           <Form.Group className="form-group">
-                              <Form.Label>Email address</Form.Label>
-                              <Form.Control type="email" className="mb-0" id="exampleInputEmail2" placeholder="Enter email"/>
-                           </Form.Group>
-                           <Form.Group className="form-group">
-                              <Form.Label>Password</Form.Label>
-                              <Form.Control type="password" className="mb-0" id="exampleInputPassword1" placeholder="Password"/>
-                           </Form.Group>
+                        <Form className="mt-4" onSubmit={handleSubmit}>
+                           <FormInputComponent 
+                           type="text"
+                           label="User Name"
+                           id="username"
+                           name="username"
+                           placeholder="User Name"
+                           set={setUsername}
+                           required={true}
+                           setError={setError}
+                           />
+
+                           <FormInputComponent
+                           type="text"
+                           label="First Name"
+                           id="FirstName"
+                           name="first_name"
+                           placeholder="First Name"
+                           set={setFirstName}
+                           required={true}
+                           setError={setError}
+                           />
+
+                           <FormInputComponent
+                           type="text"
+                           label="Last Name"
+                           id="LastName"
+                           name="last_name"
+                           placeholder="Last Name"
+                           set={setLastName}
+                           required={true}
+                           setError={setError}
+                           />
+                           
+                           <FormInputComponent
+                           type="email"
+                           label="Email address"
+                           id="Email1"
+                           name="email"
+                           placeholder="Enter email"
+                           set={setEmail}
+                           required={true}
+                           setError={setError}
+                           />
+
+                           <FormInputComponent
+                           type="email"
+                           label="Repeat your email"
+                           id="Email2"
+                           name="confirmEmail"
+                           placeholder="Enter email again"
+                           set={setConfirmEmail}
+                           required={true}
+                           setErrorMessage={(e, paramErrorMessage) => (paramErrorMessage.email !== e.currentTarget.value) ? 'Emails do not match' : '' }
+                           paramErrorMessage={{email}}
+                           setError={setError}
+                           />
+
+                           <FormInputComponent
+                           type="password"
+                           label="Password"
+                           id="Password1"
+                           name="password"
+                           placeholder="Password"
+                           set={setPassword}
+                           required={true}
+                           setError={setError}
+                           />
+
+                           <FormInputComponent
+                           type="password"
+                           label="Repeat password"
+                           id="Password2"
+                           name="confirmPassword"
+                           placeholder="Password"
+                           set={setConfirmPassword}
+                           required={true}
+                           setErrorMessage={(e, paramErrorMessage) => (paramErrorMessage.password !== e.currentTarget.value) ? 'Passwords do not match' : '' }
+                           paramErrorMessage={{password}}
+                           setError={setError}
+                           />
+                           
                            <div className="d-inline-block w-100">
-                              <Form.Check className="d-inline-block mt-2 pt-1">
-                                    <Form.Check.Input type="checkbox" className="me-2" id="customCheck1"/>
-                                    <Form.Check.Label>I accept <Link to="#">Terms and Conditions</Link></Form.Check.Label>
-                              </Form.Check>
-                              <Button type="button" className="btn-primary float-end" onClick={() => history.push('/')}>Sign Up</Button>
+                              <FormInputComponent
+                              type="checkbox"
+                              label="I accept Terms and Conditions"
+                              id="acceptTerms"
+                              name="acceptTerms"
+                              placeholder="Password"
+                              set={setAcceptTerms}
+                              required={true}
+                              setError={setError}
+                              />
+                              
+                              <Button
+                                 type="submit"
+                                 className="btn-primary float-end" 
+                                 disabled={!formValid}
+                              >Sign Up
+                              </Button>
                            </div>
                            <div className="sign-info">
                               <span className="dark-color d-inline-block line-height-2">Already Have Account ? <Link to="/auth/sign-in">Log In</Link></span>
+                                 {false &&
                                  <ul className="iq-social-media">
                                     <li>
                                        <Link to="#">
@@ -115,7 +223,8 @@ const SignUp = () => {
                                        </svg>
                                     </Link>
                                     </li>
-                              </ul>
+                                 </ul>
+                                 }
                            </div>
                         </Form>
                      </div>
