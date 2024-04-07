@@ -13,15 +13,27 @@ import Carousel from 'react-bootstrap/Carousel';
 function PostComponent({ post, icones, children, setPostAtual }) {
   const [deleteComentario, setDeleteComentario] = useState(null);
   const [minhaCurtidaComentario, setMinhaCurtidaComentario] = useState({ comentario_id: 0, curtida : null });
+  
+  const fnBuscaComentario = (comentario_id, filhos) => {
+        const index = filhos.findIndex((coment) => coment.id === comentario_id);
+        if (index !== -1) {
+        return filhos[index];
+        } else {
+        for (let i = 0; i < filhos.length; i++) {
+            const filho = fnBuscaComentario(comentario_id, filhos[i].respostas);
+            if (filho) {
+            return filho;
+            }
+        }
+        }
+    };
 
   useEffect(() => {
     if (deleteComentario) {
-        const comentarios = [...post.comentarios];
-        const index = comentarios.findIndex((comentario) => comentario.id === deleteComentario);
-        if (index !== -1) {
-            comentarios.splice(index, 1);
-            const postLocal = {...post};
-            postLocal.comentarios = comentarios;
+        const postLocal = {...post};
+        const comentario_encontrado = fnBuscaComentario(deleteComentario, postLocal.comentarios);
+        if (comentario_encontrado) {
+            comentario_encontrado.deleted = true;
             setPostAtual(postLocal);
         }
     }
@@ -31,7 +43,7 @@ function PostComponent({ post, icones, children, setPostAtual }) {
     // Faço uma cópia local do post
     const postLocal = {...post};
     // Encontro o comentário que foi curtido
-    const comentario = postLocal.comentarios.find((comentario) => comentario.id === minhaCurtidaComentario.comentario_id);
+    const comentario = fnBuscaComentario(minhaCurtidaComentario.comentario_id, postLocal.comentarios);
     // Se o comentário foi encontrado
     if (comentario) {
         // Atualizo a quantidade de curtidas
@@ -103,12 +115,19 @@ function PostComponent({ post, icones, children, setPostAtual }) {
                                 comentario={comentario}
                                 setDeleteComentario={setDeleteComentario}
                                 setMinhaCurtidaComentario={setMinhaCurtidaComentario}
+                                post={post} 
+                                setPostAtual={setPostAtual}
+                                busca_comentario={(id, lista) => fnBuscaComentario(id, lista)}
                                 />
                                 )
                             )
                         }
                     </ul>
-                    <FormNewComentario post={post} setPostAtual={setPostAtual}/>
+                    <FormNewComentario 
+                    post={post} 
+                    setPostAtual={setPostAtual}
+                    comentario={null}
+                    busca_comentario={(id, lista) => fnBuscaComentario(id, lista)}/>
                 </div>
             </Card.Body>
         </Card>
@@ -117,3 +136,5 @@ function PostComponent({ post, icones, children, setPostAtual }) {
 }
 
 export default PostComponent;
+
+

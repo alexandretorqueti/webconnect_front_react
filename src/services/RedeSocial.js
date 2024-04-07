@@ -40,10 +40,13 @@ export class Comentarios extends PadraoAjax
         return await this.AjaxService.get('api/posts/coments/' + postId);
     }
 
-    async post(comentario, postId) {
+    async post(comentario, postId, comentarioId = null) {
         const formData = new FormData();
         formData.append('comentario', comentario);
         formData.append('post_id', postId);
+        if (comentarioId) {
+            formData.append('comentario_pai', comentarioId);
+        }
         return await this.AjaxService.postForm('api/posts/coments', formData);
     }
 
