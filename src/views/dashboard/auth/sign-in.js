@@ -111,7 +111,7 @@ const SignIn = () => {
                            </Form.Group>
                            <Form.Group className="form-group">
                               <Form.Label>Password</Form.Label>
-                              <Link to="#" className="float-end">Forgot password?</Link>
+                              <Link to="/password_reset" className="float-end">Forgot password?</Link>
                               <Form.Control
                                  type="password"
                                  className="mb-0"

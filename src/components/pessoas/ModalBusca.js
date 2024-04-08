@@ -42,6 +42,7 @@ function ModalBuscaComponent({
     onHide={handleClose}
     className="search-modal"
     id="post-modal"
+    style={{ top: '103px', overflow: 'hidden' }}
     >
     <div className="modal-fullscreen-lg-down m-0">
         <Modal.Header className="py-2">
@@ -52,6 +53,10 @@ function ModalBuscaComponent({
             data-bs-toggle="modal"
             data-bs-target="#exampleModalFullscreenSm"
             onClick={handleShow}
+            onSubmit={(e) => {
+                e.preventDefault();
+                handleShow();
+            }}
             >
             <Link className="search-link" to="/">
                 <span className="material-symbols-outlined">
@@ -62,8 +67,9 @@ function ModalBuscaComponent({
             <Form.Control
                 type="text"
                 className="text search-input bg-soft-primary"
-                placeholder="Search here@"
+                placeholder="Search here..."
                 onChange={(e) => setFiltro(e.target.value)}
+                style={{ color: 'green' }}
             />
             </form>
 
