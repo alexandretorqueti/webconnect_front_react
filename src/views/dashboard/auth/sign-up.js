@@ -1,6 +1,7 @@
 
 import {Row,Col,Container,Form,Button,Image} from 'react-bootstrap'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
+
 
 
 //swiper
@@ -18,34 +19,57 @@ import login2 from '../../../assets/images/login/2.png'
 import login3 from '../../../assets/images/login/3.png'
 
 import FormInputComponent from '../../../components/formInput';
+import Error from '../../../components/error';
 
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
+
+import { Pessoas } from '../../../services/Pessoas';
 
 // install Swiper modules
 SwiperCore.use([Navigation, Autoplay]);
 
 const SignUp = () => {
-   const [username, setUsername] = useState('')
-   const [first_name, setFirstName] = useState('')
-   const [last_name, setLastName] = useState('')
-   const [email, setEmail] = useState('')
-   const [confirmEmail, setConfirmEmail] = useState('')
-   const [password, setPassword] = useState('')
-   const [confirmPassword, setConfirmPassword] = useState('')
-   const [acceptTerms, setAcceptTerms] = useState(false)
-   const [formValid, setFormValid] = useState(false)
-   const [error, setError] = useState(false)
+   const [username, setUsername] = useState('');
+   const [first_name, setFirstName] = useState('');
+   const [last_name, setLastName] = useState('');
+   const [email, setEmail] = useState('');
+   const [confirm_email, setConfirmEmail] = useState('');
+   const [password, setPassword] = useState('');
+   const [confirm_password, setConfirmPassword] = useState('');
+   const [acceptTerms, setAcceptTerms] = useState(false);
+   const [formValid, setFormValid] = useState(false);
+   const PessoaService = new Pessoas();
+   const [inputValid, setInputValid] = useState({});
+   const [errorList, setErrorList] = useState([]);
+   const navigate = useNavigate();
+   function fnFormValid() {
+      const json = inputValid;
+      for (let key in json) {
+            if (Object.prototype.hasOwnProperty.call(json, key) && json[key] !== true) {
+               return false;
+            }
+      }
+      return true;
+   }
 
    useEffect(() => {
-      setFormValid(!error)
-   }, [username, first_name, last_name, email, confirmEmail, password, confirmPassword, acceptTerms])
+      setFormValid(fnFormValid());
+   }, [JSON.stringify(inputValid)])
 
-
-   // let history =useNavigate()
    const handleSubmit = (e) => {
-      e.preventDefault;
+      e.preventDefault();
       
-      //   history.push('/')
+      const run = async () => {
+         const result = await PessoaService.Signup(username, password, email, first_name, last_name, confirm_password, confirm_email, acceptTerms);
+         if (result.error)
+         {
+            setErrorList({...result.error});
+         } else {
+            navigate('/auth/sign-in')
+         }
+      }
+
+      run();
    }
 
    return (
@@ -103,7 +127,9 @@ const SignUp = () => {
                            placeholder="User Name"
                            set={setUsername}
                            required={true}
-                           setError={setError}
+                           inputValid={inputValid}
+                           setInputValid={setInputValid}
+                           errorList={errorList}
                            />
 
                            <FormInputComponent
@@ -114,7 +140,9 @@ const SignUp = () => {
                            placeholder="First Name"
                            set={setFirstName}
                            required={true}
-                           setError={setError}
+                           inputValid={inputValid}
+                           setInputValid={setInputValid}
+                           errorList={errorList}
                            />
 
                            <FormInputComponent
@@ -125,7 +153,9 @@ const SignUp = () => {
                            placeholder="Last Name"
                            set={setLastName}
                            required={true}
-                           setError={setError}
+                           inputValid={inputValid}
+                           setInputValid={setInputValid}
+                           errorList={errorList}
                            />
                            
                            <FormInputComponent
@@ -136,20 +166,24 @@ const SignUp = () => {
                            placeholder="Enter email"
                            set={setEmail}
                            required={true}
-                           setError={setError}
+                           inputValid={inputValid}
+                           setInputValid={setInputValid}
+                           errorList={errorList}
                            />
 
                            <FormInputComponent
                            type="email"
                            label="Repeat your email"
                            id="Email2"
-                           name="confirmEmail"
+                           name="confirm_email"
                            placeholder="Enter email again"
                            set={setConfirmEmail}
                            required={true}
                            setErrorMessage={(e, paramErrorMessage) => (paramErrorMessage.email !== e.currentTarget.value) ? 'Emails do not match' : '' }
                            paramErrorMessage={{email}}
-                           setError={setError}
+                           inputValid={inputValid}
+                           setInputValid={setInputValid}
+                           errorList={errorList}
                            />
 
                            <FormInputComponent
@@ -160,22 +194,28 @@ const SignUp = () => {
                            placeholder="Password"
                            set={setPassword}
                            required={true}
-                           setError={setError}
+                           inputValid={inputValid}
+                           setInputValid={setInputValid}
+                           errorList={errorList}
                            />
 
                            <FormInputComponent
                            type="password"
                            label="Repeat password"
                            id="Password2"
-                           name="confirmPassword"
+                           name="confirm_password"
                            placeholder="Password"
                            set={setConfirmPassword}
                            required={true}
                            setErrorMessage={(e, paramErrorMessage) => (paramErrorMessage.password !== e.currentTarget.value) ? 'Passwords do not match' : '' }
                            paramErrorMessage={{password}}
-                           setError={setError}
+                           inputValid={inputValid}
+                           setInputValid={setInputValid}
+                           errorList={errorList}
                            />
                            
+                           <Error errorList={errorList} />
+
                            <div className="d-inline-block w-100">
                               <FormInputComponent
                               type="checkbox"
@@ -185,7 +225,9 @@ const SignUp = () => {
                               placeholder="Password"
                               set={setAcceptTerms}
                               required={true}
-                              setError={setError}
+                              inputValid={inputValid}
+                              setInputValid={setInputValid}
+                              errorList={errorList}
                               />
                               
                               <Button

@@ -163,7 +163,7 @@ const Index = () => {
                     )}
                     <div className="col-sm-12 text-center">
                         {continuar ? <img ref={loaderRef} src={loader} alt="loader" style={{height: "100px"}}/> : 
-                        <p>Não há mais dados</p>}
+                        <p>{posts.length===0 ? "Você ainda não segue ninguém" : "Não há mais dados"}</p>}
                     </div>
                 </Row>
             </Container>                

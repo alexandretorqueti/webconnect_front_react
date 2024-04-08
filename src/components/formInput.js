@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Form } from 'react-bootstrap'
 import Error from './error'
 
@@ -12,7 +12,9 @@ function FormInputComponent({
     setErrorMessage = () => {}, 
     paramErrorMessage = {},
     required = false, 
-    setError = () => {} 
+    inputValid,
+    setInputValid = () => {},
+    errorList = {},
     }) {
     const [touched, setTouched] = useState(false)
     const [message, setMessage] = useState('')
@@ -20,19 +22,32 @@ function FormInputComponent({
     const handlerSet = (e) => {
         set(e.target.value);
         setTouched(true);
-
+        let mensagem = '';
+        const localInputValid = { ...inputValid };
+        localInputValid[id] = false;
         if (required && e.target.value === '') {
             if (touched) {
-                setMessage(`${label} is required`);
+                mensagem = `${label} is required`;
             }
-            setError(true);
         } else {
             if (touched) {
-                setMessage(setErrorMessage(e, paramErrorMessage));
+                mensagem = setErrorMessage(e, paramErrorMessage);
             }
-            setError(true);
         }
+        setMessage(mensagem);
+        if (mensagem === undefined || mensagem === undefined || mensagem === '') {
+            localInputValid[id] = true;
+        }
+
+        setInputValid(localInputValid);
     }
+
+    useEffect(() => {
+        const localInputValid = { ...inputValid };
+        localInputValid[id] = false;
+        setInputValid(localInputValid);
+    }, [])
+
     if (type === 'checkbox') {
     return (
         <Form.Group className="form-group">
@@ -47,7 +62,7 @@ function FormInputComponent({
                 {label}
             </Form.Check.Label>
         </Form.Check>
-        {touched && message && <Error name={name} message={message} />}
+        {touched && (message || (errorList && JSON.stringify(errorList) != '{}')) && <Error name={name} message={message} errorList={errorList[name]}/>}
         </Form.Group>
     )
     }
@@ -62,7 +77,7 @@ function FormInputComponent({
             placeholder={placeholder}
             onChange={(e) => handlerSet(e) } 
         />
-        {touched && message && <Error name={name} message={message} />}
+        {touched && (message || (errorList && JSON.stringify(errorList) != '{}')) && <Error name={name} message={message} errorList={errorList[name]}/>}
     </Form.Group>
     )
 }
