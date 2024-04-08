@@ -27,9 +27,6 @@
 .DS_Store
 *.pem
 
-# Diretório público
-/public
-
 # Arquivos de configuração de IDEs e editores
 /.idea
 .vscode
