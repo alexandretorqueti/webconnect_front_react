@@ -1,7 +1,6 @@
 import {
   Dropdown,
   Nav,
-  Form,
   Card,
   Image,
   Container,
@@ -9,8 +8,7 @@ import {
 import { Link } from "react-router-dom";
 
 import CustomToggle from "../../../dropdowns";
-// import DropdownMenu from "react-bootstrap/esm/DropdownMenu";
-
+import SearchComponent from "../../../pessoas/Search";
 
 //image
 import user1 from "../../../../assets/images/user/1.jpg";
@@ -18,34 +16,18 @@ import user2 from "../../../../assets/images/user/02.jpg";
 import user3 from "../../../../assets/images/user/03.jpg";
 import user4 from "../../../../assets/images/user/04.jpg";
 import user5 from "../../../../assets/images/user/05.jpg";
-
-import { useState, useEffect } from "react";
 import logo from '../../../../assets/images/logo.png';
 
 
-import Busca from "../../../pessoas/Busca";
-import { Pessoas } from "../../../../services/Pessoas";
+
 import { useGlobalContext } from "../../../../GlobalContext";
 
 const Header = ({ pessoasComRelacao, setPessoasComRelacao }) => {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
   const pessoaLogada = useGlobalContext().pessoaLogada;
-  const [filtro, setFiltro] = useState('');
   const minisidebar = () => {
     document.getElementsByTagName("ASIDE")[0].classList.toggle("sidebar-mini");
   };
 
-  const [pessoasSemRelacao, setPessoasSemRelacao] = useState([]);
-    
-  useEffect(() => {
-    const run = async () => {
-      const localPessoasSemRelacao = await (new Pessoas()).getPessoasSemRelacao(1, filtro);
-      setPessoasSemRelacao(localPessoasSemRelacao);
-    }
-    run();
-  }, []);
 
   return (
     <>
@@ -86,57 +68,21 @@ const Header = ({ pessoasComRelacao, setPessoasComRelacao }) => {
               </div>
             </Link>
             </div>
-
-            <Busca 
-                show={show} 
-                handleShow={handleShow} 
-                handleClose={handleClose} 
-                pessoasSemRelacao={pessoasSemRelacao} 
-                setPessoasSemRelacao={setPessoasSemRelacao}
-                pessoasComRelacao={pessoasComRelacao}
-                setPessoasComRelacao={setPessoasComRelacao}
-                filtro={filtro}
-                setFiltro={setFiltro}
-                ></Busca>
+            
             <ul className="navbar-nav navbar-list" >
+            
             <Nav.Item as="li">
             <Link to="/" className="d-flex align-items-center">
             <i className="material-symbols-outlined">home</i>
             <span className="mobile-text d-none ms-3">Home</span>
             </Link>
             </Nav.Item>
-            <Nav.Item as="li" className="d-lg-none">
-            <div className="iq-search-bar device-search  position-relative">
-            <form
-            action="#"
-            className="searchbox"
-            onClick={handleShow}
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModalFullscreenSm"
+
+            <SearchComponent 
+            pessoasComRelacao={pessoasComRelacao}
+            setPessoasComRelacao={setPessoasComRelacao}
+            ></SearchComponent>
             
-            >
-            <Link className="search-link d-none d-lg-block" to="/">
-            <span className="material-symbols-outlined">search</span>
-            </Link>
-            <Form.Control
-            type="text"
-            className="text search-input form-control bg-soft-primary  d-none d-lg-block"
-            placeholder="Search here..."
-            />
-            <Link
-            className="d-lg-none d-flex"
-            to="/"
-            onClick={handleShow}
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModalFullscreenSm"
-            >
-            <span className="material-symbols-outlined">search</span>
-            </Link>
-            </form>
-
-
-            </div>
-            </Nav.Item>
             <Dropdown as="li" className="nav-item">
             <Dropdown.Toggle
             href="/"
@@ -283,6 +229,8 @@ const Header = ({ pessoasComRelacao, setPessoasComRelacao }) => {
             </Card>
             </Dropdown.Menu>
             </Dropdown>
+
+
 
             <Dropdown as="li" className="nav-item ">
             <Dropdown.Toggle
