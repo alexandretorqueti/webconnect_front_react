@@ -35,5 +35,16 @@ export class Pessoas
     
         return await this.AjaxService.postForm('api/pessoa_logada', formData);
     }
+    async Seguir(pessoaId) {
+        const body = {};
+        body['pessoa_id'] = pessoaId;
+        return await this.AjaxService.postJson('api/seguir', body);
+    }
+    async DeixarDeSeguir(pessoaId) {
+        const body = {};
+        body['pessoa_id'] = pessoaId;
+        return await this.AjaxService.delete('api/deixar_de_seguir', body);
+    }
+
 }
 

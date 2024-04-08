@@ -12,7 +12,7 @@ function SuggestionsItemComponent(props) {
     />
 
     <Link
-      to="/"
+      onClick={props.handleFollow}
       className="h6 mt-0 mt-lg-2 ms-3 ms-lg-0 text-ellipsis short-2 small"
     >
     { props.name }
@@ -20,8 +20,8 @@ function SuggestionsItemComponent(props) {
   </div>
 
   <Link
-    to="/"
-    className="d-lg-none align-items-center d-flex"
+    onClick={props.handleFollow}
+    className="align-items-center d-flex"
   >
     <small>Follow</small>{" "}
   </Link>

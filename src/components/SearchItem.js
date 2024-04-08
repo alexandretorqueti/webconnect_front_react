@@ -12,30 +12,34 @@ function SearchItemComponent(props) {
             src={ props.image } 
             alt=""
             loading="lazy"
-        />
+        ></Image>
         </div>
 
         <div className="d-flex flex-column ms-3">
-        <Link to="/" className="h5">
-            { props.name }
-        </Link>
+            <div className="h5">
+                { props.name }
+            </div>
 
-        <span>
-            { props.subtitle }
-        </span>
+            <span>
+                { props.subtitle }
+            </span>
         </div>
 
         <div className="d-flex align-items-center ms-auto">
-        <Link to="/" className="me-3 d-flex align-items-center">
-            <small>Follow</small>{" "}
-        </Link>
+            <Link
+                className="me-3 d-flex align-items-center"
+                onClick={props.handleFollow}
+                to="#"
+            >
+                <small>Follow</small>{" "}
+            </Link>
 
-        <Link
-            to="/"
-            className="material-symbols-outlined text-dark"
-        >
-            close
-        </Link>
+            <Link
+                className="material-symbols-outlined text-dark"
+                onClick={props.handleClose}
+            >
+                close
+            </Link>
         </div>
     </div>
   );

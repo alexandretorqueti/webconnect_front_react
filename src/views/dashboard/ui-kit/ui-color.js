@@ -20,7 +20,7 @@ const UiColors = () => {
                   <Card>
                      <div className="card-header d-flex justify-content-between">
                         <div className="header-title">
-                           <h4 className="card-title">SocialV Color</h4>
+                           <h4 className="card-title">WebConnect Color</h4>
                         </div>
                      </div>
                      <Card.Body>
@@ -64,7 +64,7 @@ const UiColors = () => {
                   <Card>
                      <div className="card-header d-flex justify-content-between">
                         <div className="header-title">
-                           <h4 className="card-title">SocialV Color</h4>
+                           <h4 className="card-title">WebConnect Color</h4>
                         </div>
                      </div>
                      <Card.Body>
@@ -99,7 +99,7 @@ const UiColors = () => {
                   <Card>
                      <div className="card-header d-flex justify-content-between">
                         <div className="header-title">
-                           <h4 className="card-title">SocialV Text Color</h4>
+                           <h4 className="card-title">WebConnect Text Color</h4>
                         </div>
                      </div>
                      <Card.Body>
@@ -123,7 +123,7 @@ const UiColors = () => {
                   <Card>
                      <div className="card-header d-flex justify-content-between">
                         <div className="header-title">
-                           <h4 className="card-title">SocialV Text Color</h4>
+                           <h4 className="card-title">WebConnect Text Color</h4>
                         </div>
                      </div>
                      <Card.Body>
@@ -145,7 +145,7 @@ const UiColors = () => {
                   <Card>
                      <div className="card-header d-flex justify-content-between">
                         <div className="header-title">
-                           <h4 className="card-title">SocialV Text Color</h4>
+                           <h4 className="card-title">WebConnect Text Color</h4>
                         </div>
                      </div>
                      <Card.Body>
@@ -164,7 +164,7 @@ const UiColors = () => {
                   <Card>
                      <div className="card-header d-flex justify-content-between">
                         <div className="header-title">
-                           <h4 className="card-title">SocialV Text Color</h4>
+                           <h4 className="card-title">WebConnect Text Color</h4>
                         </div>
                      </div>
                      <Card.Body>

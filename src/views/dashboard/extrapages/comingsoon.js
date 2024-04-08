@@ -71,7 +71,7 @@ const ComingSoon = () => {
                             <div className="iq-comingsoon-info">
                             <Link className="sign-in-logo mb-5 d-flex align-items-center justify-content-center gap-2 iq-header-logo d-none d-lg-flex" to="#">
                                 <Image src={logo} className="img-fluid" alt="logo"/>
-                                <h3 className="logo-title d-none d-sm-block" data-setting="app_name">SocialV</h3>
+                                <h3 className="logo-title d-none d-sm-block" data-setting="app_name">WebConnect</h3>
                             </Link>
                                 <h2 className="mt-4 mb-1">Stay tunned, we re launching very soon</h2>
                                 <p>We are working very hard to give you the best experience possible!</p>

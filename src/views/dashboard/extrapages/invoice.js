@@ -91,15 +91,15 @@ const Invoice = () => {
                                                             <p className="mb-0">
                                                                 PO Box 16122 Collins Street West<br/>Victoria 8007 Australia<br/>
                                                                 Phone: +123 456 7890<br/>
-                                                                Email: demo@SocialV.com<br/>
-                                                                Web: www.SocialV.com
+                                                                Email: demo@WebConnect.com<br/>
+                                                                Web: www.WebConnect.com
                                                             </p>
                                                         </td>
                                                         <td>
                                                             <p className="mb-0">PO Box 16122 Collins Street West<br/>Victoria 8007 Australia<br/>
                                                                 Phone: +123 456 7890<br/>
-                                                                Email: demo@SocialV.com<br/>
-                                                                Web: www.SocialV.com
+                                                                Email: demo@WebConnect.com<br/>
+                                                                Web: www.WebConnect.com
                                                             </p>
                                                         </td>
                                                     </tr>

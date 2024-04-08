@@ -1,0 +1,113 @@
+import {
+    Form,
+    Modal,
+  } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import SearchItem from "../SearchItem";
+import SuggestionsItem from "../SuggestionsItem";
+import { Pessoas } from "../../services/Pessoas";
+
+function ModalBuscaComponent({ show, handleClose, handleShow, pessoasSemRelacao}) {
+    const handleCloseUser = () => console.log("handleCloseUser");
+    const PessoaService = new Pessoas();
+
+    const handleFollow = (pessoa_id) => {
+        const run = async () => {
+            try {
+                const response = await PessoaService.Seguir(pessoa_id);
+                console.log(response);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        run();
+    }
+    return (
+    <Modal
+    show={show}
+    onHide={handleClose}
+    className="search-modal"
+    id="post-modal"
+    >
+    <div className="modal-fullscreen-lg-down m-0">
+        <Modal.Header className="py-2">
+        <div className="d-flex align-items-center justify-content-between d-lg-none w-100">
+            <form
+            action="#"
+            className="searchbox w-50"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModalFullscreenSm"
+            onClick={handleShow}
+            >
+            <Link className="search-link" to="/">
+                <span className="material-symbols-outlined">
+                search
+                </span>
+            </Link>
+
+            <Form.Control
+                type="text"
+                className="text search-input bg-soft-primary"
+                placeholder="Search here..."
+            />
+            </form>
+
+            <Link
+            to="/"
+            className="material-symbols-outlined text-dark"
+            onClick={handleClose}
+            >
+            close
+            </Link>
+        </div>
+        {/* <Modal.Title> */}
+        <div className="d-flex align-items-center justify-content-between ms-auto w-100">
+            <h5 className=" h4" id="exampleModalFullscreenLabel">
+            Recent
+            </h5>
+
+            <Link to="/" className="text-dark">
+            Clear All
+            </Link>
+        </div>
+        {/* </Modal.Title> */}
+        </Modal.Header>
+        <Modal.Body className="p-0">
+        <div className="d-flex d-lg-none align-items-center justify-content-between w-100 p-3 pb-0">
+            <h5 className=" h4" id="exampleModalFullscreenLabel">
+            Recent
+            </h5>
+
+            <Link to="/" className="text-dark">
+            Clear All
+            </Link>
+        </div>
+        { pessoasSemRelacao && pessoasSemRelacao.map((pessoa) =>
+        <SearchItem 
+            key={pessoa.id} 
+            name={pessoa.nome} 
+            image={pessoa.foto_url} 
+            handleClose={handleCloseUser}
+            handleFollow={() => handleFollow(pessoa.id)}
+            ></SearchItem>
+        )}
+        <div className="">
+            <h4 className="px-3 py-2">Suggestions</h4>
+            
+            <div className="suggestion-card px-3 d-flex">
+            { pessoasSemRelacao && pessoasSemRelacao.map((pessoa) =>
+            <SuggestionsItem 
+            key={pessoa.id} 
+            name={pessoa.nome} 
+            imagem={pessoa.foto_url}
+            handleFollow={handleFollow}
+            ></SuggestionsItem>
+            )}
+            </div>
+        </div>
+        </Modal.Body>
+    </div>
+    </Modal> )
+}
+
+export default ModalBuscaComponent;

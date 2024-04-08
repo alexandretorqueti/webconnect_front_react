@@ -6,7 +6,7 @@ export const initialState: SettingState = {
   "storeKey": "socialvsetting-react",
   "setting": {
     "app_name": {
-      "value": "SocialV"
+      "value": "WebConnect"
     },
     "theme_scheme_direction": {
       "value": "ltr"
@@ -71,7 +71,7 @@ export const defaultState: SettingDefaultState = {
       target: '[data-setting="app_name"]',
       choices: [],
       type: "text",
-      value: "SocialV"
+      value: "WebConnect"
     },
     theme_scheme_direction: {
       target: "html",
