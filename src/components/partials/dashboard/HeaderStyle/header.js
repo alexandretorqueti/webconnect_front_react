@@ -27,7 +27,7 @@ import Busca from "../../../pessoas/Busca";
 import { Pessoas } from "../../../../services/Pessoas";
 import { useGlobalContext } from "../../../../GlobalContext";
 
-const Header = () => {
+const Header = ({ pessoasComRelacao, setPessoasComRelacao }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -83,7 +83,15 @@ const Header = () => {
             </Link>
             </div>
 
-            <Busca show={show} handleShow={handleShow} handleClose={handleClose} pessoasSemRelacao={pessoasSemRelacao} ></Busca>
+            <Busca 
+                show={show} 
+                handleShow={handleShow} 
+                handleClose={handleClose} 
+                pessoasSemRelacao={pessoasSemRelacao} 
+                setPessoasSemRelacao={setPessoasSemRelacao}
+                pessoasComRelacao={pessoasComRelacao}
+                setPessoasComRelacao={setPessoasComRelacao}
+                ></Busca>
             <ul className="navbar-nav navbar-list">
             <Nav.Item as="li">
             <Link to="/" className="d-flex align-items-center">

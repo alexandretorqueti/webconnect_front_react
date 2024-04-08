@@ -5,10 +5,9 @@ import { Pessoas } from '../../../../services/Pessoas';
 import { Mensagens } from '../../../../services/Mensagens';
 import { useGlobalContext } from '../../../../GlobalContext';
 
-const RightSidebar = () => {
+const RightSidebar = ({ pessoasComRelacao, setPessoasComRelacao }) => {
     const { mensagens, TIPOSMENSAGENS, MENSAGENS } = useGlobalContext();
     const [posicaoMensagem, setPosicaoMensagem] = useState(0);
-    const [pessoas, setPessoas] = useState([]);
     const PessoasService = new Pessoas();
     const [tick, setTick] = useState(0);
     const [minuto, setMinuto] = useState(0);
@@ -17,7 +16,7 @@ const RightSidebar = () => {
     const carregaDados = async () => {
         try {
             const data = await PessoasService.getPessoasComRelacao();
-            setPessoas(data);
+            setPessoasComRelacao(data);
         } catch (error) {
             console.error('Erro:', error);
         }
@@ -31,9 +30,9 @@ const RightSidebar = () => {
             if (mensagemAtual['tipo'] === TIPOSMENSAGENS.EVENTOS_DO_CHAT) {
                 const { pessoa_id_from, message } = mensagemAtual;
                 if (message === MENSAGENS.USUARIO_OFFLINE || message === MENSAGENS.USUARIO_ONLINE) {
-                    const pessoa = pessoas.find(pessoa => pessoa.id == pessoa_id_from);
+                    const pessoa = pessoasComRelacao.find(pessoa => pessoa.id == pessoa_id_from);
                     if (pessoa) {
-                        const pessoas_local = [...pessoas].map(p => {
+                        const pessoas_local = [...pessoasComRelacao].map(p => {
                             if (p.id == pessoa_id_from) {
                                 p.status_online = message === MENSAGENS.USUARIO_ONLINE ? true : false;
                                 if (p.status_online) {
@@ -42,7 +41,7 @@ const RightSidebar = () => {
                             }
                             return p;
                         });
-                        setPessoas(pessoas_local);
+                        setPessoasComRelacao(pessoas_local);
                     }
                 }
             }
@@ -54,7 +53,7 @@ const RightSidebar = () => {
     
 
     useEffect(() => {
-        const pessoas_local = [...pessoas];
+        const pessoas_local = [...pessoasComRelacao];
         const run = async () => {
             for (const p of pessoas_local) {
                 if (p.hora_ultimo_login) {
@@ -64,7 +63,7 @@ const RightSidebar = () => {
                     }
                 }
             }
-            setPessoas(pessoas_local);
+            setPessoasComRelacao(pessoas_local);
         }
         run();
 
@@ -99,7 +98,7 @@ const RightSidebar = () => {
                         <Card.Body className="p-0">
                             <div className="media-height p-3" data-scrollbar="init">
                                 {
-                                pessoas.map((pessoa, index) => 
+                                pessoasComRelacao.map((pessoa, index) => 
                                     <PessoaLogada key={index}
                                     nome={pessoa.nome}
                                     foto={pessoa.foto_url}

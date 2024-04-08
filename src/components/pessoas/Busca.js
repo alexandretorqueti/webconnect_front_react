@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 import ModalBusca from "./ModalBusca";
 
-function BuscaComponent({ show, handleShow, handleClose, pessoasSemRelacao }) {
+function BuscaComponent({ show, handleShow, handleClose, pessoasSemRelacao, setPessoasSemRelacao, pessoasComRelacao, setPessoasComRelacao }) {
     
     return (
         <>
@@ -37,7 +37,14 @@ function BuscaComponent({ show, handleShow, handleClose, pessoasSemRelacao }) {
           </Link>
         </form>
 
-        <ModalBusca show={show} handleClose={handleClose} handleShow={handleShow} pessoasSemRelacao={pessoasSemRelacao}
+        <ModalBusca 
+            show={show} 
+            handleClose={handleClose} 
+            handleShow={handleShow} 
+            pessoasSemRelacao={pessoasSemRelacao}
+            setPessoasSemRelacao={setPessoasSemRelacao}
+            pessoasComRelacao={pessoasComRelacao}
+            setPessoasComRelacao={setPessoasComRelacao}
         ></ModalBusca>
       </div>
 

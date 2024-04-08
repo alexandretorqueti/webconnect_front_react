@@ -33,13 +33,14 @@ function SearchItemComponent(props) {
             >
                 <small>Follow</small>{" "}
             </Link>
-
+            {/*
             <Link
                 className="material-symbols-outlined text-dark"
                 onClick={props.handleClose}
             >
                 close
             </Link>
+            */}
         </div>
     </div>
   );

@@ -7,15 +7,21 @@ import SearchItem from "../SearchItem";
 import SuggestionsItem from "../SuggestionsItem";
 import { Pessoas } from "../../services/Pessoas";
 
-function ModalBuscaComponent({ show, handleClose, handleShow, pessoasSemRelacao}) {
+function ModalBuscaComponent({ show, handleClose, handleShow, pessoasSemRelacao, setPessoasSemRelacao, pessoasComRelacao, setPessoasComRelacao}) {
     const handleCloseUser = () => console.log("handleCloseUser");
     const PessoaService = new Pessoas();
 
-    const handleFollow = (pessoa_id) => {
+    const handleFollow = (pessoa) => {
         const run = async () => {
             try {
-                const response = await PessoaService.Seguir(pessoa_id);
-                console.log(response);
+                await PessoaService.Seguir(pessoa.id);
+                const pessoasSemRelacao_local = pessoasSemRelacao.filter(p => p.id !== pessoa.id);
+                setPessoasSemRelacao(pessoasSemRelacao_local);
+
+                const pessoasComRelacao_local = [...pessoasComRelacao];
+                const pessoa_local = {...pessoa};
+                setPessoasComRelacao([ pessoa_local, ...pessoasComRelacao_local ])
+
             } catch (error) {
                 console.log(error);
             }
@@ -88,7 +94,7 @@ function ModalBuscaComponent({ show, handleClose, handleShow, pessoasSemRelacao}
             name={pessoa.nome} 
             image={pessoa.foto_url} 
             handleClose={handleCloseUser}
-            handleFollow={() => handleFollow(pessoa.id)}
+            handleFollow={() => handleFollow(pessoa)}
             ></SearchItem>
         )}
         <div className="">
@@ -100,7 +106,7 @@ function ModalBuscaComponent({ show, handleClose, handleShow, pessoasSemRelacao}
             key={pessoa.id} 
             name={pessoa.nome} 
             imagem={pessoa.foto_url}
-            handleFollow={handleFollow}
+            handleFollow={() => handleFollow(pessoa)}
             ></SuggestionsItem>
             )}
             </div>

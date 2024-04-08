@@ -20,15 +20,24 @@ import Footer from '../../components/partials/dashboard/FooterStyle/footer'
 import SettingOffCanvas from '../../components/setting/SettingOffCanvas'
 import { Outlet } from 'react-router-dom'
 
+import { useState } from 'react'
+
 const Default = () => {
+        const [pessoasComRelacao, setPessoasComRelacao] = useState([]);
         return (
             <>
             <Sidebar />
-            <Header />
+            <Header 
+                pessoasComRelacao={pessoasComRelacao}
+                setPessoasComRelacao={setPessoasComRelacao}
+            />
             <div className="main-content">
                 <Outlet/>
             </div>
-            <RightSidebar />
+            <RightSidebar 
+                pessoasComRelacao={pessoasComRelacao}
+                setPessoasComRelacao={setPessoasComRelacao}
+            />
             <Footer />
             <SettingOffCanvas />
             </>
