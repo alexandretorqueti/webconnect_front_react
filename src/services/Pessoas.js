@@ -10,8 +10,14 @@ export class Pessoas
             throw error;
         });
     }
-    async getPessoasSemRelacao(pagina) {
-        return await this.AjaxService.get('api/pessoas_sem_relacao/' + pagina);
+    async getPessoasSemRelacao(pagina, filtro) {
+        if (!filtro) {
+            filtro = '';
+        }
+        if (filtro === '') {
+            filtro = '***todos***';
+        }
+        return await this.AjaxService.get('api/pessoas_sem_relacao/' + pagina + '/' + filtro);
     }
     async getPessoasComRelacao() {
         return await this.AjaxService.get('api/pessoas_com_relacao');

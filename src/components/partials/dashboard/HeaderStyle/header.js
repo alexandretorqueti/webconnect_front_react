@@ -32,6 +32,7 @@ const Header = ({ pessoasComRelacao, setPessoasComRelacao }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const pessoaLogada = useGlobalContext().pessoaLogada;
+  const [filtro, setFiltro] = useState('');
   const minisidebar = () => {
     document.getElementsByTagName("ASIDE")[0].classList.toggle("sidebar-mini");
   };
@@ -40,7 +41,7 @@ const Header = ({ pessoasComRelacao, setPessoasComRelacao }) => {
     
   useEffect(() => {
     const run = async () => {
-      const localPessoasSemRelacao = await (new Pessoas()).getPessoasSemRelacao(1);
+      const localPessoasSemRelacao = await (new Pessoas()).getPessoasSemRelacao(1, filtro);
       setPessoasSemRelacao(localPessoasSemRelacao);
     }
     run();
@@ -48,12 +49,15 @@ const Header = ({ pessoasComRelacao, setPessoasComRelacao }) => {
 
   return (
     <>
+                            
       <div className="iq-top-navbar">
+
         <Nav
           expand="lg"
           variant="light"
           className="nav navbar navbar-expand-lg navbar-light iq-navbar p-lg-0"
         >
+
           <Container fluid className="navbar-inner">
             <div className="d-flex align-items-center gap-3  pb-2 pb-lg-0">
              
@@ -91,6 +95,8 @@ const Header = ({ pessoasComRelacao, setPessoasComRelacao }) => {
                 setPessoasSemRelacao={setPessoasSemRelacao}
                 pessoasComRelacao={pessoasComRelacao}
                 setPessoasComRelacao={setPessoasComRelacao}
+                filtro={filtro}
+                setFiltro={setFiltro}
                 ></Busca>
             <ul className="navbar-nav navbar-list">
             <Nav.Item as="li">

@@ -34,7 +34,7 @@ export const GlobalProvider = ({ children }) => {
     localStorage.setItem('csrfToken', token);
     const PessoasService = new Pessoas();
     const run = async () => {
-      if (location.href.indexOf('auth/sign-in') === -1) {
+      if (location.href.indexOf('auth/sign-up') === -1 && location.href.indexOf('auth/sign-in') === -1) {
         let naoLogadoLocal = false;
         let pessoa_logada = {};
         try {

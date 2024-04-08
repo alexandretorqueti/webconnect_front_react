@@ -39,6 +39,7 @@ const Default = () => {
                 setPessoasComRelacao={setPessoasComRelacao}
             />
             <Footer />
+
             <SettingOffCanvas />
             </>
         )

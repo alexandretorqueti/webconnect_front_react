@@ -129,7 +129,7 @@ const Index = () => {
     return (
         <>
             <div id="content-page" className="content-page">
-
+    
             <Container>
                 <Row>
                     <Col lg={larcuraColunaDoMeio} className="col m-0 p-0">

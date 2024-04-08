@@ -7,7 +7,15 @@ import SearchItem from "../SearchItem";
 import SuggestionsItem from "../SuggestionsItem";
 import { Pessoas } from "../../services/Pessoas";
 
-function ModalBuscaComponent({ show, handleClose, handleShow, pessoasSemRelacao, setPessoasSemRelacao, pessoasComRelacao, setPessoasComRelacao}) {
+function ModalBuscaComponent({ 
+        show, 
+        handleClose, 
+        handleShow, 
+        pessoasSemRelacao, 
+        setPessoasSemRelacao, 
+        pessoasComRelacao, 
+        setPessoasComRelacao,
+        setFiltro}) {
     const handleCloseUser = () => console.log("handleCloseUser");
     const PessoaService = new Pessoas();
 
@@ -54,7 +62,8 @@ function ModalBuscaComponent({ show, handleClose, handleShow, pessoasSemRelacao,
             <Form.Control
                 type="text"
                 className="text search-input bg-soft-primary"
-                placeholder="Search here..."
+                placeholder="Search here@"
+                onChange={(e) => setFiltro(e.target.value)}
             />
             </form>
 
