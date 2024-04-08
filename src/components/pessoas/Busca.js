@@ -37,8 +37,7 @@ function BuscaComponent({
 
     return (
         <>
-        <div className="iq-search-bar device-search  position-relative">
-        
+        <div className="iq-search-bar device-search  position-relative" >
         <ModalBusca 
             show={show} 
             handleClose={handleClose} 

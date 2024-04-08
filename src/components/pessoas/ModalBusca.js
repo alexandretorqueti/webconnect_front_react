@@ -42,9 +42,9 @@ function ModalBuscaComponent({
     onHide={handleClose}
     className="search-modal"
     id="post-modal"
-    style={{ top: '103px', overflow: 'hidden' }}
+    style={{ top: '103px' }}
     >
-    <div className="modal-fullscreen-lg-down m-0">
+    <div className="modal-fullscreen-lg-down m-0" style={{overflow: 'hidden', maxWidth : '498px'}}>
         <Modal.Header className="py-2">
         <div className="d-flex align-items-center justify-content-between d-lg-none w-100">
             <form
@@ -93,7 +93,7 @@ function ModalBuscaComponent({
         </div>
         {/* </Modal.Title> */}
         </Modal.Header>
-        <Modal.Body className="p-0">
+        <Modal.Body className="p-0" >
         <div className="d-flex d-lg-none align-items-center justify-content-between w-100 p-3 pb-0">
             <h5 className=" h4" id="exampleModalFullscreenLabel">
             Recent

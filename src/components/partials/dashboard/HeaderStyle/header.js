@@ -58,7 +58,7 @@ const Header = ({ pessoasComRelacao, setPessoasComRelacao }) => {
           className="nav navbar navbar-expand-lg navbar-light iq-navbar p-lg-0"
         >
 
-          <Container fluid className="navbar-inner">
+          <Container fluid className="navbar-inner" >
             <div className="d-flex align-items-center gap-3  pb-2 pb-lg-0">
              
               <Link
@@ -98,7 +98,7 @@ const Header = ({ pessoasComRelacao, setPessoasComRelacao }) => {
                 filtro={filtro}
                 setFiltro={setFiltro}
                 ></Busca>
-            <ul className="navbar-nav navbar-list">
+            <ul className="navbar-nav navbar-list" >
             <Nav.Item as="li">
             <Link to="/" className="d-flex align-items-center">
             <i className="material-symbols-outlined">home</i>
@@ -113,6 +113,7 @@ const Header = ({ pessoasComRelacao, setPessoasComRelacao }) => {
             onClick={handleShow}
             data-bs-toggle="modal"
             data-bs-target="#exampleModalFullscreenSm"
+            
             >
             <Link className="search-link d-none d-lg-block" to="/">
             <span className="material-symbols-outlined">search</span>
@@ -145,7 +146,7 @@ const Header = ({ pessoasComRelacao, setPessoasComRelacao }) => {
             <span className="material-symbols-outlined">group</span>
             </Dropdown.Toggle>
             <Dropdown.Menu className="sub-drop sub-drop-large">
-            <Card className="shadow-none m-0">
+            <Card className="shadow-none m-0" >
             <Card.Header className="d-flex justify-content-between bg-primary">
                 <div className="header-title">
                 <h5 className="mb-0 text-white">Friend Request</h5>
