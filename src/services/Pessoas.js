@@ -23,5 +23,17 @@ export class Pessoas
             password
         }, sendToken);
     }
+    async Signup(username, password, email, first_name, last_name, confirm_password, confirm_email) {
+        const formData = new FormData();
+        formData.append('username', username);
+        formData.append('password', password);
+        formData.append('email', email);
+        formData.append('confirm_email', confirm_email);
+        formData.append('first_name', first_name);
+        formData.append('last_name', last_name);
+        formData.append('confirm_password', confirm_password);
+    
+        return await this.AjaxService.postForm('api/pessoa_logada', formData);
+    }
 }
 
