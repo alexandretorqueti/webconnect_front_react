@@ -1,58 +1,50 @@
-import {Container, Row, Col, Card, Tab, Form, Button, Nav} from 'react-bootstrap'
-import { Link } from 'react-router-dom'
-import { useState, useEffect, useRef } from 'react'
+import {Container, Row, Col, Card, Tab, Nav} from 'react-bootstrap'
+import { useState, useEffect } from 'react'
 
 import { useGlobalContext } from '../../../GlobalContext'
 import { Pessoas } from '../../../services/Pessoas'
 
+import Form from '../../../utilities/form'
+
 const UserProfileEdit =() =>{
     const { pessoa_logada } = useGlobalContext()
-    const [ estado_civil, setEstadoCivil ] = useState([]);
-    const [ genero, setGenero ] = useState([]);
-    const [ area_atuacao , setAreaAtuacao ] = useState([]);
-    const [ foto, setFoto ] = useState(null);
-
     const PessoaService = new Pessoas();
-    const fileInput = useRef(null);
-    const handlePencilClick = () => {
-        fileInput.current.click();
-    };
-    const handleFileChange = (event) => {
-        // update the selectedImage state when a file is selected
-        setFoto(URL.createObjectURL(event.target.files[0]));
-      };
+    const [dataAux, setDataAux] = useState({});
+    const [ pessoa, setPessoa ] = useState({}); 
+    const copiaProp = (pessoa_local, prop_a_copiar) =>
+    {
+        const propriedades_a_copiar = Object.keys(pessoa_local[prop_a_copiar]);
+        propriedades_a_copiar.forEach(propriedade => {
+            if (propriedade != prop_a_copiar) {
+                if (propriedade === '_field_details') {
+                    pessoa_local[propriedade] = {...pessoa_local[propriedade], ...pessoa_local[prop_a_copiar][propriedade]};
+                }
+                else {
+                    pessoa_local[propriedade] = pessoa_local[prop_a_copiar][propriedade];
+                }
+            }
+        });
+    }
     const getDados = async () => {
         const estadosCivis = await PessoaService.getEstadosCivis();
         const generos = await PessoaService.getGeneros();
         const areasAtuacoes = await PessoaService.getAreasAtuacoes();
-        setEstadoCivil(estadosCivis);
-        setGenero(generos);
-        setAreaAtuacao(areasAtuacoes);
-        setFoto(pessoa_logada.foto_url);
-    }
-    const updatePessoa = async (formData) => {
-        await PessoaService.UpdatePessoa(formData);
-    }
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        const formData = new FormData();
-        formData.append('foto', fileInput.current.files[0]);
-        formData.append('first_name', pessoa_logada.pessoa_fisica.usuario.first_name);
-        formData.append('last_name', pessoa_logada.pessoa_fisica.usuario.last_name);
-        formData.append('username', pessoa_logada.pessoa_fisica.usuario.username);
-        formData.append('cidade', pessoa_logada.cidade);
-        formData.append('data_de_nascimento', pessoa_logada.pessoa_fisica.data_de_nascimento);
-        formData.append('pais', pessoa_logada.pais);
-        formData.append('estado', pessoa_logada.estado);
-        formData.append('cidade', pessoa_logada.cidade);
-        formData.append('endereco', pessoa_logada.endereco);
-        updatePessoa(formData);
+        setDataAux({
+            estadosCivis,
+            generos,
+            areasAtuacoes
+        });
+        const pessoa_local = {...pessoa_logada};
+        copiaProp(pessoa_local.pessoa_fisica, 'usuario');
+        copiaProp(pessoa_local, 'pessoa_fisica');
+        setPessoa(pessoa_local);
     }
     useEffect(() => {
-        getDados();       
-    }, [])
+        if (pessoa_logada.id)
+            getDados();
+    }, [pessoa_logada])
 
-    if (pessoa_logada && pessoa_logada.pessoa_fisica)
+    if (pessoa && pessoa.pessoa_fisica)
     return(
         <>
         <Container>
@@ -99,86 +91,11 @@ const UserProfileEdit =() =>{
                                         </div>
                                     </Card.Header>
                                     <Card.Body>
-                                        <Form onSubmit={handleSubmit}>
-                                            <Form.Group className="form-group align-items-center">
-                                                <Col md="12">
-                                                    <div className="profile-img-edit">
-                                                    <img className="profile-pic" src={foto} alt="profile-pic" style={{ 'maxHeight' : '100%' }}/>
-                                                    <div className="p-image">
-                                                        <i className="ri-pencil-line upload-button text-white" onClick={handlePencilClick}></i>
-                                                        <input 
-                                                            ref={fileInput} 
-                                                            className="file-upload"
-                                                            type="file" 
-                                                            accept="image/*"
-                                                            onChange={handleFileChange}
-                                                        />
-                                                    </div>
-                                                    </div>
-                                                </Col>
-                                            </Form.Group>
-                                            <Row className="align-items-center">
-                                                <Form.Group className="form-group col-sm-6">
-                                                    <Form.Label htmlFor="fname"  className="form-label">First Name:</Form.Label>
-                                                    <Form.Control type="text" className="form-control" id="fname" placeholder="First Name" value={pessoa_logada.pessoa_fisica.usuario.first_name}/>
-                                                </Form.Group>
-                                                <Form.Group className="form-group col-sm-6">
-                                                    <Form.Label htmlFor="lname" className="form-label">Last Name:</Form.Label>
-                                                    <Form.Control type="text" className="form-control" id="lname" placeholder="Last Name" value={pessoa_logada.pessoa_fisica.usuario.last_name} />
-                                                </Form.Group>
-                                                <Form.Group className="form-group col-sm-6">
-                                                    <Form.Label htmlFor="uname" className="form-label">User Name:</Form.Label>
-                                                    <Form.Control type="text" className="form-control" id="uname" placeholder="User Name" value={pessoa_logada.pessoa_fisica.usuario.username}/>
-                                                </Form.Group>
-                                                <Form.Group className="form-group col-sm-6">
-                                                    <Form.Label htmlFor="cname" className="form-label">City:</Form.Label>
-                                                    <Form.Control type="text" className="form-control" id="cname" placeholder="City" value={pessoa_logada.cidade}/>
-                                                </Form.Group>
-                                                <Form.Group className="form-group col-sm-6">
-                                                    <Form.Label className="form-label d-block">Gender:</Form.Label>
-                                                    {genero && genero.map((item) => <Form.Check key={item.id} className="form-check form-check-inline" label={item.nome} />)}
-                                                </Form.Group>
-                                                <Form.Group className="form-group col-sm-6">
-                                                    <Form.Label htmlFor="dob" className="form-label">Date Of Birth:</Form.Label>
-                                                    <Form.Control type="Date" className="form-control" id="dob" placeholder={pessoa_logada.pessoa_fisica.data_de_nascimento}/>
-                                                </Form.Group>
-                                                <Form.Group>
-                                                <Form.Label>Expertise</Form.Label>
-                                                    <div>
-                                                        {area_atuacao && area_atuacao.map((item) => {
-                                                            return <Form.Check key={item.id} type="checkbox" label={item.nome} className="form-check form-check-inline"/>
-                                                        })}
-                                                    </div>
-                                                </Form.Group>
-                                                <Form.Group className="form-group col-sm-6">
-                                                    <Form.Label className="form-label">Marital Status:</Form.Label>
-                                                    <Form.Select className="form-select" aria-label="">
-                                                        {estado_civil && estado_civil.map((item) => {
-                                                            return <option key={item.id}>{item.nome}</option>
-                                                        })}
-                                                    </Form.Select>
-                                                </Form.Group>
-                                                
-                                                <Form.Group className="form-group col-sm-6">
-                                                    <Form.Label  className="form-label">Country:</Form.Label>
-                                                    <Form.Control type="text" className="form-control" id="country" placeholder="Country" value={pessoa_logada.pais}/>
-                                                </Form.Group>
-                                                <Form.Group className="form-group col-sm-6">
-                                                    <Form.Label className="form-label">State:</Form.Label>
-                                                    <Form.Control type="text" className="form-control" id="state" placeholder="State" value={pessoa_logada.estado}/>
-                                                </Form.Group>
-                                                <Form.Group className="form-group col-sm-6">
-                                                    <Form.Label className="form-label">City:</Form.Label>
-                                                    <Form.Control type="text" className="form-control" id="city" placeholder="City" value={pessoa_logada.cidade}/>
-                                                </Form.Group>
-
-                                                <Form.Group className="form-group col-sm-12">
-                                                    <Form.Label className="form-label">Address:</Form.Label>
-                                                    <Form.Control type="text" className="form-control" id="address" placeholder="Address" value={pessoa_logada.endereco}/>
-                                                </Form.Group>
-                                            </Row>
-                                            <Button type="submit" className="btn btn-primary me-2">Submit</Button>
-                                            <Button type="reset" className="btn bg-soft-danger">Cancel</Button>
+                                        <Form 
+                                            data={pessoa} 
+                                            dataAux={dataAux} 
+                                            fnUpdateData={PessoaService.UpdatePessoa}
+                                            exclude={['status_online', 'hora_ultimo_login', 'pessoa_juridica', 'usuario']}>
                                         </Form>
                                     </Card.Body>
                                 </Card>
@@ -191,23 +108,7 @@ const UserProfileEdit =() =>{
                                     </div>
                                     </Card.Header>
                                     <Card.Body>
-                                    <Form>
-                                        <Form.Group className="form-group">
-                                            <Form.Label htmlFor="cpass" className="form-label">Current Password:</Form.Label>
-                                            <Link to="#" className="float-end">Forgot Password</Link>
-                                            <Form.Control type="Password" className="form-control" id="cpass" defaultValue=""/>
-                                        </Form.Group>
-                                        <Form.Group className="form-group">
-                                            <Form.Label htmlFor="npass" className="form-label">New Password:</Form.Label>
-                                            <Form.Control type="Password" className="form-control" id="npass" defaultValue=""/>
-                                        </Form.Group>
-                                        <Form.Group className="form-group">
-                                            <Form.Label htmlFor="vpass" className="form-label">Verify Password:</Form.Label>
-                                            <Form.Control type="Password" className="form-control" id="vpass" defaultValue=""/>
-                                        </Form.Group>
-                                        <Button type="submit" className="btn btn-primary me-2">Submit</Button>
-                                        <Button type="reset" className="btn bg-soft-danger">Cancel</Button>
-                                    </Form>
+
                                     </Card.Body>
                                 </Card>
                             </Tab.Pane>
@@ -219,62 +120,7 @@ const UserProfileEdit =() =>{
                                     </div>
                                     </Card.Header>
                                     <Card.Body>
-                                    <Form>
-                                        <Form.Group className="form-group row align-items-center">
-                                            <Form.Label className="col-md-3" htmlFor="emailnotification">Email Notification:</Form.Label>
-                                            <Form.Check className="col-md-9 form-check form-switch">
-                                                <Form.Check.Input className="form-check-input" type="checkbox" id="flexSwitchCheckChecked11"defaultChecked/>
-                                                <Form.Check.Label className="form-check-label" htmlFor="flexSwitchCheckChecked11">Checked switch checkbox input</Form.Check.Label>
-                                            </Form.Check>
-                                        </Form.Group>
-                                        <Form.Group className="form-group row align-items-center">
-                                            <Form.Label className="col-md-3" htmlFor="smsnotification">SMS Notification:</Form.Label>
-                                            <Form.Check className="col-md-9 form-check form-switch">
-                                                <Form.Check.Input className="form-check-input" type="checkbox" id="flexSwitchCheckChecked12"defaultChecked/>
-                                                <Form.Check.Label className="form-check-label" htmlFor="flexSwitchCheckChecked12">Checked switch checkbox input</Form.Check.Label>
-                                            </Form.Check>
-                                        </Form.Group>
-                                        <Form.Group className="form-group row align-items-center">
-                                            <Form.Label className="col-md-3" htmlFor="npass">When To Email</Form.Label>
-                                            <Col md="9">
-                                                <Form.Check className="form-check">
-                                                    <Form.Check.Input className="form-check-input" type="checkbox" defaultValue="" id="flexCheckDefault12"/>
-                                                    <Form.Check.Label className="form-check-label" htmlFor="flexCheckDefault12">
-                                                        You have new notifications.
-                                                    </Form.Check.Label>
-                                                </Form.Check>
-                                                <Form.Check className="form-check d-block">
-                                                    <Form.Check.Input className="form-check-input" type="checkbox" defaultValue="" id="email02"/>
-                                                    <Form.Check.Label className="form-check-label" htmlFor="email02">You&lsquo;re sent a direct message</Form.Check.Label>
-                                                </Form.Check>
-                                                <Form.Check className="form-check d-block">
-                                                    <Form.Check.Input type="checkbox" className="form-check-input" id="email03"defaultChecked/>
-                                                    <Form.Check.Label className="form-check-label" htmlFor="email03">Someone adds you as a connection</Form.Check.Label>
-                                                </Form.Check>
-                                            </Col>
-                                        </Form.Group>
-                                        <Form.Group className="form-group row align-items-center">
-                                            <Form.Label className="col-md-3" htmlFor="npass">When To Escalate Emails</Form.Label>
-                                            <Col md="9">
-                                                <Form.Check className="form-check">
-                                                    <Form.Check.Input className="form-check-input" type="checkbox" defaultValue="" id="email04"/>
-                                                    <Form.Check.Label className="form-check-label"htmlFor="email04">
-                                                        Upon new order.
-                                                    </Form.Check.Label>
-                                                </Form.Check>
-                                                <Form.Check className="form-check d-block">
-                                                    <Form.Check.Input className="form-check-input" type="checkbox" defaultValue="" id="email05"/>
-                                                    <Form.Check.Label className="form-check-label"htmlFor="email05">New membership approval</Form.Check.Label>
-                                                </Form.Check>
-                                                <Form.Check className="form-check d-block">
-                                                    <Form.Check.Input type="checkbox" className="form-check-input" id="email06"defaultChecked/>
-                                                    <Form.Check.Label className="form-check-label"htmlFor="email06">Member registration</Form.Check.Label>
-                                                </Form.Check>
-                                            </Col>
-                                        </Form.Group>
-                                        <Button type="submit" className="btn btn-primary me-2">Submit</Button>
-                                        <Button type="reset" className="btn bg-soft-danger">Cancel</Button>
-                                    </Form>
+
                                     </Card.Body>
                                 </Card>
                             </Tab.Pane>
@@ -286,22 +132,7 @@ const UserProfileEdit =() =>{
                                     </div>
                                     </Card.Header>
                                     <Card.Body>
-                                        <Form>
-                                            <Form.Group className="form-group">
-                                                <Form.Label htmlFor="cno"  className="form-label">Contact Number:</Form.Label>
-                                                <Form.Control type="text" className="form-control" id="cno" defaultValue="001 2536 123 458"/>
-                                            </Form.Group>
-                                            <Form.Group className="form-group">
-                                                <Form.Label htmlFor="email"  className="form-label">Email:</Form.Label>
-                                                <Form.Control type="text" className="form-control" id="email" defaultValue="Bnijone@demo.com"/>
-                                            </Form.Group>
-                                            <Form.Group className="form-group">
-                                                <Form.Label htmlFor="url"  className="form-label">Url:</Form.Label>
-                                                <Form.Control type="text" className="form-control" id="url" defaultValue="https://getbootstrap.com"/>
-                                            </Form.Group>
-                                            <Button type="submit" className="btn btn-primary me-2">Submit</Button>
-                                            <Button type="reset" className="btn bg-soft-danger">Cancel</Button>
-                                        </Form>
+                                        
                                     </Card.Body>
                                 </Card>
                             </Tab.Pane>

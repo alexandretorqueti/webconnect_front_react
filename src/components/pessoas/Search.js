@@ -82,8 +82,7 @@ function SearchComponent({ pessoasComRelacao, setPessoasComRelacao }) {
             </div>
 
             {pessoas && pessoas.map((pessoa) =>
-            <>
-            <div className="iq-friend-request">
+            <div key={pessoa.id} className="iq-friend-request">
                 <div className="iq-sub-card iq-sub-card-big d-flex align-items-center justify-content-between">
                     <div className="d-flex align-items-center">
                     <Image
@@ -108,7 +107,7 @@ function SearchComponent({ pessoasComRelacao, setPessoasComRelacao }) {
                     </div>
                 </div>
             </div>
-            </>)}
+            )}
         </Card.Body>
         </Card>
         </Dropdown.Menu>
