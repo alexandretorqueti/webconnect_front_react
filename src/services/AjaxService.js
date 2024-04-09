@@ -72,6 +72,29 @@ export class AjaxService {
                 headers: {
                     'Authorization': 'Bearer ' + this.token,
                     'X-CSRFToken': this.csr,
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error('Algo deu errado');
+            }
+
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            this.errorService.handlerError(error);
+            throw error;
+        }
+    }
+    async putForm(endPoint, formData) {
+        try {
+            const response = await fetch(this.enderecoBase + this.app + endPoint, {
+                method: 'PUT',
+                credentials: 'include',
+                body: formData,
+                headers: {
+                    'Authorization': 'Bearer ' + this.token,
+                    'X-CSRFToken': this.csr,
                 }
             });
 

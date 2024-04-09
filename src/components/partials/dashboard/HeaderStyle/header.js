@@ -1,9 +1,9 @@
 import {
-  Dropdown,
-  Nav,
-  Card,
-  Image,
-  Container,
+    Container, 
+    Card, 
+    Dropdown,
+    Nav,
+    Image,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
@@ -83,6 +83,14 @@ const Header = ({ pessoasComRelacao, setPessoasComRelacao }) => {
             setPessoasComRelacao={setPessoasComRelacao}
             ></SearchComponent>
             
+
+            <Nav.Item as="li">           
+            <Link to="/dashboard/app/user-profile-edit" className="d-flex align-items-center">
+            <i className="material-symbols-outlined">account_circle</i>
+            <span className="mobile-text d-none ms-3">Profile</span>
+            </Link>
+            </Nav.Item>
+
             <Dropdown as="li" className="nav-item">
             <Dropdown.Toggle
             href="/"

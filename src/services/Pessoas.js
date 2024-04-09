@@ -52,5 +52,21 @@ export class Pessoas
         return await this.AjaxService.delete('api/deixar_de_seguir', body);
     }
 
+    async getGeneros() {
+        return await this.AjaxService.get('api/genero');
+    }
+
+    async getEstadosCivis() {
+        return await this.AjaxService.get('api/estado_civil');
+    }
+
+    async getAreasAtuacoes() {
+        return await this.AjaxService.get('api/area_atuacao');
+    }
+
+    async UpdatePessoa(formData) {
+        return await this.AjaxService.putForm('api/pessoa_logada', formData);
+    }
+
 }
 
