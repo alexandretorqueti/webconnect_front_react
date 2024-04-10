@@ -11,6 +11,15 @@ const UserProfileEdit =() =>{
     const PessoaService = new Pessoas();
     const [dataAux, setDataAux] = useState({});
     const [ pessoa, setPessoa ] = useState({}); 
+    const handleUpdateData = (data) => {
+        const run = async () => {
+            const result = await PessoaService.UpdatePessoa(data);
+            if (result.success) {
+                location.href = '/';
+            }
+        }
+        run();
+    }
     const copiaProp = (pessoa_local, prop_a_copiar) =>
     {
         const propriedades_a_copiar = Object.keys(pessoa_local[prop_a_copiar]);
@@ -26,13 +35,13 @@ const UserProfileEdit =() =>{
         });
     }
     const getDados = async () => {
-        const estadosCivis = await PessoaService.getEstadosCivis();
-        const generos = await PessoaService.getGeneros();
-        const areasAtuacoes = await PessoaService.getAreasAtuacoes();
+        const estadocivil = await PessoaService.getEstadosCivis();
+        const genero = await PessoaService.getGeneros();
+        const areas_atuacao = await PessoaService.getAreasAtuacoes();
         setDataAux({
-            estadosCivis,
-            generos,
-            areasAtuacoes
+            estadocivil: estadocivil,
+            genero: genero,
+            areas_atuacao: areas_atuacao
         });
         const pessoa_local = {...pessoa_logada};
         copiaProp(pessoa_local.pessoa_fisica, 'usuario');
@@ -94,8 +103,8 @@ const UserProfileEdit =() =>{
                                         <Form 
                                             data={pessoa} 
                                             dataAux={dataAux} 
-                                            fnUpdateData={PessoaService.UpdatePessoa}
-                                            exclude={['status_online', 'hora_ultimo_login', 'pessoa_juridica', 'usuario']}>
+                                            fnUpdateData={handleUpdateData}
+                                            exclude={['status_online', 'hora_ultimo_login', 'pessoa_juridica', 'usuario', 'nome']}>
                                         </Form>
                                     </Card.Body>
                                 </Card>

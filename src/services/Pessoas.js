@@ -4,6 +4,7 @@ export class Pessoas
 {
     constructor() {
         this.AjaxService = new AjaxService('pessoas/');
+        this.UpdatePessoa = this.UpdatePessoa.bind(this);
     }
     async getPessoaLogada() {
         return await this.AjaxService.get('api/pessoa_logada').catch((error) => {
