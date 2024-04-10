@@ -4,20 +4,17 @@ import {
     Image,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
-
 import CustomToggle from "../../../dropdowns";
-
-//image
-import user2 from "../../../../assets/images/user/02.jpg";
-import user3 from "../../../../assets/images/user/03.jpg";
-import user4 from "../../../../assets/images/user/04.jpg";
-
 import { Mensagens } from "../../../../services/Mensagens";
 import { useEffect, useState } from "react";
 
+import { useGlobalContext } from "../../../../GlobalContext";
+
 function Notifications() {
     const MensagemService = new Mensagens();
+    const { mensagens, TIPOSMENSAGENS, pessoa_logada } = useGlobalContext();
     const [notificacoes, setNotificacoes] = useState([]);
+    const [posicaoMensagem, setPosicaoMensagem] = useState(0);
 
     useEffect(() => {
         const run = async () => {
@@ -31,6 +28,31 @@ function Notifications() {
         }
         run();
     }, []);
+
+    useEffect(() => {
+        let posicao = posicaoMensagem;
+        while (mensagens[posicao])
+        {
+            const mensagemAtual = mensagens[posicao];
+            if (mensagemAtual['tipo'] === TIPOSMENSAGENS.MENSAGEM_ENTRE_USUARIOS) {
+                const notificacoes_local = [...notificacoes];
+                if (mensagemAtual.pessoa_id_to === pessoa_logada.id)
+                {
+                    const { pessoa_id_from } = mensagemAtual;
+                    notificacoes_local.map((msg) => {
+                        if (msg.pessoa_fisica.id === pessoa_id_from)
+                        {
+                            msg.hora_ultima_mensagem = 'now';
+                            setNotificacoes([...notificacoes_local]);
+                        }
+                    })
+                }
+            }
+
+            posicao++;
+            setPosicaoMensagem(posicao);
+        }
+    }, [mensagens]);
 
     return (
     <>
@@ -48,7 +70,7 @@ function Notifications() {
         <div className="header-title bg-primary">
         <h5 className="mb-0 text-white ">All Notifications</h5>
         </div>
-        <small className="badge  bg-light text-dark">4</small>
+        <small className="badge  bg-light text-dark">{notificacoes.length}</small>
     </Card.Header>
     <Card.Body className="p-0">
         {notificacoes.map((notificacao) => {
@@ -63,80 +85,17 @@ function Notifications() {
                 />
                 </div>
                 <div className="ms-3 w-100">
-                <h6 className="mb-0 ">{notificacao.pessoa_fisica.nome}</h6>
+                <h6 className="mb-0 ">{notificacao.tipo}</h6>
                 <div className="d-flex justify-content-between align-items-center">
-                    <p className="mb-0">95 MB</p>
+                    <p className="mb-0">{notificacao.pessoa_fisica.nome}</p>
                     <small className="float-right font-size-12">
-                    {notificacao.numero_de_mensagens}
+                    {notificacao.hora_ultima_mensagem}
                     </small>
                 </div>
                 </div>
             </div>
             </Link>
         })}
-        <Link to="#" className="iq-sub-card">
-        <div className="d-flex align-items-center">
-            <div className="">
-            <Image
-                className="avatar-40 rounded"
-                src={user2}
-                alt=""
-                loading="lazy"
-            />
-            </div>
-            <div className="ms-3 w-100">
-            <h6 className="mb-0 ">New customer is join</h6>
-            <div className="d-flex justify-content-between align-items-center">
-                <p className="mb-0">Cyst Bni</p>
-                <small className="float-right font-size-12">
-                5 days ago
-                </small>
-            </div>
-            </div>
-        </div>
-        </Link>
-        <Link to="#" className="iq-sub-card">
-        <div className="d-flex align-items-center">
-            <div className="">
-            <Image
-                className="avatar-40 rounded"
-                src={user3}
-                alt=""
-                loading="lazy"
-            />
-            </div>
-            <div className="ms-3 w-100">
-            <h6 className="mb-0 ">Two customer is left</h6>
-            <div className="d-flex justify-content-between align-items-center">
-                <p className="mb-0">Cyst Bni</p>
-                <small className="float-right font-size-12">
-                2 days ago
-                </small>
-            </div>
-            </div>
-        </div>
-        </Link>
-        <Link to="#" className="iq-sub-card">
-        <div className="d-flex align-items-center">
-            <div className="">
-            <Image
-                className="avatar-40 rounded"
-                src={user4}
-                alt=""
-                loading="lazy"
-            />
-            </div>
-            <div className="w-100 ms-3">
-            <h6 className="mb-0 ">New Mail from Fenny</h6>
-            <div className="d-flex justify-content-between align-items-center">
-                <p className="mb-0">Cyst Bni</p>
-                <small className="float-right font-size-12">
-                3 days ago
-                </small>
-            </div>
-            </div>
-        </div>
-        </Link>
     </Card.Body>
     </Card>
     </Dropdown.Menu>
