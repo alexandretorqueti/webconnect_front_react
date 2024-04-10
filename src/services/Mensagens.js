@@ -8,6 +8,10 @@ export class Mensagens
     async getMensagensUsuario(pessoaId, pagina) {
         return await this.AjaxService.get('api/mensagensPessoa/' + pessoaId + '/' + pagina);
     }
+    async getNotificacoes() {
+        return await this.AjaxService.get('api/notificacoes');
+    }
+    
     getDiff(date) {
             const now = new Date();
             const pastDate = new Date(date);
