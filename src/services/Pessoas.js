@@ -34,9 +34,9 @@ export class Pessoas
         return await this.AjaxService.postForm('api/pessoa_logada', formData);
     }
     async Seguir(pessoaId) {
-        const body = {};
-        body['pessoa_id'] = pessoaId;
-        return await this.AjaxService.postJson('api/seguir', body);
+        const formData = new FormData();
+        formData.append('pessoa_id', pessoaId);
+        return await this.AjaxService.postForm('api/seguir', formData);
     }
     async DeixarDeSeguir(pessoaId) {
         const body = {};
