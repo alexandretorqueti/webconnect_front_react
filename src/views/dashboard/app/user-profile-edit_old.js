@@ -144,7 +144,12 @@ const UserProfileEdit =() =>{
                                                 </Form.Group>
                                                 <Form.Group className="form-group col-sm-6">
                                                     <Form.Label className="form-label d-block">Gender:</Form.Label>
-                                                    {genero && genero.map((item) => <Form.Check key={item.id} className="form-check form-check-inline" label={item.nome} onChange={changeData}  />)}
+                                                    {genero && genero.map((item) => 
+                                                    
+                                                    <Form.Check 
+                                                    key={item.id} 
+                                                    className="form-check form-check-inline" 
+                                                    label={item.nome} onChange={changeData}  />)}
                                                 </Form.Group>
                                                 <Form.Group className="form-group col-sm-6">
                                                     <Form.Label htmlFor="dob" className="form-label">Date Of Birth:</Form.Label>

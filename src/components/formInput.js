@@ -20,7 +20,8 @@ function FormInputComponent({
     const [message, setMessage] = useState('')
 
     const handlerSet = (e) => {
-        set(e.target.value);
+        if (set)
+            set(e.target.value);
         setTouched(true);
         let mensagem = '';
         const localInputValid = { ...inputValid };

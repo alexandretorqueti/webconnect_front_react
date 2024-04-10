@@ -2,8 +2,6 @@
 import {Row,Col,Container,Form,Button,Image} from 'react-bootstrap'
 import {Link, useNavigate} from 'react-router-dom'
 
-
-
 //swiper
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation, Autoplay } from 'swiper';
@@ -25,18 +23,15 @@ import { useState, useEffect } from 'react';
 
 import { Pessoas } from '../../../services/Pessoas';
 
+import ImageField from '../../../utilities/form/ImageField';
+
 // install Swiper modules
 SwiperCore.use([Navigation, Autoplay]);
 
 const SignUp = () => {
-   const [username, setUsername] = useState('');
-   const [first_name, setFirstName] = useState('');
-   const [last_name, setLastName] = useState('');
+   const [foto, setFoto] = useState(null);
    const [email, setEmail] = useState('');
-   const [confirm_email, setConfirmEmail] = useState('');
    const [password, setPassword] = useState('');
-   const [confirm_password, setConfirmPassword] = useState('');
-   const [acceptTerms, setAcceptTerms] = useState(false);
    const [formValid, setFormValid] = useState(false);
    const PessoaService = new Pessoas();
    const [inputValid, setInputValid] = useState({});
@@ -60,7 +55,8 @@ const SignUp = () => {
       e.preventDefault();
       
       const run = async () => {
-         const result = await PessoaService.Signup(username, password, email, first_name, last_name, confirm_password, confirm_email, acceptTerms);
+         const formData = new FormData(e.target);
+         const result = await PessoaService.Signup(formData);
          if (result.error)
          {
             setErrorList({...result.error});
@@ -119,13 +115,21 @@ const SignUp = () => {
                         <h1 className="mb-0">Sign Up</h1>
                         <p>Enter your email address and password to access admin panel.</p>
                         <Form className="mt-4" onSubmit={handleSubmit}>
+                           <ImageField 
+                              name="foto" 
+                              value={foto} 
+                              label="Avatar" 
+                              changeData={(e, value) => {
+                                 setFoto(value);
+                              }
+                           }></ImageField>
+
                            <FormInputComponent 
                            type="text"
                            label="User Name"
                            id="username"
                            name="username"
                            placeholder="User Name"
-                           set={setUsername}
                            required={true}
                            inputValid={inputValid}
                            setInputValid={setInputValid}
@@ -138,7 +142,6 @@ const SignUp = () => {
                            id="FirstName"
                            name="first_name"
                            placeholder="First Name"
-                           set={setFirstName}
                            required={true}
                            inputValid={inputValid}
                            setInputValid={setInputValid}
@@ -151,7 +154,6 @@ const SignUp = () => {
                            id="LastName"
                            name="last_name"
                            placeholder="Last Name"
-                           set={setLastName}
                            required={true}
                            inputValid={inputValid}
                            setInputValid={setInputValid}
@@ -177,7 +179,6 @@ const SignUp = () => {
                            id="Email2"
                            name="confirm_email"
                            placeholder="Enter email again"
-                           set={setConfirmEmail}
                            required={true}
                            setErrorMessage={(e, paramErrorMessage) => (paramErrorMessage.email !== e.currentTarget.value) ? 'Emails do not match' : '' }
                            paramErrorMessage={{email}}
@@ -205,7 +206,6 @@ const SignUp = () => {
                            id="Password2"
                            name="confirm_password"
                            placeholder="Password"
-                           set={setConfirmPassword}
                            required={true}
                            setErrorMessage={(e, paramErrorMessage) => (paramErrorMessage.password !== e.currentTarget.value) ? 'Passwords do not match' : '' }
                            paramErrorMessage={{password}}
@@ -223,7 +223,6 @@ const SignUp = () => {
                               id="acceptTerms"
                               name="acceptTerms"
                               placeholder="Password"
-                              set={setAcceptTerms}
                               required={true}
                               inputValid={inputValid}
                               setInputValid={setInputValid}
