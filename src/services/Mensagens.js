@@ -11,6 +11,9 @@ export class Mensagens
     async getNotificacoes() {
         return await this.AjaxService.get('api/notificacoes');
     }
+    async getMinhasMensagens() {
+        return await this.AjaxService.get('api/minhas_mensagens');
+    }
     
     getDiff(date) {
             const now = new Date();

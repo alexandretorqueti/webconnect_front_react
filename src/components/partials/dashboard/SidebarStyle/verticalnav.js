@@ -32,8 +32,46 @@ const VerticalNav = React.memo(() => {
     let location = useLocation();
     // console.log(document);
 
-
-    return (
+    if (document.location.href.indexOf('localhost') === -1) {
+        return (
+            <React.Fragment>
+                <Accordion as="ul" className="navbar-nav iq-main-menu" id="sidebar-menu">
+                    <li className="nav-item static-item">
+                        <Link className="nav-link static-item disabled" to="#" tabIndex="-1">
+                            <span className="default-icon">Social</span>
+                            <span className="mini-icon" data-bs-toggle="tooltip" title="Social" data-bs-placement="right">-</span>
+                        </Link>
+                    </li>
+                    
+                    <li  className={`${location.pathname === '/' ? 'active' : ''} nav-item `}>
+                        <Link className={`${location.pathname === '/' ? 'active' : ''} nav-link `} aria-current="page" to="/">
+                            <OverlayTrigger placement="right" overlay={<Tooltip>Newsfeed</Tooltip>}>
+                                <i className="icon material-symbols-outlined">
+                                    newspaper
+                                </i>
+                            </OverlayTrigger>
+                            <span className="item-name">Newsfeed</span>
+                        </Link>
+                    </li>
+                   
+                    <Nav.Item as="li">
+                        <Link 
+                            className={`${location.pathname === '/chat/index' ? 'active' : ''} nav-link `} 
+                            aria-current="page" to="/chat/index" 
+                            >
+                            <OverlayTrigger placement="right" overlay={<Tooltip>Chat</Tooltip>}>
+                            <i className="icon material-symbols-outlined">
+                                message
+                            </i>
+                            </OverlayTrigger>
+                            <span className="item-name">Chat</span>
+                        </Link>
+                    </Nav.Item>
+                </Accordion>
+            </React.Fragment>
+            )
+    } else {
+        return (
         <React.Fragment>
             <Accordion as="ul" className="navbar-nav iq-main-menu" id="sidebar-menu">
                 <li className="nav-item static-item">
@@ -42,6 +80,7 @@ const VerticalNav = React.memo(() => {
                         <span className="mini-icon" data-bs-toggle="tooltip" title="Social" data-bs-placement="right">-</span>
                     </Link>
                 </li>
+                
                 <li  className={`${location.pathname === '/' ? 'active' : ''} nav-item `}>
                     <Link className={`${location.pathname === '/' ? 'active' : ''} nav-link `} aria-current="page" to="/">
                         <OverlayTrigger placement="right" overlay={<Tooltip>Newsfeed</Tooltip>}>
@@ -1473,7 +1512,8 @@ const VerticalNav = React.memo(() => {
                 </Accordion.Item>
             </Accordion>
         </React.Fragment>
-    )
+        )
+    }
 })
 
 export default VerticalNav
