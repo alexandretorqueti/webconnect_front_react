@@ -1,6 +1,6 @@
 import { Comentarios } from '../../../../services/RedeSocial.js';
 import PropTypes from 'prop-types';
-
+import { useGlobalContext } from '../../../../GlobalContext.js';
 function FormNewComentarioComponent(
     {
       post, 
@@ -9,7 +9,7 @@ function FormNewComentarioComponent(
       setShowInput,
       busca_comentario
     }) {
-  
+  const { pessoa_logada } = useGlobalContext();
   const ComentarioService = new Comentarios();
 
 
@@ -22,6 +22,12 @@ function FormNewComentarioComponent(
       if (comentario===null) {
         const newComentario = await ComentarioService.post(message, PostId);
         const newPost = {...post}
+        const pessoas_que_comentaram = [...newPost.pessoas_que_comentaram];
+        // Se a pessoa logada não tiver em pessoas que comentaram, adicionamos
+        if (pessoas_que_comentaram.filter(pessoa => pessoa.id === pessoa_logada.id).length === 0) {
+            pessoas_que_comentaram.push(pessoa_logada);
+        }
+        newPost.pessoas_que_comentaram = [...pessoas_que_comentaram];
         newPost.comentarios.push(newComentario);
         setPostAtual(newPost);
       } else {
@@ -29,7 +35,7 @@ function FormNewComentarioComponent(
         const newPost = {...post}
         const comentarioEncontrado = busca_comentario(comentario.id, newPost.comentarios);
         if (comentarioEncontrado) {
-        comentarioEncontrado.respostas.push(newComentario);
+          comentarioEncontrado.respostas.push(newComentario);
           setPostAtual(newPost);
           setShowInput(false);
         }

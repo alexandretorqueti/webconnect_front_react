@@ -32,9 +32,18 @@ function ComentarioComponent({
     const handleConfirm = async () => {
         const result = await (new Comentarios()).delete(comentario.id);
         if (result.status === 'success') {
+            const post_local = {...post};
+            const pessoas_que_comentaram = [...post_local.pessoas_que_comentaram];
+            const index = pessoas_que_comentaram.findIndex(pessoa => pessoa.id === pessoa_logada.id);
+            if (index !== -1) {
+                pessoas_que_comentaram.splice(index, 1);
+            }
+            post_local.pessoas_que_comentaram = pessoas_que_comentaram;
+            setPostAtual(post_local);
             setDeleteComentario(comentario.id);
         } 
     }
+
     useEffect(() => {
         setItens([{
             id: 1,

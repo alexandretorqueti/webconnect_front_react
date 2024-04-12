@@ -37,7 +37,7 @@ function PostComponent({ post, icones, children, setPostAtual }) {
             setPostAtual(postLocal);
         }
     }
-  }, [deleteComentario, post, setPostAtual]);
+  }, [deleteComentario]);
 
   useEffect(() => {
     // Faço uma cópia local do post
@@ -100,7 +100,11 @@ function PostComponent({ post, icones, children, setPostAtual }) {
                         <div className="like-block position-relative d-flex align-items-center">
                             <PostLikes pessoas_que_curtiram={post.pessoas_que_curtiram} icones={icones} post_id={post.id} minha_curtida={post.minha_curtida} />
                             {post.comentarios.length > 0 &&
-                                <PostComents comentarios={post.comentarios} pessoas_que_comentaram={post.pessoas_que_comentaram} />
+                                <PostComents 
+                                    comentarios={post.comentarios} 
+                                    pessoas_que_comentaram={post.pessoas_que_comentaram} 
+                                    deleteComentario={deleteComentario}
+                                    />
                             }
                         </div>
                         <ShareOffcanvas />
