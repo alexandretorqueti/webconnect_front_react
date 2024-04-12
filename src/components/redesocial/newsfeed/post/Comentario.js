@@ -5,6 +5,8 @@ import { Comentarios, CurtidasComentarios } from '../../../../services/RedeSocia
 import ModalConfirm from '../../../ModalConfirm';
 import { useGlobalContext } from '../../../../GlobalContext';
 import FormNewComentario from './FormNewComentario';
+import Pessoa from '../../../pessoas/Pessoa';
+import './Comentario.css';
 
 function ComentarioComponent({ 
     comentario , 
@@ -61,13 +63,9 @@ function ComentarioComponent({
     (comentario.deleted) ? null : (
     <>
         <li className="mb-2">
-            <div className="d-flex justify-content-between">
-                <div className='d-flex'>
-                    <div className="user-img">
-                        <img src={comentario.pessoa_fisica.foto_url} alt="user1" className={(comentario.comentario_pai) ? "avatar-20 rounded-circle img-fluid" : "avatar-35 rounded-circle img-fluid"}/>
-                    </div>
-                    <div className="comment-data-block ms-3" style={(comentario.comentario_pai) && { 'fontSize' : '0.800rem' } }>
-                        <h6>{comentario.pessoa_fisica.nome}</h6>
+            <Pessoa pessoa={comentario.pessoa_fisica} >
+                <div className='justify-content-between d-flex comentario-content'>
+                    <div className="comment-data-block ms-3">
                         <p className="mb-0">{comentario.comentario}</p>
                         <div className="d-flex flex-wrap align-items-center comment-activity">
                             <Link onClick={LikeComentario}>
@@ -80,17 +78,19 @@ function ComentarioComponent({
                             <span> {comentario.naturalTime} </span>
                         </div>
                     </div>
+                    {pessoa_logada && pessoa_logada.id === comentario.pessoa_fisica.id && <Menu itens={itens} />}
                 </div>
-                {pessoa_logada && pessoa_logada.id === comentario.pessoa_fisica.id && <Menu itens={itens} />}
+            </Pessoa>
+            
                 
-                <ModalConfirm 
-                    show={show} 
-                    setShow={setShow} 
-                    handleConfirm={handleConfirm} 
-                    title="Delete Coment"
-                    message="Are you sure you want to delete this comment?"
-                />
-            </div>
+            <ModalConfirm 
+                show={show} 
+                setShow={setShow} 
+                handleConfirm={handleConfirm} 
+                title="Delete Coment"
+                message="Are you sure you want to delete this comment?"
+            />
+            
         </li>
         <li className="mb-2">
             {comentario.respostas.length > 0 &&

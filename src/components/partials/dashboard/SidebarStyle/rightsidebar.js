@@ -98,13 +98,9 @@ const RightSidebar = ({ pessoasComRelacao, setPessoasComRelacao }) => {
                         <Card.Body className="p-0">
                             <div className="media-height p-3" data-scrollbar="init">
                                 {
-                                pessoasComRelacao.map((pessoa, index) => 
-                                    <PessoaLogada key={index}
-                                    nome={pessoa.nome}
-                                    foto={pessoa.foto_url}
-                                    horaLogado={pessoa.hora_ultimo_login_humanizada}
-                                    online={pessoa.status_online}
-                                    numeroNotificacoes={pessoa.quantidade_de_mensagens_nao_lidas} />
+                                pessoasComRelacao.map((pessoa) => 
+                                    <PessoaLogada key={pessoa.id}
+                                    pessoa={pessoa} showHoraLogin={true} showMensagensNaoLidas={true}/>
                                 )}
                             </div>
                             <div className="right-sidebar-toggle bg-primary text-white mt-3 d-flex" onClick={minirightsidebar}>
