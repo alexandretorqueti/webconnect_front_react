@@ -11,6 +11,7 @@ const UserProfileEdit =() =>{
     const PessoaService = new Pessoas();
     const [dataAux, setDataAux] = useState({});
     const [ pessoa, setPessoa ] = useState({}); 
+    const [ dados_processados, setDadosProcessados ] = useState(false);
     const handleUpdateData = (data) => {
         const run = async () => {
             const result = await PessoaService.UpdatePessoa(data);
@@ -49,8 +50,10 @@ const UserProfileEdit =() =>{
         setPessoa(pessoa_local);
     }
     useEffect(() => {
-        if (pessoa_logada.id)
+        if (pessoa_logada.id && !dados_processados) {
+            setDadosProcessados(true);
             getDados();
+        }
     }, [pessoa_logada])
 
     if (pessoa && pessoa.pessoa_fisica)

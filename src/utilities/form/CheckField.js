@@ -1,6 +1,14 @@
 import { Form, Row } from 'react-bootstrap';
 
 const CheckField = ({ name, value, label, changeData, aux }) => {
+    // Transformar o array de objetos value em um array numérico com os ids dos objetos
+    if (value === null || value === undefined) 
+        value = [];
+    else {
+        if (value.length > 0 && typeof value[0] === 'object') {
+            value = value.map((item) => item.id);
+        }
+    }
     return (
         <>
         <Row>
@@ -25,3 +33,4 @@ const CheckField = ({ name, value, label, changeData, aux }) => {
 }
 
 export default CheckField;
+

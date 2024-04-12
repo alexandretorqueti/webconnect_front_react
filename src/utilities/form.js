@@ -12,8 +12,31 @@ function FormComponent({ data, dataAux, fnUpdateData, exclude=[] }) {
         event.preventDefault();
         setShowLoader(true);
         const formData = new FormData(event.target);
+        const data = Array.from(formData.entries()).reduce((data, [field, value]) => {
+            if (Object.prototype.hasOwnProperty.call(data, field)) {
+                data[field] = Array.isArray(data[field]) ? [...data[field], value] : [data[field], value];
+            } else {
+                data[field] = value;
+            }
+    
+            return data;
+        }, {});
+    
+        // Transforma os arrays em strings separadas por vírgulas
+        for (const key in data) {
+            if (Array.isArray(data[key])) {
+                data[key] = data[key].join(',');
+            }
+        }
+    
+        // Cria um novo FormData a partir do objeto data
+        const newFormData = new FormData();
+        for (const key in data) {
+            newFormData.append(key, data[key]);
+        }
+    
         const run = async () => {
-            await fnUpdateData(formData);
+            await fnUpdateData(newFormData);
         }
         run();
     }

@@ -83,7 +83,7 @@ function ContentChatComponent({ pessoa, pessoa_logada, divMensagensRef }) {
         </OverlayTrigger>
         }
         {mensagens_chat && mensagens_chat.map((mensagem) =>
-            pessoa_logada.id === mensagem.destinatario ?
+            pessoa_logada.id !== mensagem.destinatario ?
             <MessageOtherUser key={mensagem.id} mensagem={mensagem} pessoa={pessoa}></MessageOtherUser> :
             <MessageLocalUser key={mensagem.id} mensagem={mensagem} pessoa={pessoa_logada}></MessageLocalUser>
         )}
