@@ -100,7 +100,8 @@ const RightSidebar = ({ pessoasComRelacao, setPessoasComRelacao }) => {
                                 {
                                 pessoasComRelacao.map((pessoa) => 
                                     <PessoaLogada key={pessoa.id}
-                                    pessoa={pessoa} showHoraLogin={true} showMensagensNaoLidas={true}/>
+                                    pessoa={pessoa} showHoraLogin={true} showMensagensNaoLidas={true}
+                                    avatar="50"/>
                                 )}
                             </div>
                             <div className="right-sidebar-toggle bg-primary text-white mt-3 d-flex" onClick={minirightsidebar}>

@@ -1,14 +1,16 @@
 import {
     Dropdown,
     Card,
-    Image,
-    Form
+    Form,
+    Row, 
+    Col
   } from "react-bootstrap";
 import { Link } from "react-router-dom";
   
 import CustomToggle from "../dropdowns";
 import { Pessoas } from "../../services/Pessoas";
 import { useEffect, useState } from "react";
+import Pessoa from './Pessoa';
 
 function SearchComponent({ pessoasComRelacao, setPessoasComRelacao }) {
     const [ pessoas, setPessoas ] = useState([]);
@@ -80,34 +82,23 @@ function SearchComponent({ pessoasComRelacao, setPessoasComRelacao }) {
                     onChange={(e) => setFiltro(e.target.value)}
                 />
             </div>
-
             {pessoas && pessoas.map((pessoa) =>
-            <div key={pessoa.id} className="iq-friend-request">
-                <div className="iq-sub-card iq-sub-card-big d-flex align-items-center justify-content-between">
-                    <div className="d-flex align-items-center">
-                    <Image
-                        className="avatar-40 rounded"
-                        src={pessoa.foto_url}
-                        alt=""
-                        loading="lazy"
-                    />
-                    <div className="ms-3">
-                        <h6 className="mb-0 ">{pessoa.nome}</h6>
-                        <p className="mb-0">{pessoa.quantidade_seguidores} Follower</p>
-                    </div>
-                    </div>
-                    <div className="d-flex align-items-center">
-                    <Link
-                        to="#"
-                        className="me-3 btn btn-primary rounded"
-                        onClick={() => handleFollow(pessoa)}
-                    >
-                        Follow
-                    </Link>
-                    </div>
-                </div>
-            </div>
-            )}
+            <Pessoa key={pessoa.id} pessoa={pessoa} showHoraLogin={false} showMensagensNaoLidas={false} avatar="50">
+                <Row className="d-flex align-items-right justify-content-end">
+                    <Col className="mb-0">{pessoa.quantidade_seguidores} Follower</Col>
+                    <Col className="d-flex align-items-center">
+                        <Link
+                            to="#"
+                            className="me-3 btn btn-primary rounded"
+                            onClick={() => handleFollow(pessoa)}
+                        >
+                            Follow
+                        </Link>
+                    </Col>
+                </Row>
+            </Pessoa>
+            )};
+            
         </Card.Body>
         </Card>
         </Dropdown.Menu>
