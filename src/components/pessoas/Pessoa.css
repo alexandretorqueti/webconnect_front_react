@@ -19,6 +19,9 @@
 .foto-nome-avatar{
   min-width: 200px;
   height: 60px;
+  flex-grow: 0;  /* Impede que a div cresça além do conteúdo */
+  flex-shrink: 0; /* Impede que a div encolha abaixo do tamanho do conteúdo */
+  flex-basis: auto; /* Baseia o tamanho inicial no conteúdo */
 }
 
 .children-content {
