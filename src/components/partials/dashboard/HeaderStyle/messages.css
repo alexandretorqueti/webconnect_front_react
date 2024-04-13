@@ -1,0 +1,27 @@
+@media (min-width: 767.98px) {
+    .minhas-mensagens { 
+        top: 35px;
+        right: 0px;
+        width: 20px;
+        height: 20px;
+        font-size: 0.75rem;
+        padding: 0.25em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .minhas-mensagens {
+        top: 108px;
+        right: 7px;
+        width: 20px;
+        height: 20px;
+        font-size: 0.75rem;
+        padding: 0.25em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

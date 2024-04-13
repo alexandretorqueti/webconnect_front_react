@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import CustomToggle from "../../../dropdowns";
 import { Mensagens } from "../../../../services/Mensagens";
 import { useEffect, useState } from "react";
+import './messages.css';
 
 function Messages() {
     const [minhas_mensagens, setMinhasMensagens] = useState([]);
@@ -35,7 +36,7 @@ function Messages() {
             variant="d-flex align-items-center"
             >
             <i className="material-symbols-outlined">mail</i>
-            <Badge pill bg="danger" className="position-absolute" style={{ top: '35px', right: '0px', width: '20px', height: '20px', fontSize: '0.75rem', padding: '0.25em', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+            <Badge pill bg="danger" className="position-absolute minhas-mensagens">
                 {minhas_mensagens.length}
             </Badge>
             <span className="mobile-text d-none ms-3">

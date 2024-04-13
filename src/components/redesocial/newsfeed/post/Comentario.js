@@ -93,6 +93,17 @@ function ComentarioComponent({
             
         </li>
         <li className="mb-2">
+            {showInput &&
+                    <div className="comment-data-block ms-3">
+                        <FormNewComentario 
+                            post={post} 
+                            setPostAtual={setPostAtual}
+                            comentario={comentario}
+                            setShowInput={setShowInput}
+                            busca_comentario={(id, lista) => busca_comentario(id, lista)}
+                            />
+                    </div>
+            }
             {comentario.respostas.length > 0 &&
                     <ul className="post-comments list-inline m-0" style={{ paddingLeft: '50px' }}>
                         {comentario.respostas.map((resposta) => (
@@ -108,17 +119,7 @@ function ComentarioComponent({
                         ))}
                     </ul>
                     }
-                    {showInput &&
-                    <div className="comment-data-block ms-3">
-                        <FormNewComentario 
-                            post={post} 
-                            setPostAtual={setPostAtual}
-                            comentario={comentario}
-                            setShowInput={setShowInput}
-                            busca_comentario={(id, lista) => busca_comentario(id, lista)}
-                            />
-                    </div>
-                    }
+                   
         </li>
     </>)
 );}

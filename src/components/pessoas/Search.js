@@ -64,7 +64,7 @@ function SearchComponent({ pessoasComRelacao, setPessoasComRelacao }) {
         >
         <span className="material-symbols-outlined">search</span>
         </Dropdown.Toggle>
-        <Dropdown.Menu className="sub-drop sub-drop-large">
+        <Dropdown.Menu className="sub-drop sub-drop-large" style={{ maxWidth: '300px' }}>
         <Card className="shadow-none m-0" >
         <Card.Header className="d-flex justify-content-between bg-primary">
             <div className="header-title">
@@ -85,11 +85,11 @@ function SearchComponent({ pessoasComRelacao, setPessoasComRelacao }) {
             {pessoas && pessoas.map((pessoa) =>
             <Pessoa key={pessoa.id} pessoa={pessoa} showHoraLogin={false} showMensagensNaoLidas={false} avatar="50">
                 <Row className="d-flex align-items-right justify-content-end">
-                    <Col className="mb-0">{pessoa.quantidade_seguidores} Follower</Col>
-                    <Col className="d-flex align-items-center">
+                    <Col className="mb-0 flex-nowrap">{pessoa.quantidade_seguidores} Follower</Col>
+                    <Col className="d-flex align-items-center flex-nowrap" style={{ maxWidth: '80px' }}>
                         <Link
                             to="#"
-                            className="me-3 btn btn-primary rounded"
+                            className="me-3 btn btn-primary rounded flex-nowrap"
                             onClick={() => handleFollow(pessoa)}
                         >
                             Follow
@@ -97,8 +97,7 @@ function SearchComponent({ pessoasComRelacao, setPessoasComRelacao }) {
                     </Col>
                 </Row>
             </Pessoa>
-            )};
-            
+            )}            
         </Card.Body>
         </Card>
         </Dropdown.Menu>
