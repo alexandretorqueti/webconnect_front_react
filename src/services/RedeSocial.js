@@ -10,7 +10,7 @@ export class PostPaginado extends PadraoAjax
                 'pagina': data.posts
             }
         } else {
-            if (data && data.posts && data.posts.length > 0) {
+            if (data && data.posts && data.posts.length > 0 && paginaAtual === 1) {
                 return {
                     'continuar': false,
                     'pagina': data.posts
