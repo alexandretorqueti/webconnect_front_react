@@ -4,10 +4,10 @@ import PessoaLogada from '../../../pessoas/Pessoa';
 import { Pessoas } from '../../../../services/Pessoas';
 import { Mensagens } from '../../../../services/Mensagens';
 import { useGlobalContext } from '../../../../GlobalContext';
+import useOnReceiveMessage from '../../../../services/UseOnReceiveMessage';
 
 const RightSidebar = ({ pessoasComRelacao, setPessoasComRelacao }) => {
-    const { mensagens, TIPOSMENSAGENS, MENSAGENS } = useGlobalContext();
-    const [posicaoMensagem, setPosicaoMensagem] = useState(0);
+    const { TIPOSMENSAGENS, MENSAGENS } = useGlobalContext();
     const PessoasService = new Pessoas();
     const [tick, setTick] = useState(0);
     const [minuto, setMinuto] = useState(0);
@@ -21,34 +21,26 @@ const RightSidebar = ({ pessoasComRelacao, setPessoasComRelacao }) => {
             console.error('Erro:', error);
         }
     }
-
-    useEffect(() => {
-        let posicao = posicaoMensagem;
-        while (mensagens[posicao])
-        {
-            const mensagemAtual = mensagens[posicao];
-            if (mensagemAtual['tipo'] === TIPOSMENSAGENS.EVENTOS_DO_CHAT) {
-                const { pessoa_id_from, message } = mensagemAtual;
-                if (message === MENSAGENS.USUARIO_OFFLINE || message === MENSAGENS.USUARIO_ONLINE) {
-                    const pessoa = pessoasComRelacao.find(pessoa => pessoa.id == pessoa_id_from);
-                    if (pessoa) {
-                        const pessoas_local = [...pessoasComRelacao].map(p => {
-                            if (p.id == pessoa_id_from) {
-                                p.status_online = message === MENSAGENS.USUARIO_ONLINE ? true : false;
-                                if (p.status_online) {
-                                    p.hora_ultimo_login_humanizada = 'agora';
-                                }
+    useOnReceiveMessage(TIPOSMENSAGENS.EVENTOS_DO_CHAT, (msg) => {
+        const mensagem_atual = msg;
+            const { pessoa_id_from, message } = mensagem_atual;
+            if (message === MENSAGENS.USUARIO_OFFLINE || message === MENSAGENS.USUARIO_ONLINE) {
+                const pessoa = pessoasComRelacao.find(pessoa => pessoa.id == pessoa_id_from);
+                if (pessoa) {
+                    const pessoas_local = [...pessoasComRelacao].map(p => {
+                        if (p.id == pessoa_id_from) {
+                            p.status_online = message === MENSAGENS.USUARIO_ONLINE ? true : false;
+                            if (p.status_online) {
+                                p.hora_ultimo_login_humanizada = 'agora';
                             }
-                            return p;
-                        });
-                        setPessoasComRelacao(pessoas_local);
-                    }
+                        }
+                        return p;
+                    });
+                    setPessoasComRelacao(pessoas_local);
                 }
             }
-            posicao++;
-            setPosicaoMensagem(posicao);
-        }
-    }, [mensagens.length]);
+    });
+    
     const MensagensService = new Mensagens();
     
 

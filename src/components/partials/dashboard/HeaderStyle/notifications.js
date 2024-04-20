@@ -7,15 +7,14 @@ import { Link } from "react-router-dom";
 import CustomToggle from "../../../dropdowns";
 import { Mensagens } from "../../../../services/Mensagens";
 import { useEffect, useState } from "react";
-
+import useOnReceiveMessage from "../../../../services/UseOnReceiveMessage";
 import { useGlobalContext } from "../../../../GlobalContext";
 
 function Notifications() {
     const MensagemService = new Mensagens();
-    const { mensagens, TIPOSMENSAGENS, pessoa_logada } = useGlobalContext();
+    const { TIPOSMENSAGENS, pessoa_logada } = useGlobalContext();
     const [notificacoes, setNotificacoes] = useState([]);
-    const [posicaoMensagem, setPosicaoMensagem] = useState(0);
-
+    
     useEffect(() => {
         const run = async () => {
             try {
@@ -29,30 +28,22 @@ function Notifications() {
         run();
     }, []);
 
-    useEffect(() => {
-        let posicao = posicaoMensagem;
-        while (mensagens[posicao])
-        {
-            const mensagemAtual = mensagens[posicao];
-            if (mensagemAtual['tipo'] === TIPOSMENSAGENS.MENSAGEM_ENTRE_USUARIOS) {
-                const notificacoes_local = [...notificacoes];
-                if (mensagemAtual.pessoa_id_to === pessoa_logada.id)
-                {
-                    const { pessoa_id_from } = mensagemAtual;
-                    notificacoes_local.map((msg) => {
-                        if (msg.pessoa_fisica.id === pessoa_id_from)
-                        {
-                            msg.hora_ultima_mensagem = 'now';
-                            setNotificacoes([...notificacoes_local]);
-                        }
-                    })
-                }
+    useOnReceiveMessage(TIPOSMENSAGENS.MENSAGEM_ENTRE_USUARIOS, (message) => {
+        const mensagemAtual = message;
+            const notificacoes_local = [...notificacoes];
+            if (mensagemAtual.pessoa_id_to === pessoa_logada.id)
+            {
+                const { pessoa_id_from } = mensagemAtual;
+                notificacoes_local.map((msg) => {
+                    if (msg.pessoa_fisica.id === pessoa_id_from)
+                    {
+                        msg.hora_ultima_mensagem = 'now';
+                        setNotificacoes([...notificacoes_local]);
+                    }
+                })
             }
+    });
 
-            posicao++;
-            setPosicaoMensagem(posicao);
-        }
-    }, [mensagens]);
 
     if (notificacoes.length === 0) {
         return '';

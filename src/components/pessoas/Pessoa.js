@@ -3,7 +3,8 @@ import { Container, Dropdown } from 'react-bootstrap';
 import CustomToggle from '../dropdowns'
 import { useGlobalContext } from '../../GlobalContext';
 import { Pessoas } from '../../services/Pessoas';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import FotoPessoa from './FotoPessoa';
 
 function PessoaComponent(prop) {
   const { pessoa, children, showHoraLogin, showMensagensNaoLidas, avatar } = prop;
@@ -26,7 +27,11 @@ function PessoaComponent(prop) {
         }
     }
     run();
-}
+  }
+  useEffect(() => {
+    setPessoaLocal(pessoa);
+  }, [pessoa]);
+  
   return (
     <Container className="container-pessoa">
       <div className="d-flex">
@@ -35,11 +40,11 @@ function PessoaComponent(prop) {
             <div className={(pessoa_local.status_online) ? "iq-profile-avatar status-online" : "iq-profile-avatar status-offline"} >
               <Dropdown>
                 <Dropdown.Toggle variant="link" id="dropdown-basic" as={CustomToggle}>
-                <img src={pessoa_local.foto_url} alt="" loading="lazy" className={"avatar-" + avatar + " rounded"}></img>
+                <FotoPessoa foto_url={pessoa_local.foto_url} avatar={avatar} />
                 </Dropdown.Toggle>
                 <Dropdown.Menu className="dropdown-menu-pessoa">
                   <div className="profile-section">
-                    <img src={pessoa_local.foto_url} alt="Profile Avatar" className={`avatar-${avatar} rounded`} loading="lazy"></img>
+                    <FotoPessoa foto_url={pessoa_local.foto_url} avatar={avatar} />
                     <div className="profile-info">
                       <h6 className="profile-name">Name: <span>{pessoa_local.nome}</span></h6>
                       <p className="profile-email">{pessoa_local.email}</p>
