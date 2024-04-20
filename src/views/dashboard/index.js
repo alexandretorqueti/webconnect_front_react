@@ -14,10 +14,10 @@ import { useEffect, useState, useRef } from 'react'
 import { useGlobalContext } from '../../GlobalContext'
 import { useNavigate } from 'react-router-dom'
 const Index = () => {
-    const [posts, setPosts] = useState([]);
+    const [posts_local, setPosts] = useState([]);
     const [isVisible, setIsVisible] = useState(false);
     const loaderRef = useRef(null);
-    const [pagina, setPagina] = useState(1);
+    const [pagina_atual, setPagina] = useState(1);
     const [continuar, setContinuar] = useState(true);
     const [icones, setIcones] = useState([]);
     const [stories ] = useState([]);
@@ -65,8 +65,9 @@ const Index = () => {
 
     const carrega = async (paginaAtual) => {
         const run = async () => {
-            const { continuar, pagina } = await PostPaginadoService.get(paginaAtual);
-            setPosts(posts.concat(pagina));
+            const ret = await PostPaginadoService.get(paginaAtual);
+            const { continuar, pagina } = ret;
+            setPosts(posts_local.concat(pagina));
             setContinuar(continuar);
         }
         await run();
@@ -98,8 +99,8 @@ const Index = () => {
     useEffect(() => {
         const run = async () => {
             if (isVisible) {
-                setPagina(pagina + 1);
-                carrega(pagina);
+                setPagina(pagina_atual + 1);
+                carrega(pagina_atual);
             }
         }
         run();
@@ -107,17 +108,17 @@ const Index = () => {
 
     useEffect(() => {
         if (postAtual && !postAtual.deleted) {
-            const index = posts.findIndex((post) => post.id === postAtual.id);
+            const index = posts_local.findIndex((post) => post.id === postAtual.id);
             if (index !== -1) {
-                const newPosts = [...posts];
+                const newPosts = [...posts_local];
                 newPosts[index] = postAtual;
                 setPosts(newPosts);
             }
         } else {
             if (postAtual && postAtual.deleted) {
-                const index = posts.findIndex((post) => post.id === postAtual.id);
+                const index = posts_local.findIndex((post) => post.id === postAtual.id);
                 if (index !== -1) {
-                    const newPosts = [...posts];
+                    const newPosts = [...posts_local];
                     newPosts.splice(index, 1);
                     setPosts(newPosts);
                 }
@@ -133,8 +134,8 @@ const Index = () => {
             <Container>
                 <Row>
                     <Col lg={larcuraColunaDoMeio} className="col m-0 p-0">
-                        <PostTop pessoa_logada={pessoa_logada} posts={posts} setPosts={setPosts}></PostTop>
-                        {(posts.length > 0 && posts.map((post) => {
+                        <PostTop pessoa_logada={pessoa_logada} posts={posts_local} setPosts={setPosts}></PostTop>
+                        {(posts_local.length > 0 && posts_local.map((post) => {
                             return <Post 
                             key={post.id} 
                             post={post}
@@ -163,7 +164,7 @@ const Index = () => {
                     )}
                     <div className="col-sm-12 text-center">
                         {continuar ? <img ref={loaderRef} src={loader} alt="loader" style={{height: "100px"}}/> : 
-                        <p>{posts.length===0 ? "Você ainda não segue ninguém" : "Não há mais dados"}</p>}
+                        <p>{posts_local.length===0 ? "Você ainda não segue ninguém" : "Não há mais dados"}</p>}
                     </div>
                 </Row>
             </Container>                
