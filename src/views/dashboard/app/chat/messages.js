@@ -7,6 +7,7 @@ import './chat.css'
 import ChatUserDetail from './chatUserDetail'
 import ContentChat from './content'
 import FormSendMessage from './formSendMessage'
+import FotoPessoaComponent from '../../../../components/pessoas/FotoPessoa'
 
 function MessagesComponent({ pessoa, pessoa_logada, setShowChat }) {
   const [showDetail, setShowDetail] = useState(false)
@@ -24,7 +25,7 @@ function MessagesComponent({ pessoa, pessoa_logada, setShowChat }) {
                         <i className="ri-menu-3-line"></i>
                     </div>
                     <div className="avatar chat-user-profile m-0 me-3" style={{ 'cursor': 'pointer' }} onClick={() => setShowDetail(true)}>
-                        <img loading="lazy" src={pessoa.foto_url} alt="avatar" className="avatar-50 " />
+                        <FotoPessoaComponent pessoa={pessoa} avatar={30}/>
                         <span className="avatar-status"><i className="material-symbols-outlined text-success  md-14 filled">circle</i></span>
                     </div>
                     <h5 className="mb-0">{pessoa.nome}</h5>
@@ -35,7 +36,7 @@ function MessagesComponent({ pessoa, pessoa_logada, setShowChat }) {
                     <Button type="submit" variant=" close-popup p-3" onClick={() => setShowDetail(false)}><i className="material-symbols-outlined md-18" >close</i></Button>
                         <div className="user mb-4  text-center">
                             <Link className="avatar m-0" to="">
-                                <img loading="lazy" src={pessoa.foto_url} alt="avatar" className="avatar-50 "/>
+                                <FotoPessoaComponent pessoa={pessoa} avatar={30}/>
                             </Link>
                             <div className="user-name mt-4">
                                 <h4>{pessoa.nome}</h4>

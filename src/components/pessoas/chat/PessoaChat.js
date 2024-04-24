@@ -1,5 +1,6 @@
 import {Nav} from 'react-bootstrap'
 import '../Pessoa.css'
+import FotoPessoa from '../FotoPessoa';
 
 
 function PessoaChatComponent({chave, pessoa, setShowChat, setPessoaSelecionada}) {
@@ -8,7 +9,7 @@ function PessoaChatComponent({chave, pessoa, setShowChat, setPessoaSelecionada})
         <Nav.Link eventKey={chave} onClick={() => { setShowChat(true); setPessoaSelecionada(pessoa); } } >
             <div className="d-flex align-items-center">
                 <div className="avatar me-2">
-                    <img loading="lazy" src={pessoa.foto_url} alt="chatuserimage" className="avatar-50 "/>
+                    <FotoPessoa pessoa={pessoa} avatar={50}/>
                     <span className="avatar-status"><i className={pessoa.status_online ? "ri-checkbox-blank-circle-fill text-success" : "ri-checkbox-blank-circle-fill text-light pe-1"}></i></span>
                 </div>
                 <div className="chat-sidebar-name">

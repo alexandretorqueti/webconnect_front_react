@@ -1,7 +1,7 @@
 //content.js
 import './chat.css'
-import MessageOtherUser from './messageOtherUser'
-import MessageLocalUser from './messageLocalUser'
+import MessageDireita from './messageDireita'
+import MessageEsquerda from './messageEsquerda'
 import { useEffect, useState  } from 'react'
 import { Mensagens } from '../../../../services/Mensagens'
 import { useGlobalContext } from '../../../../GlobalContext';
@@ -75,8 +75,8 @@ function ContentChatComponent({ pessoa, pessoa_logada, divMensagensRef }) {
         }
         {mensagens_chat && mensagens_chat.map((mensagem) =>
             pessoa_logada.id !== mensagem.destinatario ?
-            <MessageOtherUser key={mensagem.id} mensagem={mensagem} pessoa={pessoa}></MessageOtherUser> :
-            <MessageLocalUser key={mensagem.id} mensagem={mensagem} pessoa={pessoa_logada}></MessageLocalUser>
+            <MessageDireita key={mensagem.id} mensagem={mensagem} pessoa={pessoa_logada}></MessageDireita> :
+            <MessageEsquerda key={mensagem.id} mensagem={mensagem} pessoa={pessoa}></MessageEsquerda>
         )}
     </div>
     )

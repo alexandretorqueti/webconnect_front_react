@@ -1,12 +1,13 @@
 import {Link} from 'react-router-dom'
 import './chat.css'
+import FotoPessoaComponent from '../../../../components/pessoas/FotoPessoa';
 
-const MessageOtherUserComponent = ({ mensagem, pessoa }) => {
+const MessageDireitaComponent = ({ mensagem, pessoa }) => {
     return (
     <div className="chat d-flex other-user">
         <div className="chat-user">
             <Link className="avatar m-0" to="">
-                <img loading="lazy" src={pessoa.foto_url} alt="avatar" className="avatar-35 "/>
+                <FotoPessoaComponent pessoa={pessoa} avatar={35}/>
             </Link>
             <span className="chat-time mt-1">{mensagem.data}</span>
         </div>
@@ -19,4 +20,4 @@ const MessageOtherUserComponent = ({ mensagem, pessoa }) => {
     );
 };
 
-export default MessageOtherUserComponent;
+export default MessageDireitaComponent;

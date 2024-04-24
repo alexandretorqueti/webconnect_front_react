@@ -83,7 +83,12 @@ function SearchComponent({ pessoasComRelacao, setPessoasComRelacao }) {
                 />
             </div>
             {pessoas && pessoas.map((pessoa) =>
-            <Pessoa key={pessoa.id} pessoa={pessoa} showHoraLogin={false} showMensagensNaoLidas={false} avatar="50">
+            <Pessoa 
+                key={pessoa.id} 
+                pessoa={pessoa} 
+                showHoraLogin={false} 
+                showMensagensNaoLidas={false} 
+                avatar="50">
                 <Row className="d-flex align-items-right justify-content-end">
                     <Col className="mb-0 flex-nowrap">{pessoa.quantidade_seguidores} Follower</Col>
                     <Col className="d-flex align-items-center flex-nowrap" style={{ maxWidth: '80px' }}>

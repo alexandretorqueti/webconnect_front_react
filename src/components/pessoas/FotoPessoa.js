@@ -1,5 +1,5 @@
 
-function FotoPessoaComponent({ foto_url, avatar }) {
+function FotoPessoaComponent({ pessoa, avatar }) {
    const placeholder = "/static/semft.png";
 
    const handleError = (e) => {
@@ -8,7 +8,7 @@ function FotoPessoaComponent({ foto_url, avatar }) {
 
    return (
        <img
-           src={foto_url || placeholder}
+           src={pessoa.foto_url || placeholder}
            alt=""
            loading="lazy"
            className={`avatar-${avatar} rounded`}

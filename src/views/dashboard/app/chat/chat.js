@@ -9,6 +9,7 @@ import Messages from './messages'
 import { Pessoas } from '../../../../services/Pessoas'
 import './chat.css'
 import { useGlobalContext } from '../../../../GlobalContext'
+import FotoPessoaComponent from '../../../../components/pessoas/FotoPessoa'
 
 const Chat=()=>{
     const [showChat, setShowChat] = useState(false)
@@ -51,7 +52,7 @@ const Chat=()=>{
                                                 <Col lg="1">
                                                 <div className="d-flex align-items-center" onClick={() => setShow1('true')} style={{ 'cursor':'pointer' }}>
                                                 <div className="chat-profile me-3">
-                                                    <img loading="lazy" src={pessoa_logada.foto_url} alt="chat-user" className="avatar-60 "/>
+                                                    <FotoPessoaComponent pessoa={pessoa_logada} avatar={60}/>
                                                 </div>
                                                 <div className="chat-caption">
                                                     <h5 className="mb-0">{pessoa_logada.nome}</h5>
@@ -68,7 +69,7 @@ const Chat=()=>{
                                                     <Button type="submit" variant=" close-popup p-3"><i className="material-symbols-outlined md-18" onClick={() => setShow1('false')}>close</i></Button>
                                                     <div className="user text-center mb-4">
                                                         <Link className="avatar m-0" to="">
-                                                            <img loading="lazy" src={pessoa_logada.foto_url} alt="avatar" className="avatar-60 "/>
+                                                            <FotoPessoaComponent pessoa={pessoa_logada} avatar={60}/>
                                                         </Link>
                                                         <div className="user-name mt-4">
                                                             <h4 className="text-center">{pessoa_logada.nome}</h4>

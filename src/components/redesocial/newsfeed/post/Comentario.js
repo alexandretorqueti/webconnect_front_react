@@ -63,7 +63,7 @@ function ComentarioComponent({
     (comentario.deleted) ? null : (
     <>
         <li className="mb-2">
-            <Pessoa pessoa={comentario.pessoa_fisica} avatar="50">
+            <Pessoa pessoa={comentario.pessoa_fisica} avatar="40">
                 <div className='justify-content-between d-flex comentario-content'>
                     <div className="comment-data-block ms-3">
                         <p className="mb-0">{comentario.comentario}</p>

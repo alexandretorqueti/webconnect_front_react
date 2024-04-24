@@ -8,6 +8,7 @@ import PostComents from './PostComents';
 
 import MenuPost from './MenuPost';
 import Carousel from 'react-bootstrap/Carousel';
+import Pessoa from '../../../pessoas/Pessoa';
 
 
 function PostComponent({ post, icones, children, setPostAtual }) {
@@ -60,25 +61,14 @@ function PostComponent({ post, icones, children, setPostAtual }) {
         <Card className=" card-block card-stretch card-height">
             <Card.Body>
                 <div className="user-post-data">
-                    <div className="d-flex justify-content-between">
-                        <div className="me-3">
-                            <img className="rounded-circle img-fluid avatar-50" src={post.pessoa_fisica.foto_url} alt="" style={{ objectFit: 'unset' }} />
-                        </div>
-                        <div className="w-100">
-                            <div className="d-flex justify-content-between">
-                                <div>
-                                    <h5 className="mb-0 d-inline-block">{post.pessoa_fisica.nome}</h5>
-                                    {children}
-                                    <p className="mb-0 text-primary">{post.data_criacao}</p>
-                                </div>
-                                <MenuPost
-                                    post={post}
-                                    setPostAtual={setPostAtual}
-                                />
-                                
-                            </div>
-                        </div>
-                    </div>
+                    <Pessoa pessoa={post.pessoa_fisica} avatar={50}>
+                        {children}
+                        <p className="mb-0 text-primary">{post.data_criacao}</p>
+                        <MenuPost
+                            post={post}
+                            setPostAtual={setPostAtual}
+                        />
+                    </Pessoa>   
                 </div>
                 <div className="mt-3">
                     <p>{post.content}</p>

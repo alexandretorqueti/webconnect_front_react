@@ -40,11 +40,11 @@ function PessoaComponent(prop) {
             <div className={(pessoa_local.status_online) ? "iq-profile-avatar status-online" : "iq-profile-avatar status-offline"} >
               <Dropdown>
                 <Dropdown.Toggle variant="link" id="dropdown-basic" as={CustomToggle}>
-                <FotoPessoa foto_url={pessoa_local.foto_url} avatar={avatar} />
+                <FotoPessoa pessoa={pessoa_local} avatar={avatar} />
                 </Dropdown.Toggle>
                 <Dropdown.Menu className="dropdown-menu-pessoa">
                   <div className="profile-section">
-                    <FotoPessoa foto_url={pessoa_local.foto_url} avatar={avatar} />
+                    <FotoPessoa pessoa={pessoa_local} avatar={avatar} />
                     <div className="profile-info">
                       <h6 className="profile-name">Name: <span>{pessoa_local.nome}</span></h6>
                       <p className="profile-email">{pessoa_local.email}</p>
